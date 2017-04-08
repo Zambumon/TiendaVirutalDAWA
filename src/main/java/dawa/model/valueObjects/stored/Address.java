@@ -3,7 +3,7 @@ package dawa.model.valueObjects.stored;
 /**
  * Created by pedro on 8/04/17.
  */
-public class Adress {
+public class Address {
 
     private String firstLine;
     private String secondLine;
@@ -11,13 +11,13 @@ public class Adress {
     private String country;
 
 
-    public Adress(){};
+    public Address(){};
 
-    public Adress(String firstLine, String secondLine, String postCode, String country) {
-        this.firstLine = firstLine;
+    public Address(String firstLine, String secondLine, String postCode, String country) {
+        this.firstLine  = firstLine;
         this.secondLine = secondLine;
-        this.postCode = postCode;
-        this.country = country;
+        this.postCode   = postCode;
+        this.country    = country;
     }
 
     public String getFirstLine() {
@@ -57,7 +57,7 @@ public class Adress {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Adress adress = (Adress) o;
+        Address adress = (Address) o;
 
         if (firstLine != null ? !firstLine.equals(adress.firstLine) : adress.firstLine != null) return false;
         if (secondLine != null ? !secondLine.equals(adress.secondLine) : adress.secondLine != null) return false;

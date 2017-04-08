@@ -8,27 +8,27 @@ import java.util.List;
  */
 public class ItemSearchParameter {
 
-    private int             id          = -1;
-    private String          name        = "";
-    private float           precioMax   = Float.MAX_VALUE;
-    private float           precioMin   = 0f;
-    private List<String>    keywords    = new ArrayList<>();
-    private boolean         dispnible   = true;
-    private List<String>    searchWords = new ArrayList<>();
-    private String          orderBy     = "name";
-    private boolean         ascendent   = true;
+    private int             id              = -1;
+    private String          name            = "";
+    private float           maxPrice        = Float.MAX_VALUE;
+    private float           minPrice        = 0f;
+    private List<String>    keywords        = new ArrayList<>();
+    private boolean         availability    = true;
+    private List<String>    searchWords     = new ArrayList<>();
+    private String          orderBy         = "name";
+    private boolean         ascendant       = true;
 
 
     public ItemSearchParameter(){}
 
-    public ItemSearchParameter(int id, String name, float precioMax, float precioMin, boolean dispnible, String orderBy, boolean ascendent) {
+    public ItemSearchParameter(int id, String name, float maxPrice, float minPrice, boolean availability, String orderBy, boolean ascendant) {
         this.id = id;
         this.name = name;
-        this.precioMax = precioMax;
-        this.precioMin = precioMin;
-        this.dispnible = dispnible;
+        this.maxPrice = maxPrice;
+        this.minPrice = minPrice;
+        this.availability = availability;
         this.orderBy = orderBy;
-        this.ascendent = ascendent;
+        this.ascendant = ascendant;
     }
 
     public int getId() {
@@ -47,20 +47,20 @@ public class ItemSearchParameter {
         this.name = name;
     }
 
-    public float getPrecioMax() {
-        return precioMax;
+    public float getMaxPrice() {
+        return maxPrice;
     }
 
-    public void setPrecioMax(float precioMax) {
-        this.precioMax = precioMax;
+    public void setMaxPrice(float maxPrice) {
+        this.maxPrice = maxPrice;
     }
 
-    public float getPrecioMin() {
-        return precioMin;
+    public float getMinPrice() {
+        return minPrice;
     }
 
-    public void setPrecioMin(float precioMin) {
-        this.precioMin = precioMin;
+    public void setMinPrice(float minPrice) {
+        this.minPrice = minPrice;
     }
 
     public List<String> getKeywords() {
@@ -71,12 +71,12 @@ public class ItemSearchParameter {
         this.keywords = keywords;
     }
 
-    public boolean getDispnible() {
-        return dispnible;
+    public boolean getAvailability() {
+        return availability;
     }
 
-    public void setDispnible(boolean dispnible) {
-        this.dispnible = dispnible;
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
     }
 
     public List<String> getSearchWords() {
@@ -95,11 +95,11 @@ public class ItemSearchParameter {
         this.orderBy = orderBy;
     }
 
-    public boolean getAscendent() {
-        return ascendent;
+    public boolean getAscendant() {
+        return ascendant;
     }
 
-    public void setAscendent(boolean ascendent) {
-        this.ascendent = ascendent;
+    public void setAscendant(boolean ascendant) {
+        this.ascendant = ascendant;
     }
 }

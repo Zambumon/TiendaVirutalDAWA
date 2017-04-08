@@ -28,11 +28,7 @@ public class Cart {
     }
 
     public double getPrice() {
-        double sum = 0;
-        for (LineItem l: lines)
-            sum += l.getPrice();
-
-        return sum*taxes;
+        return lines.stream().mapToDouble(LineItem::getPrice).sum()*taxes;
     }
 
     public double getTaxes() {
