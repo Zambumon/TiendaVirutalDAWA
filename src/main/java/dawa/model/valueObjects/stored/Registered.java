@@ -15,7 +15,7 @@ public class Registered extends User {
     private String email;
     private UserType type;
     private List<Order> ordersMade;
-    private Adress currentAdress;
+    private Address currentAddress;
 
 
     @Override
@@ -24,16 +24,16 @@ public class Registered extends User {
     }
 
     @Override
-    public boolean canComentItem(Item item) {
+    public boolean canCommentItem(Item item) {
         /*TODO*/
         return false;
     }
 
-    public Registered(int id, String name, String email, UserType type, Adress currentAdress) {
+    public Registered(int id, String name, String email, UserType type, Address currentAddress) {
         this.name = name;
         this.email = email;
         this.type = type;
-        this.currentAdress = currentAdress;
+        this.currentAddress = currentAddress;
         this.ordersMade = new ArrayList<>();
     }
 
@@ -44,12 +44,12 @@ public class Registered extends User {
 
 
 
-    public Adress getCurrentAdress() {
-        return currentAdress;
+    public Address getCurrentAddress() {
+        return currentAddress;
     }
 
-    public void setCurrentAdress(Adress currentAdress) {
-        this.currentAdress = currentAdress;
+    public void setCurrentAddress(Address currentAddress) {
+        this.currentAddress = currentAddress;
     }
 
     public String getName() {

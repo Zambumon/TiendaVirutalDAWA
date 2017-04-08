@@ -5,15 +5,15 @@ package dawa.model.valueObjects.runTime;
  */
 public class UserSearchParameter {
 
-    private String name = "";
-    private String email = "";
-    private int maxSize = Integer.MAX_VALUE;
+    private String  name    = "";
+    private String  email   = "";
+    private int     maxSize = Integer.MAX_VALUE;
 
 
     public UserSearchParameter(String name, String email, int maxSize) {
-        this.name = name;
-        this.email = email;
-        this.maxSize = maxSize;
+        this.name       = name;
+        this.email      = email;
+        this.maxSize    = maxSize;
     }
 
     public String getName() {
