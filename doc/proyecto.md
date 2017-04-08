@@ -19,7 +19,7 @@ Indicamos aquí las funcionalidades del sistema en función del perfil del usuar
 
 F1. Registrar a los nuevos usuarios
 F2. Validar nombre/contraseña del usuario
-F3. Presentar el catálogo de CDs disponible en la tienda en ese momento. Hay
+F3. Presentar el catálogo de CDs abaliable en la tienda en ese momento. Hay
 que indicar aquí el título, autor, precio y el código del CD correspondiente.
 F4. Realizar búsquedas de CDs disponibles indicando precio máximo, título,
 autor y/o año. La búsqueda puede incluir todos los criterios o combinaciones de
@@ -113,7 +113,7 @@ ficheros en el árbol de directorios requerido para una aplicación web:
 crear las tablas correspondientes.
 
 - El fichero .war debe estar preparado para su despliegue automático en
-TOMCAT. Esto significa que la aplicación debe estar disponible en
+TOMCAT. Esto significa que la aplicación debe estar abaliable en
 http://localhost:8080/ proyecto_nombre_apellidos/, una vez copiado el fichero
 .war en <TOMCAT>/webapps, y activado el contenedor web.
 
@@ -161,7 +161,7 @@ puntos)
    - *Nota para las funcionalidades cliente:*
 F1. Registrar a los nuevos usuarios (0.05 puntos)
 F2. Validar nombre/contraseña del usuario (0.05 puntos)
-F3. Presentar el catálogo de CDs disponible en la tienda en ese momento. Hay
+F3. Presentar el catálogo de CDs abaliable en la tienda en ese momento. Hay
 que indicar aquí el título, autor, precio y el código del CD correspondiente. (0.1
 puntos)
 F4. Realizar búsquedas de CDs disponibles indicando precio máximo, título,
