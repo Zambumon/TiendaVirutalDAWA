@@ -3,15 +3,15 @@ package dawa.model.VOs;
 /**
  * Created by pedro on 8/04/17.
  */
-public abstract class User implements IAcces {
+public abstract class User implements IAccess {
 
-    private Cart carrito;
+    private Cart cart;
 
-    public Cart getCarrito() {
-        return carrito;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setCarrito(Cart carrito) {
-        this.carrito = carrito;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

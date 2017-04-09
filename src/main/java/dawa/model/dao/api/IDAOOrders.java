@@ -9,6 +9,6 @@ public interface IDAOOrders {
 
     void insertOrder(Order order);
 
-    void getUserOrders(Registered cliente);
+    void getUserOrders(Registered client);
 
 }

@@ -25,7 +25,7 @@ public class Order {
     private List<LineItem> orderLines;
     @Reference
     private Registered buyer;
-    private Adress destination;
+    private Address destination;
 
 
 
@@ -33,7 +33,7 @@ public class Order {
         this.orderLines = new ArrayList<>();
     }
 
-    public Order(int id, Date date, double totalPrice, double discountPercent, Registered buyer, Adress destination) {
+    public Order(int id, Date date, double totalPrice, double discountPercent, Registered buyer, Address destination) {
         this.id = id;
         this.date = date;
         this.totalPrice = totalPrice;
@@ -90,11 +90,11 @@ public class Order {
         this.buyer = buyer;
     }
 
-    public Adress getDestination() {
+    public Address getDestination() {
         return destination;
     }
 
-    public void setDestination(Adress destination) {
+    public void setDestination(Address destination) {
         this.destination = destination;
     }
 

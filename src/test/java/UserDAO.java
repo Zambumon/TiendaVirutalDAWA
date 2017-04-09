@@ -2,7 +2,7 @@
  * Created by pedro on 9/04/17.
  */
 
-import dawa.model.VOs.Adress;
+import dawa.model.VOs.Address;
 import dawa.model.VOs.Registered;
 import dawa.model.VOs.UserSearchParameter;
 import dawa.model.VOs.UserType;
@@ -26,7 +26,7 @@ public class UserDAO {
         for(int i = 0; i < 300; i++ ){
 
             Registered nuevo = new Registered("user"+i, "user"+i+"@gmail.com", UserType.NORMAL,
-                                                new Adress("1","2",i+"","4"));
+                                                new Address("1","2",i+"","4"));
             daoUsers.insertUser(nuevo);
         }
 
@@ -73,7 +73,7 @@ public class UserDAO {
 
         try {
             daoUsers.insertUser(r);
-            fail("The user already exits and it hasent had an error");
+            fail("The user already exits and it hasn't had an error");
         }catch (IllegalArgumentException e){}
 
         //Delete all the users (if fails may still will remain users in the discosBD database)
@@ -82,7 +82,7 @@ public class UserDAO {
         for(int i = 0; i < 300; i++ ){
 
             Registered borrar = new Registered("user"+i, "user"+i+"@gmail.com", UserType.NORMAL,
-                    new Adress("1","2",i+"","4"));
+                    new Address("1","2",i+"","4"));
             daoUsers.removeUser(borrar);
         }
 

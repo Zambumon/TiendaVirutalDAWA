@@ -9,18 +9,18 @@ import org.mongodb.morphia.annotations.*;
 @Indexes(
         @Index(value = "userEmail", fields = @Field("userEmail"))
 )
-public class CryptedPass {
+public class EncryptedPass {
 
     @Id
     String userEmail;
-    String cryptedPass;
+    String encryptedPass;
 
 
-    public CryptedPass(){}
+    public EncryptedPass(){}
 
-    public CryptedPass(String userEmail, String cryptedPass) {
+    public EncryptedPass(String userEmail, String cryptedPass) {
         this.userEmail = userEmail;
-        this.cryptedPass = cryptedPass;
+        this.encryptedPass = cryptedPass;
     }
 
     public String getUserEmail() {
@@ -31,12 +31,12 @@ public class CryptedPass {
         this.userEmail = userEmail;
     }
 
-    public String getCryptedPass() {
-        return cryptedPass;
+    public String getEncryptedPass() {
+        return encryptedPass;
     }
 
-    public void setCryptedPass(String cryptedPass) {
-        this.cryptedPass = cryptedPass;
+    public void setEncryptedPass(String encryptedPass) {
+        this.encryptedPass = encryptedPass;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class CryptedPass {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CryptedPass that = (CryptedPass) o;
+        EncryptedPass that = (EncryptedPass) o;
 
         return userEmail != null ? userEmail.equals(that.userEmail) : that.userEmail == null;
     }

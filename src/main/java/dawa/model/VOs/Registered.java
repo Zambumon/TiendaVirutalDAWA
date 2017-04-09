@@ -12,36 +12,36 @@ public class Registered extends User {
     private String email;
     private String name;
     private UserType type;
-    private Adress currentAdress;
+    private Address currentAddress;
 
 
     @Override
-    public boolean hasPermision(Permission permission) {
+    public boolean hasPermission(Permission permission) {
         return type.hasPermission(permission);
     }
 
     @Override
-    public boolean canComentItem(Item item) {
+    public boolean canCommentItem(Item item) {
         /*TODO*/
         return false;
     }
 
-    public Registered(String name, String email, UserType type, Adress currentAdress) {
+    public Registered(String name, String email, UserType type, Address currentAddress) {
         this.name = name;
         this.email = email;
         this.type = type;
-        this.currentAdress = currentAdress;
+        this.currentAddress = currentAddress;
     }
 
     public Registered(){}
 
 
-    public Adress getCurrentAdress() {
-        return currentAdress;
+    public Address getCurrentAddress() {
+        return currentAddress;
     }
 
-    public void setCurrentAdress(Adress currentAdress) {
-        this.currentAdress = currentAdress;
+    public void setCurrentAddress(Address currentAddress) {
+        this.currentAddress = currentAddress;
     }
 
     public String getName() {

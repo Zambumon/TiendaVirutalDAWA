@@ -24,7 +24,7 @@ public class DAOOrders extends MongoDAO implements IDAOOrders{
     }
 
     @Override
-    public void getUserOrders(Registered cliente) {
+    public void getUserOrders(Registered client) {
 
     }
 }

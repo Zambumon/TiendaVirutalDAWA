@@ -1,14 +1,10 @@
 package dawa.model.dao.mongo;
 
 import com.mongodb.MongoClient;
-import com.mongodb.WriteConcern;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.operation.UpdateOperation;
 import dawa.model.VOs.*;
 import dawa.model.dao.api.*;
 import org.mongodb.morphia.AdvancedDatastore;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.InsertOptions;
 
 import java.util.List;
 
@@ -63,21 +59,21 @@ public class DAOUsers extends MongoDAO implements IDAOUsers {
     @Override
     public String getHashPass(String email) {
 
-        CryptedPass c = datastore.get(CryptedPass.class,email);
+        EncryptedPass c = datastore.get(EncryptedPass.class,email);
 
         if(c==null)
             return null;
         else
-            return c.getCryptedPass();
+            return c.getEncryptedPass();
     }
 
     @Override
     public void deleteHash(String email){
-        datastore.delete(CryptedPass.class,email);
+        datastore.delete(EncryptedPass.class,email);
     }
 
     @Override
     public void InsertHash(String mail, String hash) {
-        datastore.save(new CryptedPass(mail,hash));
+        datastore.save(new EncryptedPass(mail,hash));
     }
 }
