@@ -26,7 +26,7 @@ public class Registered extends User {
         return false;
     }
 
-    public Registered(int id, String name, String email, UserType type, Adress currentAdress) {
+    public Registered(String name, String email, UserType type, Adress currentAdress) {
         this.name = name;
         this.email = email;
         this.type = type;

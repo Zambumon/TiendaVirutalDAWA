@@ -9,6 +9,7 @@ public class UserSearchParameter {
     private String email = "";
     private int maxSize = Integer.MAX_VALUE;
 
+    public UserSearchParameter(){};
 
     public UserSearchParameter(String name, String email, int maxSize) {
         this.name = name;
@@ -39,4 +40,5 @@ public class UserSearchParameter {
     public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
     }
+
 }

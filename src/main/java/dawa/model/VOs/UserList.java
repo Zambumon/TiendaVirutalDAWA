@@ -8,19 +8,19 @@ import java.util.List;
  */
 public class UserList {
 
-    private List<Item> userList = new ArrayList<>();
+    private List<Registered> userList = new ArrayList<>();
 
     public UserList(){};
 
-    public UserList(List<Item> userList) {
+    public UserList(List<Registered> userList) {
         this.userList = userList;
     }
 
-    public List<Item> getUserList() {
+    public List<Registered> getUserList() {
         return userList;
     }
 
-    public void setUserList(List<Item> userList) {
+    public void setUserList(List<Registered> userList) {
         this.userList = userList;
     }
 }

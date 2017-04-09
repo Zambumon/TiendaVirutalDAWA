@@ -15,7 +15,7 @@ public class MongoFactoy implements IDAOFactory{
     private MongoDatabase mongoDatabase;
     private Datastore datastore;
 
-    public void inicializar(){
+    public MongoFactoy(){
         // To connect to mongodb server
         mongoClient = new MongoClient( "localhost" , 27017 );
 

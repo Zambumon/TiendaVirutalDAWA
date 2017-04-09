@@ -9,9 +9,9 @@ import org.mongodb.morphia.Datastore;
  */
 public abstract class MongoDAO {
 
-    private MongoClient mongoClient;
-    private MongoDatabase mongoDatabase;
-    private Datastore datastore;
+    protected MongoClient mongoClient;
+    protected MongoDatabase mongoDatabase;
+    protected Datastore datastore;
 
 
     public MongoDAO(MongoClient mongoClient, MongoDatabase mongoDatabase, Datastore datastore) {

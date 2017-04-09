@@ -9,7 +9,7 @@ public interface IDAOUsers {
 
     void insertUser(Registered user);
 
-    User getUser(String email);
+    Registered getUser(String email);
 
     UserList searchUsers(UserSearchParameter search);
 
