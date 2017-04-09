@@ -2,6 +2,7 @@ package dawa.model.dao.mongo;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import org.mongodb.morphia.AdvancedDatastore;
 import org.mongodb.morphia.Datastore;
 
 /**
@@ -11,10 +12,10 @@ public abstract class MongoDAO {
 
     protected MongoClient mongoClient;
     protected MongoDatabase mongoDatabase;
-    protected Datastore datastore;
+    protected AdvancedDatastore datastore;
 
 
-    public MongoDAO(MongoClient mongoClient, MongoDatabase mongoDatabase, Datastore datastore) {
+    public MongoDAO(MongoClient mongoClient, MongoDatabase mongoDatabase, AdvancedDatastore datastore) {
         this.mongoClient = mongoClient;
         this.mongoDatabase = mongoDatabase;
         this.datastore = datastore;

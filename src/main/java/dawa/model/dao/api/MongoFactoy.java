@@ -2,6 +2,7 @@ package dawa.model.dao.api;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import org.mongodb.morphia.AdvancedDatastore;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import dawa.model.dao.mongo.*;
@@ -13,7 +14,7 @@ public class MongoFactoy implements IDAOFactory{
 
     private MongoClient mongoClient;
     private MongoDatabase mongoDatabase;
-    private Datastore datastore;
+    private AdvancedDatastore datastore;
 
     public MongoFactoy(){
         // To connect to mongodb server
@@ -27,7 +28,7 @@ public class MongoFactoy implements IDAOFactory{
         //para que lo mapee y haga su magia
         Morphia morphia = new Morphia();
         morphia.mapPackage("dawa.model.VOs");
-        datastore = morphia.createDatastore(mongoClient, "discosBD");
+        datastore = (AdvancedDatastore)morphia.createDatastore(mongoClient, "discosBD");
         datastore.ensureIndexes();
     }
 

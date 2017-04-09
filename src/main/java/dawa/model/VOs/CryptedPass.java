@@ -16,6 +16,8 @@ public class CryptedPass {
     String cryptedPass;
 
 
+    public CryptedPass(){}
+
     public CryptedPass(String userEmail, String cryptedPass) {
         this.userEmail = userEmail;
         this.cryptedPass = cryptedPass;

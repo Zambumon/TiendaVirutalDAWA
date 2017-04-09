@@ -5,6 +5,7 @@ import com.mongodb.client.MongoDatabase;
 import dawa.model.VOs.Order;
 import dawa.model.VOs.Registered;
 import dawa.model.dao.api.IDAOOrders;
+import org.mongodb.morphia.AdvancedDatastore;
 import org.mongodb.morphia.Datastore;
 
 /**
@@ -12,7 +13,7 @@ import org.mongodb.morphia.Datastore;
  */
 public class DAOOrders extends MongoDAO implements IDAOOrders{
 
-    public DAOOrders(MongoClient mongoClient, MongoDatabase mongoDatabase, Datastore datastore) {
+    public DAOOrders(MongoClient mongoClient, MongoDatabase mongoDatabase, AdvancedDatastore datastore) {
         super(mongoClient, mongoDatabase, datastore);
     }
 

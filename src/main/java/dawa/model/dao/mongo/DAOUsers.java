@@ -1,10 +1,14 @@
 package dawa.model.dao.mongo;
 
 import com.mongodb.MongoClient;
+import com.mongodb.WriteConcern;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.operation.UpdateOperation;
 import dawa.model.VOs.*;
 import dawa.model.dao.api.*;
+import org.mongodb.morphia.AdvancedDatastore;
 import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.InsertOptions;
 
 import java.util.List;
 
@@ -16,14 +20,18 @@ import static java.lang.Math.min;
  */
 public class DAOUsers extends MongoDAO implements IDAOUsers {
 
-    public DAOUsers(MongoClient mongoClient, MongoDatabase mongoDatabase, Datastore datastore) {
+    public DAOUsers(MongoClient mongoClient, MongoDatabase mongoDatabase, AdvancedDatastore datastore) {
         super(mongoClient, mongoDatabase, datastore);
     }
 
 
     @Override
     public void insertUser(Registered user) {
-        datastore.save(user);
+        try {
+            datastore.insert(user);
+        }catch (com.mongodb.DuplicateKeyException e){
+            throw new IllegalArgumentException("El usuario ya existe");
+        }
     }
 
     @Override
@@ -54,7 +62,18 @@ public class DAOUsers extends MongoDAO implements IDAOUsers {
 
     @Override
     public String getHashPass(String email) {
-        return datastore.get(CryptedPass.class,email).getCryptedPass();
+
+        CryptedPass c = datastore.get(CryptedPass.class,email);
+
+        if(c==null)
+            return null;
+        else
+            return c.getCryptedPass();
+    }
+
+    @Override
+    public void deleteHash(String email){
+        datastore.delete(CryptedPass.class,email);
     }
 
     @Override
