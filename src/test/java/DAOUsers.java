@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.fail;
 
-public class UserDAO {
+public class DAOUsers {
 
     @Test
     public void doTest(){

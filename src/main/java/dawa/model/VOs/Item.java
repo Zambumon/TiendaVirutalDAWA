@@ -24,22 +24,23 @@ public class Item {
     private double taxes;
     private String description;
     private int stock;
-    private Review review;
-    private boolean abaliable;
+    @Embedded
+    private List<Review> review;
+    private boolean avaliable;
     @Embedded
     private List<String> keywords;
     @Embedded
     private Map<String, Object> propierties;
 
-    public Item(int id, String name, double price, double taxes, String description, int stock, Review review, boolean abaliable) {
+    public Item(int id, String name, double price, double taxes, String description, int stock, boolean avaliable) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.taxes = taxes;
         this.description = description;
         this.stock = stock;
-        this.review = review;
-        this.abaliable = abaliable;
+        this.avaliable = avaliable;
+        this.review = new ArrayList<>();
         this.keywords = new ArrayList<>();
         this.propierties = new LinkedHashMap<>();
     }
@@ -47,13 +48,14 @@ public class Item {
     public Item(){
         this.keywords = new ArrayList<>();
         this.propierties = new LinkedHashMap<>();
+        this.review = new ArrayList<>();
     }
 
-    public Review getReview() {
+    public List<Review> getReview() {
         return review;
     }
 
-    public void setReview(Review review) {
+    public void setReview(List<Review> review) {
         this.review = review;
     }
 
@@ -121,12 +123,12 @@ public class Item {
         this.propierties = propierties;
     }
 
-    public boolean getAbaliable() {
-        return abaliable;
+    public boolean getAvaliable() {
+        return avaliable;
     }
 
-    public void setAbaliable(boolean abaliable) {
-        this.abaliable = abaliable;
+    public void setAvaliable(boolean avaliable) {
+        this.avaliable = avaliable;
     }
 
     @Override

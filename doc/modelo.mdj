@@ -17723,7 +17723,7 @@
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "+abaliable: boolean",
+													"text": "+avaliable: boolean",
 													"horizontalAlignment": 0,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -28730,7 +28730,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFbL2TKQV49dfE="
 									},
-									"name": "abaliable",
+									"name": "avaliable",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,

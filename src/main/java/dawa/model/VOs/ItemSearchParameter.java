@@ -10,26 +10,26 @@ public class ItemSearchParameter {
 
     private int             id          = -1;
     private String          name        = "";
-    private float           maxPrice    = Float.MAX_VALUE;
-    private float           minPrice    = 0f;
+    private double          maxPrice    = Double.MAX_VALUE;
+    private double          minPrice    = 0.0;
     private List<String>    keywords    = new ArrayList<>();
     private boolean         available   = true;
     private List<String>    searchWords = new ArrayList<>();
     private String          orderBy     = "name";
-    private boolean         ascendant   = true;
+    private boolean         descendent  = true;
 
 
     public ItemSearchParameter(){}
 
-    public ItemSearchParameter(int id, String name, float maxPrice, float minPrice, boolean available, String orderBy,
-                               boolean ascendant) {
+    public ItemSearchParameter(int id, String name, double maxPrice, double minPrice, boolean available, String orderBy,
+                               boolean descendent) {
         this.id = id;
         this.name = name;
         this.maxPrice = maxPrice;
         this.minPrice = minPrice;
         this.available = available;
         this.orderBy = orderBy;
-        this.ascendant = ascendant;
+        this.descendent = descendent;
     }
 
     public int getId() {
@@ -48,19 +48,19 @@ public class ItemSearchParameter {
         this.name = name;
     }
 
-    public float getMaxPrice() {
+    public double getMaxPrice() {
         return maxPrice;
     }
 
-    public void setMaxPrice(float maxPrice) {
+    public void setMaxPrice(double maxPrice) {
         this.maxPrice = maxPrice;
     }
 
-    public float getMinPrice() {
+    public double getMinPrice() {
         return minPrice;
     }
 
-    public void setMinPrice(float minPrice) {
+    public void setMinPrice(double minPrice) {
         this.minPrice = minPrice;
     }
 
@@ -96,11 +96,11 @@ public class ItemSearchParameter {
         this.orderBy = orderBy;
     }
 
-    public boolean getAscendant() {
-        return ascendant;
+    public boolean getDescendent() {
+        return descendent;
     }
 
-    public void setAscendant(boolean ascendant) {
-        this.ascendant = ascendant;
+    public void setDescendent(boolean descendent) {
+        this.descendent = descendent;
     }
 }
