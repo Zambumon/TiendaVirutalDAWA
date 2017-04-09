@@ -1,5 +1,7 @@
-package dawa.model.valueObjects.stored;
+package dawa.model.VOs;
 
+
+import org.mongodb.morphia.annotations.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,13 +10,22 @@ import java.util.List;
 /**
  * Created by pedro on 8/04/17.
  */
+
+@Indexes(
+        @Index(value = "buyer", fields = @Field("buyer"))
+)
 public class Order {
 
+    @Id
     private int id;
     private Date date;
     private double totalPrice;
     private double discountPercent;
+    @Embedded
     private List<LineItem> orderLines;
+    @Reference
+    private Registered buyer;
+    private Adress destination;
 
 
 
@@ -22,11 +33,13 @@ public class Order {
         this.orderLines = new ArrayList<>();
     }
 
-    public Order(int id, Date date, double totalPrice, double discountPercent) {
+    public Order(int id, Date date, double totalPrice, double discountPercent, Registered buyer, Adress destination) {
         this.id = id;
         this.date = date;
         this.totalPrice = totalPrice;
         this.discountPercent = discountPercent;
+        this.buyer = buyer;
+        this.destination = destination;
     }
 
     public Date getDate() {
@@ -67,6 +80,22 @@ public class Order {
 
     public void setOrderLines(List<LineItem> orderLines) {
         this.orderLines = orderLines;
+    }
+
+    public Registered getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Registered buyer) {
+        this.buyer = buyer;
+    }
+
+    public Adress getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Adress destination) {
+        this.destination = destination;
     }
 
     @Override

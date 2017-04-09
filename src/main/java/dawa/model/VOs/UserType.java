@@ -1,6 +1,6 @@
-package dawa.model.valueObjects.stored;
+package dawa.model.VOs;
 
-import dawa.model.valueObjects.runTime.Permission;
+import dawa.model.VOs.Permission;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,9 +1,9 @@
-package dawa.model.valueObjects.stored;
+package dawa.model.VOs;
 
 /**
  * Created by pedro on 8/04/17.
  */
-public class Address {
+public class Adress {
 
     private String firstLine;
     private String secondLine;
@@ -11,13 +11,13 @@ public class Address {
     private String country;
 
 
-    public Address(){};
+    public Adress(){};
 
-    public Address(String firstLine, String secondLine, String postCode, String country) {
-        this.firstLine  = firstLine;
+    public Adress(String firstLine, String secondLine, String postCode, String country) {
+        this.firstLine = firstLine;
         this.secondLine = secondLine;
-        this.postCode   = postCode;
-        this.country    = country;
+        this.postCode = postCode;
+        this.country = country;
     }
 
     public String getFirstLine() {
@@ -57,7 +57,7 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Address adress = (Address) o;
+        Adress adress = (Adress) o;
 
         if (firstLine != null ? !firstLine.equals(adress.firstLine) : adress.firstLine != null) return false;
         if (secondLine != null ? !secondLine.equals(adress.secondLine) : adress.secondLine != null) return false;

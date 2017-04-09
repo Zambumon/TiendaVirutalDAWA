@@ -1,4 +1,6 @@
-package dawa.model.valueObjects.stored;
+package dawa.model.VOs;
+
+import org.mongodb.morphia.annotations.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -8,8 +10,14 @@ import java.util.Map;
 /**
  * Created by pedro on 8/04/17.
  */
+
+@Indexes(
+        @Index(value = "keywords", fields = @Field("keywords"))
+)
+
 public class Item {
 
+    @Id
     private int id;
     private String name;
     private double price;
@@ -17,11 +25,13 @@ public class Item {
     private String description;
     private int stock;
     private Review review;
-    private boolean available;
+    private boolean abaliable;
+    @Embedded
     private List<String> keywords;
-    private Map<String, Object> properties;
+    @Embedded
+    private Map<String, Object> propierties;
 
-    public Item(int id, String name, double price, double taxes, String description, int stock, Review review, boolean available) {
+    public Item(int id, String name, double price, double taxes, String description, int stock, Review review, boolean abaliable) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -29,14 +39,14 @@ public class Item {
         this.description = description;
         this.stock = stock;
         this.review = review;
-        this.available = available;
+        this.abaliable = abaliable;
         this.keywords = new ArrayList<>();
-        this.properties = new LinkedHashMap<>();
+        this.propierties = new LinkedHashMap<>();
     }
 
     public Item(){
         this.keywords = new ArrayList<>();
-        this.properties = new LinkedHashMap<>();
+        this.propierties = new LinkedHashMap<>();
     }
 
     public Review getReview() {
@@ -103,20 +113,20 @@ public class Item {
         this.keywords = keywords;
     }
 
-    public Map<String, Object> getProperties() {
-        return properties;
+    public Map<String, Object> getPropierties() {
+        return propierties;
     }
 
-    public void setProperties(Map<String, Object> properties) {
-        this.properties = properties;
+    public void setPropierties(Map<String, Object> propierties) {
+        this.propierties = propierties;
     }
 
-    public boolean getAvailable() {
-        return available;
+    public boolean getAbaliable() {
+        return abaliable;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public void setAbaliable(boolean abaliable) {
+        this.abaliable = abaliable;
     }
 
     @Override

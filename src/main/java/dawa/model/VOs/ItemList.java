@@ -1,6 +1,4 @@
-package dawa.model.valueObjects.runTime;
-
-import dawa.model.valueObjects.stored.Item;
+package dawa.model.VOs;
 
 import java.util.ArrayList;
 import java.util.List;

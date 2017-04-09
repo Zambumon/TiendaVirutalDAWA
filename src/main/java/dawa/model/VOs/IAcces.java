@@ -1,8 +1,6 @@
-package dawa.model.valueObjects.runTime;
+package dawa.model.VOs;
 
-import dawa.model.valueObjects.stored.Item;
-
-public interface IAccess {
+public interface IAcces {
 
     /**
      * @param permission enum with the permission that we want to know if the implemented has
@@ -16,6 +14,6 @@ public interface IAccess {
      * @param item item we want to see if the implemented can comment
      * @return true if it can
      */
-    boolean canCommentItem(Item item);
+    boolean canComentItem(Item item);
 
 }

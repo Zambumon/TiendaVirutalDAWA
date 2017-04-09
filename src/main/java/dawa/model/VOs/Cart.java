@@ -1,6 +1,4 @@
-package dawa.model.valueObjects.runTime;
-
-import dawa.model.valueObjects.stored.LineItem;
+package dawa.model.VOs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,11 @@ public class Cart {
     }
 
     public double getPrice() {
-        return lines.stream().mapToDouble(LineItem::getPrice).sum()*taxes;
+        double sum = 0;
+        for (LineItem l: lines)
+            sum += l.getPrice();
+
+        return sum*taxes;
     }
 
     public double getTaxes() {

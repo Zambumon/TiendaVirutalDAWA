@@ -1,4 +1,4 @@
-package dawa.model.valueObjects.stored;
+package dawa.model.VOs;
 
 /**
  * Created by pedro on 8/04/17.

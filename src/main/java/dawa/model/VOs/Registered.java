@@ -1,21 +1,18 @@
-package dawa.model.valueObjects.stored;
+package dawa.model.VOs;
 
-import dawa.model.valueObjects.runTime.Permission;
-import dawa.model.valueObjects.runTime.User;
+import org.mongodb.morphia.annotations.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by pedro on 8/04/17.
- */
+@Indexes(
+        @Index(value = "email", fields = @Field("email"))
+)
 public class Registered extends User {
 
-    private String name;
+
+    @Id
     private String email;
+    private String name;
     private UserType type;
-    private List<Order> ordersMade;
-    private Address currentAddress;
+    private Adress currentAdress;
 
 
     @Override
@@ -24,32 +21,27 @@ public class Registered extends User {
     }
 
     @Override
-    public boolean canCommentItem(Item item) {
+    public boolean canComentItem(Item item) {
         /*TODO*/
         return false;
     }
 
-    public Registered(int id, String name, String email, UserType type, Address currentAddress) {
+    public Registered(int id, String name, String email, UserType type, Adress currentAdress) {
         this.name = name;
         this.email = email;
         this.type = type;
-        this.currentAddress = currentAddress;
-        this.ordersMade = new ArrayList<>();
+        this.currentAdress = currentAdress;
     }
 
-    public Registered(){
-        this.ordersMade = new ArrayList<>();
+    public Registered(){}
+
+
+    public Adress getCurrentAdress() {
+        return currentAdress;
     }
 
-
-
-
-    public Address getCurrentAddress() {
-        return currentAddress;
-    }
-
-    public void setCurrentAddress(Address currentAddress) {
-        this.currentAddress = currentAddress;
+    public void setCurrentAdress(Adress currentAdress) {
+        this.currentAdress = currentAdress;
     }
 
     public String getName() {
@@ -74,14 +66,6 @@ public class Registered extends User {
 
     public void setType(UserType type) {
         this.type = type;
-    }
-
-    public List<Order> getOrdersMade() {
-        return ordersMade;
-    }
-
-    public void setOrdersMade(List<Order> ordersMade) {
-        this.ordersMade = ordersMade;
     }
 
     @Override

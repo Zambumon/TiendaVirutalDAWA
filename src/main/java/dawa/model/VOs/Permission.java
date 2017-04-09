@@ -1,4 +1,4 @@
-package dawa.model.valueObjects.runTime;
+package dawa.model.VOs;
 
 public enum Permission {
 
