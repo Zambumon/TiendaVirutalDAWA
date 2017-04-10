@@ -2,6 +2,8 @@ package dawa.model.dao.api;
 
 import dawa.model.VOs.*;
 
+import java.util.List;
+
 /**
  * Created by pedro on 8/04/17.
  */
@@ -9,6 +11,6 @@ public interface IDAOOrders {
 
     void insertOrder(Order order);
 
-    void getUserOrders(Registered client);
+    List<Order> getUserOrders(Registered client);
 
 }
