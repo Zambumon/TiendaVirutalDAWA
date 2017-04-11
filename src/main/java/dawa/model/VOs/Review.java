@@ -3,6 +3,7 @@ package dawa.model.VOs;
 /**
  * Created by pedro on 8/04/17.
  */
+@SuppressWarnings("unused")
 public class Review {
 
     private int points;
@@ -39,14 +40,16 @@ public class Review {
         this.author = author;
     }
 
-
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Review review = (Review) o;
-
         return points == review.points;
     }
 

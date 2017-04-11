@@ -5,9 +5,9 @@ package dawa.model.dao.api;
  */
 public interface IDAOFactory {
 
-    public IDAOItems getDAOItems();
+    IDAOItems getDAOItems();
 
-    public IDAOOrders getDAOOrders();
+    IDAOOrders getDAOOrders();
 
-    public IDAOUsers getDAOUsers();
+    IDAOUsers getDAOUsers();
 }

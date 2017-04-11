@@ -3,13 +3,14 @@ package dawa.model.VOs;
 /**
  * Created by pedro on 8/04/17.
  */
+@SuppressWarnings("unused")
 public class UserSearchParameter {
 
     private String name = "";
     private String email = "";
     private int maxSize = Integer.MAX_VALUE;
 
-    public UserSearchParameter(){};
+    public UserSearchParameter() {}
 
     public UserSearchParameter(String name, String email, int maxSize) {
         this.name = name;
@@ -40,5 +41,4 @@ public class UserSearchParameter {
     public void setMaxSize(int maxSize) {
         this.maxSize = maxSize;
     }
-
 }

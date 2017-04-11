@@ -8,19 +8,19 @@ import java.util.List;
  */
 public class ItemList {
 
-    private List<Item> itemList = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
-    public ItemList(){};
+    public ItemList(){}
 
     public ItemList(List<Item> itemList) {
-        this.itemList = itemList;
+        this.items = itemList;
     }
 
-    public List<Item> getItemList() {
-        return itemList;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
+    public void setItems(List<Item> itemList) {
+        this.items = itemList;
     }
 }

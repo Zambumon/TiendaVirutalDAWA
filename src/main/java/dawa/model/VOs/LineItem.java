@@ -3,6 +3,7 @@ package dawa.model.VOs;
 /**
  * Created by pedro on 8/04/17.
  */
+@SuppressWarnings("unused")
 public class LineItem {
 
     private int amount;
@@ -51,5 +52,4 @@ public class LineItem {
     public void setItem(Item item) {
         this.item = item;
     }
-
 }

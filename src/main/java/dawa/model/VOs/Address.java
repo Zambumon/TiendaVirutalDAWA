@@ -3,6 +3,7 @@ package dawa.model.VOs;
 /**
  * Created by pedro on 8/04/17.
  */
+@SuppressWarnings("unused")
 public class Address {
 
     private String firstLine;
@@ -11,7 +12,7 @@ public class Address {
     private String country;
 
 
-    public Address(){};
+    public Address() {}
 
     public Address(String firstLine, String secondLine, String postCode, String country) {
         this.firstLine = firstLine;
@@ -54,14 +55,24 @@ public class Address {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Address adress = (Address) o;
 
-        if (firstLine != null ? !firstLine.equals(adress.firstLine) : adress.firstLine != null) return false;
-        if (secondLine != null ? !secondLine.equals(adress.secondLine) : adress.secondLine != null) return false;
-        if (postCode != null ? !postCode.equals(adress.postCode) : adress.postCode != null) return false;
+        if (firstLine != null ? !firstLine.equals(adress.firstLine) : adress.firstLine != null) {
+            return false;
+        }
+        if (secondLine != null ? !secondLine.equals(adress.secondLine) : adress.secondLine != null) {
+            return false;
+        }
+        if (postCode != null ? !postCode.equals(adress.postCode) : adress.postCode != null) {
+            return false;
+        }
         return country != null ? country.equals(adress.country) : adress.country == null;
     }
 
@@ -73,6 +84,4 @@ public class Address {
         result = 31 * result + (country != null ? country.hashCode() : 0);
         return result;
     }
-
-
 }

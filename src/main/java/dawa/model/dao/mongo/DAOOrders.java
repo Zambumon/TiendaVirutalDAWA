@@ -8,11 +8,8 @@ import dawa.model.VOs.Order;
 import dawa.model.VOs.Registered;
 import dawa.model.dao.api.IDAOOrders;
 import org.mongodb.morphia.AdvancedDatastore;
-import org.mongodb.morphia.Datastore;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by pedro on 8/04/17.
@@ -23,57 +20,54 @@ public class DAOOrders extends MongoDAO implements IDAOOrders {
         super(mongoClient, mongoDatabase, datastore);
     }
 
-
     @Override
     public List<Order> getUserOrders(Registered client) {
         return datastore.createQuery(Order.class).field("buyer").equal(client).asList();
     }
 
-
     @Override
     public void insertOrder(Order order) {
 
         int lineItemIndex;
-        boolean succedTransaction = true;
+        boolean succeedTransaction = true;
         int timeOut = 300;
         Random rand = new Random(Calendar.getInstance().getTimeInMillis());
 
-
         do {
-
-            if (!checkStock(order))
+            if (!checkStock(order)) {
                 throw new IllegalArgumentException("not enoung stock to make this order");
+            }
 
             for (lineItemIndex = 0; lineItemIndex < order.getOrderLines().size(); lineItemIndex++) {
 
-                succedTransaction = reserveLine(order.getOrderLines().get(lineItemIndex));
-                if (!succedTransaction)
+                succeedTransaction = reserveLine(order.getOrderLines().get(lineItemIndex));
+                if (!succeedTransaction) {
                     break;
+                }
             }
 
             //This only happens when another thread left the object without stock between the check and the reserves (unlikely)
-            if (!succedTransaction) {
+            if (!succeedTransaction) {
 
-                for (int i = 0; i < lineItemIndex; i++)
-                    anulateLineReserve(order.getOrderLines().get(i));
+                for (int i = 0; i < lineItemIndex; i++) {
+                    cancelLineReserve(order.getOrderLines().get(i));
+                }
 
                 try {
-
                     int tiempoAdormir = (int) ((rand.nextDouble() + 0.5) * 100);
                     timeOut -= tiempoAdormir;
 
-                    if (timeOut < 0)
+                    if (timeOut < 0) {
                         throw new IllegalArgumentException("not enoung stock to make this order");
+                    }
 
                     Thread.sleep(tiempoAdormir);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
-
-        } while (succedTransaction == false); //It is almost impossible that this iterate more than to times (max 6)
+        } while (!succeedTransaction); //It is almost impossible that this iterate more than to times (max 6)
 
         datastore.save(order);
     }
@@ -91,11 +85,10 @@ public class DAOOrders extends MongoDAO implements IDAOOrders {
                         .dec("stock", l.getAmount())
         );
 
-
         return modified != null;
     }
 
-    private void anulateLineReserve(LineItem l) {
+    private void cancelLineReserve(LineItem l) {
         Item modified = datastore.findAndModify(
 
                 datastore.createQuery(Item.class)
@@ -114,19 +107,20 @@ public class DAOOrders extends MongoDAO implements IDAOOrders {
         int[] itemIds = order.getOrderLines().stream().mapToInt(i -> i.getItem().getId()).toArray();
 
         Map<Integer, Integer> amountNeeded = new HashMap<>();
-        for (LineItem l : order.getOrderLines())
+        for (LineItem l : order.getOrderLines()) {
             amountNeeded.put(l.getItem().getId(), l.getAmount());
+        }
 
 
         List<Item> items = datastore.createQuery(Item.class).field("id").in(Arrays.asList(itemIds)).asList();
 
         for (Item item : items) {
-            if (item.getStock() < amountNeeded.get(item.getId()))
+            if (item.getStock() < amountNeeded.get(item.getId())) {
                 return false;
+            }
         }
 
         return true;
-
     }
 }
 

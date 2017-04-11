@@ -6,8 +6,10 @@ import java.util.List;
 /**
  * Created by pedro on 8/04/17.
  */
+@SuppressWarnings({"unused", "SameParameterValue"})
 public class ItemSearchParameter {
 
+    //@formatter:off
     private int             id          = -1;
     private String          name        = "";
     private double          maxPrice    = Double.MAX_VALUE;
@@ -16,20 +18,20 @@ public class ItemSearchParameter {
     private boolean         available   = true;
     private List<String>    searchWords = new ArrayList<>();
     private String          orderBy     = "name";
-    private boolean         descendent  = true;
-
+    private boolean         descendant  = true;
+    //@formatter:om
 
     public ItemSearchParameter(){}
 
     public ItemSearchParameter(int id, String name, double maxPrice, double minPrice, boolean available, String orderBy,
-                               boolean descendent) {
+                               boolean descendant) {
         this.id = id;
         this.name = name;
         this.maxPrice = maxPrice;
         this.minPrice = minPrice;
         this.available = available;
         this.orderBy = orderBy;
-        this.descendent = descendent;
+        this.descendant = descendant;
     }
 
     public int getId() {
@@ -96,11 +98,11 @@ public class ItemSearchParameter {
         this.orderBy = orderBy;
     }
 
-    public boolean getDescendent() {
-        return descendent;
+    public boolean getDescendant() {
+        return descendant;
     }
 
-    public void setDescendent(boolean descendent) {
-        this.descendent = descendent;
+    public void setDescendant(boolean descendant) {
+        this.descendant = descendant;
     }
 }

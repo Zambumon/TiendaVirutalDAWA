@@ -6,21 +6,22 @@ import java.util.List;
 /**
  * Created by pedro on 8/04/17.
  */
+@SuppressWarnings("unused")
 public class UserList {
 
-    private List<Registered> userList = new ArrayList<>();
+    private List<Registered> users = new ArrayList<>();
 
-    public UserList(){};
+    public UserList(){}
 
     public UserList(List<Registered> userList) {
-        this.userList = userList;
+        this.users = userList;
     }
 
-    public List<Registered> getUserList() {
-        return userList;
+    public List<Registered> getUsers() {
+        return users;
     }
 
-    public void setUserList(List<Registered> userList) {
-        this.userList = userList;
+    public void setUsers(List<Registered> users) {
+        this.users = users;
     }
 }

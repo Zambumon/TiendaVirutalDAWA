@@ -1,4 +1,3 @@
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import dawa.model.VOs.*;
 import dawa.model.dao.api.*;
 import org.junit.Assert;
@@ -17,7 +16,7 @@ public class DAOOrders {
     @Test
     public void doTest(){
 
-        IDAOFactory f = new MongoFactoy();
+        IDAOFactory f = new MongoFactory();
 
         IDAOItems daoItems = f.getDAOItems();
         IDAOUsers daoUsers = f.getDAOUsers();

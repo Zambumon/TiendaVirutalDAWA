@@ -11,6 +11,7 @@ import java.util.List;
  * Created by pedro on 8/04/17.
  */
 
+@SuppressWarnings("unused")
 @Indexes(
         @Index(value = "buyer", fields = @Field("buyer"))
 )
@@ -26,7 +27,6 @@ public class Order {
     @Reference
     private Registered buyer;
     private Address destination;
-
 
 
     public Order() {
@@ -105,7 +105,6 @@ public class Order {
         if (o == null || getClass() != o.getClass()) return false;
 
         Order order = (Order) o;
-
         return id == order.id;
     }
 

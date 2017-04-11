@@ -17,7 +17,7 @@ public class DAOUsers {
     @Test
     public void doTest(){
 
-        IDAOFactory factory = new MongoFactoy();
+        IDAOFactory factory = new MongoFactory();
 
         IDAOUsers daoUsers = factory.getDAOUsers();
 
@@ -36,9 +36,9 @@ public class DAOUsers {
         UserSearchParameter busqueda2 = new UserSearchParameter("user","user",10);
         UserSearchParameter busqueda3 = new UserSearchParameter("30","",300);
 
-        Assert.assertEquals(300,daoUsers.searchUsers(busqueda1).getUserList().size());
-        Assert.assertEquals(10,daoUsers.searchUsers(busqueda2).getUserList().size());
-        Assert.assertEquals(3,daoUsers.searchUsers(busqueda3).getUserList().size());
+        Assert.assertEquals(300,daoUsers.searchUsers(busqueda1).getUsers().size());
+        Assert.assertEquals(10,daoUsers.searchUsers(busqueda2).getUsers().size());
+        Assert.assertEquals(3,daoUsers.searchUsers(busqueda3).getUsers().size());
 
         //search by key
 
@@ -52,7 +52,7 @@ public class DAOUsers {
 
         //Hashes
 
-        daoUsers.InsertHash("ej@ej","abcd");
+        daoUsers.insertHash("ej@ej","abcd");
 
         Assert.assertEquals("abcd",daoUsers.getHashPass("ej@ej"));
 
@@ -86,7 +86,7 @@ public class DAOUsers {
             daoUsers.removeUser(borrar);
         }
 
-        Assert.assertEquals(0,daoUsers.searchUsers(busqueda1).getUserList().size());
+        Assert.assertEquals(0,daoUsers.searchUsers(busqueda1).getUsers().size());
 
     }
 

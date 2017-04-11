@@ -2,7 +2,7 @@ import dawa.model.VOs.Item;
 import dawa.model.VOs.ItemSearchParameter;
 import dawa.model.dao.api.IDAOFactory;
 import dawa.model.dao.api.IDAOItems;
-import dawa.model.dao.api.MongoFactoy;
+import dawa.model.dao.api.MongoFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -35,7 +35,7 @@ public class DAOItems {
         listaItems.get(0).getKeywords().add("key2");
         listaItems.get(1).getKeywords().add("key1");
 
-        IDAOFactory factory = new MongoFactoy();
+        IDAOFactory factory = new MongoFactory();
 
         IDAOItems dao = factory.getDAOItems();
 
@@ -61,7 +61,7 @@ public class DAOItems {
 
         ItemSearchParameter search = new ItemSearchParameter();
         search.setId(2);
-        Assert.assertEquals(listaItems.get(2), dao.searchItems(search).getItemList().get(0));
+        Assert.assertEquals(listaItems.get(2), dao.searchItems(search).getItems().get(0));
 
 
 
@@ -69,34 +69,34 @@ public class DAOItems {
         search = new ItemSearchParameter();
 
         search.setAvailable(true);
-        Assert.assertEquals(listaItems.subList(0,5), dao.searchItems(search).getItemList());
+        Assert.assertEquals(listaItems.subList(0,5), dao.searchItems(search).getItems());
 
         search.setMaxPrice(4.5f);
-        Assert.assertEquals(listaItems.subList(0,4), dao.searchItems(search).getItemList());
+        Assert.assertEquals(listaItems.subList(0,4), dao.searchItems(search).getItems());
 
         search.setMinPrice(1f);
-        Assert.assertEquals(listaItems.subList(0,3), dao.searchItems(search).getItemList());
+        Assert.assertEquals(listaItems.subList(0,3), dao.searchItems(search).getItems());
 
         search.getSearchWords().add("palabra");
-        Assert.assertEquals(listaItems.subList(0,2), dao.searchItems(search).getItemList());
+        Assert.assertEquals(listaItems.subList(0,2), dao.searchItems(search).getItems());
 
         search.getKeywords().add("key1");
         search.getKeywords().add("key2");
-        Assert.assertEquals(listaItems.subList(0,1), dao.searchItems(search).getItemList());
+        Assert.assertEquals(listaItems.subList(0,1), dao.searchItems(search).getItems());
 
         search.setName("item");
-        Assert.assertEquals(listaItems.subList(0,1), dao.searchItems(search).getItemList());
+        Assert.assertEquals(listaItems.subList(0,1), dao.searchItems(search).getItems());
 
         search.setName("itemNo");
-        Assert.assertEquals(new ArrayList<>(), dao.searchItems(search).getItemList());
+        Assert.assertEquals(new ArrayList<>(), dao.searchItems(search).getItems());
 
 
 
         search = new ItemSearchParameter();
         search.setOrderBy("price");
-        search.setDescendent(true);
+        search.setDescendant(true);
 
-        Assert.assertEquals(listaItems.get(3), dao.searchItems(search).getItemList().get(0));
+        Assert.assertEquals(listaItems.get(3), dao.searchItems(search).getItems().get(0));
 
 
         //Restore DB state

@@ -2,44 +2,45 @@ package dawa.model.dao.api;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
+import dawa.model.dao.mongo.DAOItems;
+import dawa.model.dao.mongo.DAOOrders;
+import dawa.model.dao.mongo.DAOUsers;
 import org.mongodb.morphia.AdvancedDatastore;
-import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
-import dawa.model.dao.mongo.*;
 
 /**
  * Created by pedro on 8/04/17.
  */
-public class MongoFactoy implements IDAOFactory{
+public class MongoFactory implements IDAOFactory {
 
     private MongoClient mongoClient;
     private MongoDatabase mongoDatabase;
     private AdvancedDatastore datastore;
 
-    public MongoFactoy(){
+    public MongoFactory() {
         // To connect to mongodb server
-        mongoClient = new MongoClient( "localhost" , 27017 );
+        mongoClient = new MongoClient("localhost", 27017);
 
         // Nos bajamos una BD
         mongoDatabase = mongoClient.getDatabase("discosBD");
 
 
-        //Creamos la instancia de morphia (es el parser que recomienda mongo). Le tenemos que pasar nuestro modelo
-        //para que lo mapee y haga su magia
+        // Creamos la instancia de morphia (es el parser que recomienda mongo). Le tenemos que pasar nuestro modelo
+        // para que lo mapee y haga su magia
         Morphia morphia = new Morphia();
         morphia.mapPackage("dawa.model.VOs");
-        datastore = (AdvancedDatastore)morphia.createDatastore(mongoClient, "discosBD");
+        datastore = (AdvancedDatastore) morphia.createDatastore(mongoClient, "discosBD");
         datastore.ensureIndexes();
     }
 
     @Override
     public IDAOItems getDAOItems() {
-        return new DAOItems(mongoClient, mongoDatabase,datastore);
+        return new DAOItems(mongoClient, mongoDatabase, datastore);
     }
 
     @Override
     public IDAOOrders getDAOOrders() {
-        return new DAOOrders(mongoClient,mongoDatabase, datastore);
+        return new DAOOrders(mongoClient, mongoDatabase, datastore);
     }
 
     @Override

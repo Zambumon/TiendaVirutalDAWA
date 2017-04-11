@@ -15,12 +15,12 @@ import java.util.List;
 /**
  * Created by pedro on 8/04/17.
  */
+@SuppressWarnings("unchecked")
 public class DAOItems extends MongoDAO implements IDAOItems {
 
     public DAOItems(MongoClient mongoClient, MongoDatabase mongoDatabase, AdvancedDatastore datastore) {
         super(mongoClient, mongoDatabase, datastore);
     }
-
 
     @Override
     public ItemList searchItems(ItemSearchParameter param) {
@@ -29,7 +29,6 @@ public class DAOItems extends MongoDAO implements IDAOItems {
 
         Query query = datastore.createQuery(Item.class);
         List<Criteria> l = new ArrayList<Criteria>();
-
 
 
         if(param.getKeywords().size() != 0)
@@ -53,7 +52,7 @@ public class DAOItems extends MongoDAO implements IDAOItems {
         criteriaArray = l.toArray(criteriaArray);
         query.and(criteriaArray);
 
-        String orderParam = (param.getDescendent() ? "" : "-") + param.getOrderBy();
+        String orderParam = (param.getDescendant() ? "" : "-") + param.getOrderBy();
         result = query.order(orderParam).asList();
 
         return new ItemList(result);

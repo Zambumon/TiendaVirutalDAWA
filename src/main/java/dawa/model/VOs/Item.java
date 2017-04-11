@@ -11,10 +11,10 @@ import java.util.Map;
  * Created by pedro on 8/04/17.
  */
 
+@SuppressWarnings("unused")
 @Indexes(
         @Index(value = "keywords", fields = @Field("keywords"))
 )
-
 public class Item {
 
     @Id
@@ -26,28 +26,28 @@ public class Item {
     private int stock;
     @Embedded
     private List<Review> review;
-    private boolean avaliable;
+    private boolean available;
     @Embedded
     private List<String> keywords;
     @Embedded
-    private Map<String, Object> propierties;
+    private Map<String, Object> properties;
 
-    public Item(int id, String name, double price, double taxes, String description, int stock, boolean avaliable) {
+    public Item(int id, String name, double price, double taxes, String description, int stock, boolean available) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.taxes = taxes;
         this.description = description;
         this.stock = stock;
-        this.avaliable = avaliable;
+        this.available = available;
         this.review = new ArrayList<>();
         this.keywords = new ArrayList<>();
-        this.propierties = new LinkedHashMap<>();
+        this.properties = new LinkedHashMap<>();
     }
 
-    public Item(){
+    public Item() {
         this.keywords = new ArrayList<>();
-        this.propierties = new LinkedHashMap<>();
+        this.properties = new LinkedHashMap<>();
         this.review = new ArrayList<>();
     }
 
@@ -115,29 +115,32 @@ public class Item {
         this.keywords = keywords;
     }
 
-    public Map<String, Object> getPropierties() {
-        return propierties;
+    public Map<String, Object> getProperties() {
+        return properties;
     }
 
-    public void setPropierties(Map<String, Object> propierties) {
-        this.propierties = propierties;
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
     }
 
-    public boolean getAvaliable() {
-        return avaliable;
+    public boolean getAvailable() {
+        return available;
     }
 
-    public void setAvaliable(boolean avaliable) {
-        this.avaliable = avaliable;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Item item = (Item) o;
-
         return id == item.id;
     }
 

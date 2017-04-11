@@ -1,12 +1,15 @@
 package dawa.model.VOs;
 
-import org.mongodb.morphia.annotations.*;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
 
+@SuppressWarnings("unused")
 @Indexes(
         @Index(value = "email", fields = @Field("email"))
 )
 public class Registered extends User {
-
 
     @Id
     private String email;
@@ -22,7 +25,7 @@ public class Registered extends User {
 
     @Override
     public boolean canCommentItem(Item item) {
-        /*TODO*/
+        // TODO arreglad esto malditos vagos
         return false;
     }
 
@@ -33,8 +36,7 @@ public class Registered extends User {
         this.currentAddress = currentAddress;
     }
 
-    public Registered(){}
-
+    public Registered() {}
 
     public Address getCurrentAddress() {
         return currentAddress;
@@ -70,11 +72,14 @@ public class Registered extends User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Registered that = (Registered) o;
-
         return email != null ? email.equals(that.email) : that.email == null;
     }
 
@@ -82,6 +87,4 @@ public class Registered extends User {
     public int hashCode() {
         return email != null ? email.hashCode() : 0;
     }
-
-
 }

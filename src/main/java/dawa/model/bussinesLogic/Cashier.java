@@ -1,5 +1,7 @@
 package dawa.model.bussinesLogic;
 
+import dawa.model.VOs.Cart;
+import dawa.model.VOs.LineItem;
 import dawa.model.VOs.Order;
 
 /**
@@ -7,15 +9,23 @@ import dawa.model.VOs.Order;
  */
 public final class Cashier {
 
+    public static void updatePrice(Order order) {
 
-    public static void updatePrice(Order order){
+        double totalPrice = order.getOrderLines()
+                .stream()
+                .mapToDouble(i -> i.getPrice() * i.getTaxes())
+                .sum() * order.getDiscountPercent();
 
-        double precioTotal = order.getOrderLines()
-                                .stream()
-                                .mapToDouble(i -> i.getPrice()*i.getTaxes())
-                                .sum()*order.getDiscountPercent();
+        order.setTotalPrice(totalPrice);
+    }
 
-        order.setTotalPrice(precioTotal);
+    public static void updateCart(Cart cart) {
 
+        double price = cart.getLines()
+                .stream()
+                .mapToDouble(LineItem::getPrice)
+                .sum() * cart.getTaxes();
+
+        cart.setPrice(price);
     }
 }

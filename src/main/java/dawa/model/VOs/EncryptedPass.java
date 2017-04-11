@@ -1,11 +1,14 @@
 package dawa.model.VOs;
 
-import org.mongodb.morphia.annotations.*;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
 
 /**
  * Created by pedro on 9/04/17.
  */
-
+@SuppressWarnings("WeakerAccess")
 @Indexes(
         @Index(value = "userEmail", fields = @Field("userEmail"))
 )
@@ -16,7 +19,8 @@ public class EncryptedPass {
     String encryptedPass;
 
 
-    public EncryptedPass(){}
+    public EncryptedPass() {
+    }
 
     public EncryptedPass(String userEmail, String cryptedPass) {
         this.userEmail = userEmail;
@@ -41,11 +45,13 @@ public class EncryptedPass {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         EncryptedPass that = (EncryptedPass) o;
-
         return userEmail != null ? userEmail.equals(that.userEmail) : that.userEmail == null;
     }
 
