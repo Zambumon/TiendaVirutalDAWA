@@ -35,13 +35,14 @@ public class DAOOrders extends MongoDAO implements IDAOOrders {
 
         int lineItemIndex;
         boolean succedTransaction = true;
-        int timeOut = 500;
+        int timeOut = 300;
         Random rand = new Random(Calendar.getInstance().getTimeInMillis());
 
-        if (!checkStock(order))
-            throw new IllegalArgumentException("not enoung stock to make this order");
 
         do {
+
+            if (!checkStock(order))
+                throw new IllegalArgumentException("not enoung stock to make this order");
 
             for (lineItemIndex = 0; lineItemIndex < order.getOrderLines().size(); lineItemIndex++) {
 
@@ -50,7 +51,7 @@ public class DAOOrders extends MongoDAO implements IDAOOrders {
                     break;
             }
 
-            //This only happens when another thread left the object without stock between the check and the reserves
+            //This only happens when another thread left the object without stock between the check and the reserves (unlikely)
             if (!succedTransaction) {
 
                 for (int i = 0; i < lineItemIndex; i++)
@@ -72,7 +73,7 @@ public class DAOOrders extends MongoDAO implements IDAOOrders {
 
             }
 
-        } while (succedTransaction == false); //It is almost impossible that this iterate more than to times
+        } while (succedTransaction == false); //It is almost impossible that this iterate more than to times (max 6)
 
         datastore.save(order);
     }

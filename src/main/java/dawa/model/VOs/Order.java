@@ -40,6 +40,7 @@ public class Order {
         this.discountPercent = discountPercent;
         this.buyer = buyer;
         this.destination = destination;
+        this.orderLines = new ArrayList<>();
     }
 
     public Date getDate() {

@@ -40,9 +40,9 @@ public class DAOUsers extends MongoDAO implements IDAOUsers {
     public UserList searchUsers(UserSearchParameter search) {
 
         List<Registered> lista = datastore.createQuery(Registered.class)
-                .field("name").contains(search.getName())
-                .field("email").contains(search.getEmail())
-                .asList();
+                                            .field("name").contains(search.getName())
+                                            .field("email").contains(search.getEmail())
+                                            .asList();
 
         return new UserList(lista.subList(0, min(lista.size(), search.getMaxSize())));
     }

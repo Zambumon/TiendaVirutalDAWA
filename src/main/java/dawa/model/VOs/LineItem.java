@@ -11,6 +11,8 @@ public class LineItem {
     private Item item;
 
 
+    public LineItem(){}
+
     public LineItem(int amount, double price, double taxes, Item item) {
         this.amount = amount;
         this.price = price;
@@ -49,6 +51,5 @@ public class LineItem {
     public void setItem(Item item) {
         this.item = item;
     }
-
 
 }

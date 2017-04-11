@@ -43,11 +43,11 @@ public class DAOItems extends MongoDAO implements IDAOItems {
                 l.add((Criteria)query.criteria("description").contains(word));
 
 
-        l.add((Criteria)query.criteria("price").greaterThan(param.getMinPrice()));
-        l.add((Criteria)query.criteria("name").contains(param.getName()));
-        l.add((Criteria)query.criteria("price").greaterThan(param.getMinPrice()));
-        l.add((Criteria)query.criteria("price").lessThan(param.getMaxPrice()));
-        l.add((Criteria)query.criteria("avaliable").equal(param.getAvailable()));
+        l.add((Criteria)query.criteria("price")     .greaterThan(param.getMinPrice()));
+        l.add((Criteria)query.criteria("name")      .contains(param.getName()));
+        l.add((Criteria)query.criteria("price")     .greaterThan(param.getMinPrice()));
+        l.add((Criteria)query.criteria("price")     .lessThan(param.getMaxPrice()));
+        l.add((Criteria)query.criteria("avaliable") .equal(param.getAvailable()));
 
         Criteria[] criteriaArray = new Criteria[l.size()];
         criteriaArray = l.toArray(criteriaArray);
