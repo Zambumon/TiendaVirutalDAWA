@@ -28,7 +28,10 @@ public class ShopController extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        IDAOFactory factory = new MongoFactory();
+        String host = getServletConfig().getInitParameter("BBDDHost");
+        String port = getServletConfig().getInitParameter("BBDDPort");
+
+        IDAOFactory factory = new MongoFactory(host, Integer.parseInt(port));
         daoUsers = factory.getDAOUsers();
         daoItems = factory.getDAOItems();
         daoOrders = factory.getDAOOrders();
@@ -40,15 +43,16 @@ public class ShopController extends HttpServlet {
     private void registerAction(Action a) {
         actions.put(a.getPath(), a);
     }
-    
+
     private void process(HttpServletRequest request, HttpServletResponse response) {
-        String path = request.getRequestURI();
+        System.out.println("request.getRequestURI() = " + request.getRequestURI());
+        String path = request.getRequestURI().substring(6);
         Action a = actions.get(path);
 
         System.out.println(path);
 
         if (a == null) {
-            dispatcher.showView("search.jsp", request, response);
+            dispatcher.showView("index.jsp", request, response);
         } else {
             a.doAction(request, response);
         }

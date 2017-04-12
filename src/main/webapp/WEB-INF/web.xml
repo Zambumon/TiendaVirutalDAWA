@@ -8,10 +8,18 @@
         <display-name>ShopController</display-name>
         <servlet-name>ShopController</servlet-name>
         <servlet-class>dawa.controller.ShopController</servlet-class>
+        <init-param>
+            <param-name>BBDDHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>BBDDPort</param-name>
+            <param-value>27017</param-value>
+        </init-param>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>ShopController</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/shop/*</url-pattern>
     </servlet-mapping>
 </web-app>

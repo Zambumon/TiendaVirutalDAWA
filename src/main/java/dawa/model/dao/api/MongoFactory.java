@@ -18,8 +18,12 @@ public class MongoFactory implements IDAOFactory {
     private AdvancedDatastore datastore;
 
     public MongoFactory() {
+        this("localhost", 27017);
+    }
+
+    public MongoFactory(String host, int port) {
         // To connect to mongodb server
-        mongoClient = new MongoClient("localhost", 27017);
+        mongoClient = new MongoClient(host, port);
 
         // Nos bajamos una BD
         mongoDatabase = mongoClient.getDatabase("discosBD");
