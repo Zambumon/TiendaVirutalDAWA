@@ -38,6 +38,8 @@ public class SignUp extends Action {
 
             user = controller.getAccountManager().trySignUp(user, pass);
             if (user == null) {
+                req.setAttribute("errorCode", 0);
+                req.setAttribute("errorMsg", "No se pudo registrar el usuario");
                 dispatcher.showView("access/login.jsp", req, res);
                 return;
             }

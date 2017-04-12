@@ -1,5 +1,6 @@
 package dawa.controller;
 
+import dawa.controller.actions.AddToCart;
 import dawa.controller.actions.LogIn;
 import dawa.controller.actions.LogOut;
 import dawa.controller.actions.SignUp;
@@ -42,6 +43,7 @@ public class ShopController extends HttpServlet {
         registerAction(new LogIn(this, dispatcher, "login"));
         registerAction(new SignUp(this, dispatcher, "signup"));
         registerAction(new LogOut(this, dispatcher, "logout"));
+        registerAction(new AddToCart(this, dispatcher, "addtocart"));
     }
 
     private void registerAction(Action a) {

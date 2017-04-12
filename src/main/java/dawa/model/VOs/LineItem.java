@@ -6,19 +6,26 @@ package dawa.model.VOs;
 @SuppressWarnings("unused")
 public class LineItem {
 
+    private Item item;
     private int amount;
     private double price;
     private double taxes;
-    private Item item;
 
 
     public LineItem(){}
 
-    public LineItem(int amount, double price, double taxes, Item item) {
+    public LineItem(Item item, int amount, double price, double taxes) {
+        this.item = item;
         this.amount = amount;
         this.price = price;
         this.taxes = taxes;
+    }
+
+    public LineItem(Item item, int amount) {
         this.item = item;
+        this.amount = amount;
+        this.price = item.getPrice();
+        this.taxes = item.getTaxes();
     }
 
     public int getAmount() {

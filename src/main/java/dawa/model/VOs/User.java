@@ -8,6 +8,10 @@ public abstract class User implements IAccess {
 
     private Cart cart;
 
+    public User() {
+        cart = new Cart();
+    }
+
     public Cart getCart() {
         return cart;
     }

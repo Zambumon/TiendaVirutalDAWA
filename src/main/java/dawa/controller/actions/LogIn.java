@@ -27,6 +27,8 @@ public class LogIn extends Action {
             Registered user = controller.getAccountManager().tryLogin(email, pass);
 
             if (user == null) {
+                req.setAttribute("errorCode", 0);
+                req.setAttribute("errorMsg", "Par usuario-contraseña incorrecto");
                 dispatcher.showView("access/login.jsp", req, res);
                 return;
             }
