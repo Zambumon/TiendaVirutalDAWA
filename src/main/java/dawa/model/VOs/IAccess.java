@@ -9,10 +9,4 @@ public interface IAccess {
      */
     boolean hasPermission(Permission permission);
 
-
-    /**
-     * @param item item we want to see if the implemented can comment
-     * @return true if it can
-     */
-    boolean canCommentItem(Item item);
 }

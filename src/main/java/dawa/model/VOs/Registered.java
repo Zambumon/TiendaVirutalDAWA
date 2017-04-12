@@ -23,12 +23,6 @@ public class Registered extends User {
         return type.hasPermission(permission);
     }
 
-    @Override
-    public boolean canCommentItem(Item item) {
-        // TODO arreglad esto malditos vagos
-        return false;
-    }
-
     public Registered(String name, String email, UserType type, Address currentAddress) {
         this.name = name;
         this.email = email;

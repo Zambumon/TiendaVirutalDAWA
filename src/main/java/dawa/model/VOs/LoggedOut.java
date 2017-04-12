@@ -9,9 +9,4 @@ public class LoggedOut extends User {
     public boolean hasPermission(Permission permission) {
         return false;
     }
-
-    @Override
-    public boolean canCommentItem(Item item) {
-        return false;
-    }
 }

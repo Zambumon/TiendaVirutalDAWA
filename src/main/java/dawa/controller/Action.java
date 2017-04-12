@@ -1,5 +1,8 @@
 package dawa.controller;
 
+import dawa.model.VOs.LoggedOut;
+import dawa.model.VOs.User;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,4 +26,13 @@ public abstract class Action {
     }
 
     public abstract void doAction(HttpServletRequest req, HttpServletResponse res);
+
+    protected User getUser(HttpServletRequest req){
+        User user = (User) req.getSession().getAttribute("user");
+        if(user == null){
+            user = new LoggedOut();
+            req.getSession().setAttribute("user", user);
+        }
+        return user;
+    }
 }
