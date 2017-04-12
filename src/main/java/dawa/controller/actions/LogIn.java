@@ -7,6 +7,7 @@ import dawa.model.VOs.Registered;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
 /**
  * Created by cout970 on 2017/04/11.
@@ -19,13 +20,17 @@ public class LogIn extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-        String email = req.getParameter("email");
-        String pass = req.getParameter("pass");
-        Registered user = controller.getAccountManager().tryLogin(email, pass);
-        if (user == null) {
-            dispatcher.showView("utils/error.jsp", req, res);
-        } else {
-            dispatcher.showView("search.jsp", req, res);
+
+        if (Objects.equals(req.getMethod(), "POST")) {
+            String email = req.getParameter("email");
+            String pass = req.getParameter("pass");
+            Registered user = controller.getAccountManager().tryLogin(email, pass);
+
+            if (user == null) {
+                dispatcher.showView("access/login.jsp", req, res);
+                return;
+            }
         }
+        dispatcher.showView("/", req, res);
     }
 }

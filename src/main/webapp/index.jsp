@@ -3,7 +3,6 @@
   User: cout970
   Date: 2017-04-12
   Time: 15:01
-  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -13,6 +12,8 @@
 <body>
 
 <h1>hello world</h1>
-<a href="shop/login">click me</a>
+<a href="access/login.jsp">click me</a> <br>
+<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">don't touch</a>
+
 </body>
 </html>

@@ -52,7 +52,7 @@ public class ShopController extends HttpServlet {
         System.out.println(path);
 
         if (a == null) {
-            dispatcher.showView("index.jsp", request, response);
+            dispatcher.showView("/", request, response);
         } else {
             a.doAction(request, response);
         }
