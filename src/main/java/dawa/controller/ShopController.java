@@ -1,6 +1,8 @@
 package dawa.controller;
 
 import dawa.controller.actions.LogIn;
+import dawa.controller.actions.LogOut;
+import dawa.controller.actions.SignUp;
 import dawa.model.bussinesLogic.AccountManager;
 import dawa.model.dao.api.*;
 
@@ -38,6 +40,8 @@ public class ShopController extends HttpServlet {
         accountManager = new AccountManager(daoUsers);
 
         registerAction(new LogIn(this, dispatcher, "login"));
+        registerAction(new SignUp(this, dispatcher, "signup"));
+        registerAction(new LogOut(this, dispatcher, "logout"));
     }
 
     private void registerAction(Action a) {
