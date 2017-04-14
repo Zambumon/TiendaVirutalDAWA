@@ -9,4 +9,9 @@ public class LoggedOut extends User {
     public boolean hasPermission(Permission permission) {
         return false;
     }
+
+    @Override
+    public boolean isRegistered() {
+        return false;
+    }
 }

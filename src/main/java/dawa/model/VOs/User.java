@@ -19,4 +19,6 @@ public abstract class User implements IAccess {
     public void setCart(Cart cart) {
         this.cart = cart;
     }
+
+    public abstract boolean isRegistered();
 }
