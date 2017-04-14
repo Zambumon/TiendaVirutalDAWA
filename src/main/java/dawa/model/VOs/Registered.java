@@ -65,6 +65,11 @@ public class Registered extends User {
     }
 
     @Override
+    public boolean isRegistered() {
+        return true;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

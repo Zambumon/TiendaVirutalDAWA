@@ -20,7 +20,7 @@ public class LogIn extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-
+        getUser(req);
         if (Objects.equals(req.getMethod(), "POST")) {
             String email = req.getParameter("email");
             String pass = req.getParameter("pass");
