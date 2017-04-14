@@ -6,14 +6,16 @@ package dawa.model.VOs;
 @SuppressWarnings("unused")
 public class Review {
 
+    private String authorEmail;
+    private String authorName;
     private int points;
     private String text;
-    private int author;
 
-    public Review(int points, String text, int author) {
+    public Review(String authorEmail, String authorName, int points, String text) {
         this.points = points;
         this.text = text;
-        this.author = author;
+        this.authorEmail = authorEmail;
+        this.authorName = authorName;
     }
 
     public int getPoints() {
@@ -32,12 +34,20 @@ public class Review {
         this.text = text;
     }
 
-    public int getAuthor() {
-        return author;
+    public String getAuthorEmail() {
+        return authorEmail;
     }
 
-    public void setAuthor(int author) {
-        this.author = author;
+    public void setAuthorEmail(String authorEmail) {
+        this.authorEmail = authorEmail;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
     }
 
     @Override

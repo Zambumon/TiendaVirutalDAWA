@@ -29,13 +29,13 @@ public class DAOOrders {
         Item item = new Item(0,"item0",1.1,1.1,"palabra_1", 2,true);
 
         Order order1 = new Order(1, Calendar.getInstance().getTime(), 0,20.0,user,new Address());
-        order1.getOrderLines().add(new LineItem(1,2,1.1,item));
+        order1.getOrderLines().add(new LineItem(item, 1,2,1.1));
 
         Order order2 = new Order(2, Calendar.getInstance().getTime(), 0,20.0,user,new Address());
-        order2.getOrderLines().add(new LineItem(1,2,1.1,item));
+        order2.getOrderLines().add(new LineItem(item,1,2,1.1));
 
         Order order3 = new Order(3, Calendar.getInstance().getTime(), 0,20.0,user,new Address());
-        order3.getOrderLines().add(new LineItem(1,2,1.1,item));
+        order3.getOrderLines().add(new LineItem(item,1,2,1.1));
 
 
         daoItems.insertItem(item);
