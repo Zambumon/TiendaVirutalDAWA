@@ -7,5 +7,6 @@
     <%@include file="/utils/head.jsp" %>
 </head>
 <body>
-
+<%@include file="/utils/navbar.jsp"%>
+<h1>Sesión cerrada con éxito</h1>
 </body>

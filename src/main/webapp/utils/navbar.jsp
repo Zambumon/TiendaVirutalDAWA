@@ -7,7 +7,7 @@
         </c:when>
         <c:otherwise>
             <c:choose>
-                <c:when test="${user.type == "ADMIN"}">
+                <c:when test="${user.type == 'ADMIN'}">
                     <li><a href="">Añadir un nuevo CD</a></li>
                     <li><a href="">Administrar usuarios</a></li>
                 </c:when>

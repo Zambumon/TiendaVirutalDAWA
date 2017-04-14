@@ -11,8 +11,8 @@
 <h1>Iniciar sesión</h1>
 <form action="" method="post" id="login-form">
     <input type="email" id="email" name="email" value="" placeholder="E-mail" required>
-    <input type="password" id="pass" name="email" value="" placeholder="Contraseña" required>
-    <input type="password" id="passcheck" name="email" value="" placeholder="Confirmar constraseña" required>
+    <input type="password" id="pass" name="pass" value="" placeholder="Contraseña" required>
+    <input type="password" id="passcheck" name="passcheck" value="" placeholder="Confirmar constraseña" required>
 
     <input type="submit" value="Acceder">
 
