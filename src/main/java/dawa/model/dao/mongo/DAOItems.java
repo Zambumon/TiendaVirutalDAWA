@@ -46,7 +46,7 @@ public class DAOItems extends MongoDAO implements IDAOItems {
         l.add((Criteria)query.criteria("name")      .contains(param.getName()));
         l.add((Criteria)query.criteria("price")     .greaterThan(param.getMinPrice()));
         l.add((Criteria)query.criteria("price")     .lessThan(param.getMaxPrice()));
-        l.add((Criteria)query.criteria("avaliable") .equal(param.getAvailable()));
+        l.add((Criteria)query.criteria("available") .equal(param.getAvailable()));
 
         Criteria[] criteriaArray = new Criteria[l.size()];
         criteriaArray = l.toArray(criteriaArray);
@@ -65,7 +65,7 @@ public class DAOItems extends MongoDAO implements IDAOItems {
         try {
             datastore.insert(item);
         } catch (com.mongodb.DuplicateKeyException e) {
-            throw new IllegalArgumentException("The user already exists");
+            throw new IllegalArgumentException("The item already exists");
         }
     }
 

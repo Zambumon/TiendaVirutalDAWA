@@ -25,13 +25,13 @@
 <div class="catalog">
     <c:forEach var="item" items="${searchResult}">
         <div class="catalogItem">
-            <h3><c:out value="${item.getName()}"/></h3>
-            <p><c:out value="${item.getPrice()}"/></p>
-            <p><c:out value="${item.getStock()}"/></p>
+            <h3><c:out value="${item.name}"/></h3>
+            <p><c:out value="${item.price}"/></p>
+            <p><c:out value="${item.stock}"/></p>
             <form action="viewItem" method="post">
                 <c:choose>
-                    <c:when test="${item.isAvaliable()}">
-                        <input type="hidden" name="itemId" value="${item.getId()}">
+                    <c:when test="${item.available}">
+                        <input type="hidden" name="itemId" value="${item.id}">
                         <input type="submit" value="Ver producto">
                     </c:when>
                     <c:otherwise>

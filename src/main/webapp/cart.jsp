@@ -43,7 +43,7 @@
 <div>
     <p>Subtotal: ${subtotal} €</p>
     <p>Total (IVA Incluido): ${total} €</p>
-    <a href="index.jsp">Añadir más productos al carrito</a>
+    <a href="catalog.jsp">Añadir más productos al carrito</a>
     <c:choose>
         <c:when test="${user.type == 'REGISTERED'}">
             <a href="registered/checkout.jsp">Ir a la caja</a>

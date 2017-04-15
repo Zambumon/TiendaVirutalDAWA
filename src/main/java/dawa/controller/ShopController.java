@@ -1,9 +1,6 @@
 package dawa.controller;
 
-import dawa.controller.actions.AddToCart;
-import dawa.controller.actions.LogIn;
-import dawa.controller.actions.LogOut;
-import dawa.controller.actions.SignUp;
+import dawa.controller.actions.*;
 import dawa.model.bussinesLogic.AccountManager;
 import dawa.model.dao.api.*;
 
@@ -22,7 +19,7 @@ import java.util.Map;
 public class ShopController extends HttpServlet {
 
     private Map<String, Action> actions = new HashMap<>();
-    private Dispatcher dispatcher = new Dispatcher();
+    private Action defaultAction = null;
     private AccountManager accountManager;
     private IDAOUsers daoUsers;
     private IDAOItems daoItems;
@@ -40,6 +37,10 @@ public class ShopController extends HttpServlet {
         daoOrders = factory.getDAOOrders();
         accountManager = new AccountManager(daoUsers);
 
+        Dispatcher dispatcher = new Dispatcher();
+
+        defaultAction = new ShowCatalog(this, dispatcher, "/");
+        registerAction(defaultAction);
         registerAction(new LogIn(this, dispatcher, "login"));
         registerAction(new SignUp(this, dispatcher, "signup"));
         registerAction(new LogOut(this, dispatcher, "logout"));
@@ -51,17 +52,19 @@ public class ShopController extends HttpServlet {
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("request.getRequestURI() = " + request.getRequestURI());
-        String path = request.getRequestURI().substring(6);
+        String uri = request.getRequestURI();
+        String path;
+        if (uri.startsWith("shop/")) {
+            path = uri.substring(6);
+        } else {
+            path = uri;
+        }
         Action a = actions.get(path);
 
-        System.out.println(path);
-
         if (a == null) {
-            dispatcher.showView("/", request, response);
-        } else {
-            a.doAction(request, response);
+            a = defaultAction;
         }
+        a.doAction(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
