@@ -1,0 +1,162 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.navbar {
+    background-color: #3c3c3c;
+    color:#f1f1f1;
+    width: 100%;
+    margin: auto;
+
+}
+
+.navbar ul{
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.navbar ul li{
+    text-align: center;
+    display: inline-block;
+    padding-right: 20px;
+    margin: auto;
+}
+
+.navbar-link{
+    color:#f1f1f1;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.navbar-link:hover{
+    background-color: #111;
+}
+
+.search-bar{
+    background-color: #f1f1f1;
+    color: black;
+    padding: 10px 20px;
+}
+
+.search-bar form{
+    width: 600px;
+    margin:auto;
+}
+
+.search-box{
+    width: 400px;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px 0 0 5px;
+    margin: 0;
+    border: 0;
+}
+.searchParameters{
+    display: block;
+    font-size: 0.75em;
+    padding: 10px 0 0 0;
+
+}
+.search-button{
+    background-color: #f9b829;
+    color: black;
+    border-radius: 0 5px 5px 0;
+    border: 0;
+    padding: 10px;
+    width: 100px;
+    font-size: 1em;
+    margin: 0;
+}
+
+.search-button:hover{
+    background-color: #fcc751;
+}
+
+.catalog{
+    width: 1300px;
+    margin: auto;
+}
+
+.catalog-item{
+    background-color: #fafafa;
+    padding: 20px;
+    padding-bottom: 10px;
+    margin: 10px;
+    width: 350px;
+    height: 175px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.catalog-item-submit{
+    background-color: #f9b829;
+    color: black;
+    border-radius: 5px;
+    border: 0;
+    height: 35px;
+    padding: 0;
+    width: 100%;
+    font-size: 0.75em;
+    margin: auto;
+}
+.catalog-item-submit:hover{
+    background-color: #fcc751;
+}
+.catalog-item-submit:disabled{
+    background-color: #ddd;
+}
+
+.catalog-item-submit:disabled:hover{
+    background-color: #ccc;
+}
+
+.cart{
+    width: 1300px;
+    margin: auto;
+}
+
+table{
+    width: 600px;
+    margin: auto;
+}
+
+.cart-summary{
+    background-color: #fafafa;
+    margin: auto;
+    padding: 10px;
+    margin-top: 10px;
+}
+.view-from-cart{
+    background:none!important;
+    color:blue;
+    border:none;
+    padding:0!important;
+    font: inherit;
+    border-bottom:1px solid #444;
+    cursor: pointer;
+}
+
+.payday{
+    display: block;
+    background-color: #f9b829;
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+.payday:hover{
+    background-color: #fcc751;
+}

@@ -8,53 +8,67 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
-<h1>Carrito de la compra</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Nombre</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>IVA</th>
-        <th>Subtotal</th>
-        <th>Eliminar</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach var="cartItem" items="${cart}">
-        <tr>
-            <td>${cartItem.getName()}</td>
-            <td>${cartItem.getPrice()}</td>
-            <td>${cartItem.getAmount()}</td>
-            <td>${cartItem.getTaxes()}</td>
-            <%--TODO--%>
-            <td>${cartItem.getTaxes()}</td>
-            <td>
-                <form action="removeFromCart" method="post">
-                    <input type="submit" value="remove">
-                    <input type="hidden" name="itemId" value="${cartItem.getName()}">
-                </form>
-            </td>
-        </tr>
-    </c:forEach>
+<div class="cart">
 
-    </tbody>
-</table>
-<div>
-    <p>Subtotal: ${subtotal} €</p>
-    <p>Total (IVA Incluido): ${total} €</p>
-    <a href="catalog.jsp">Añadir más productos al carrito</a>
+    <h1>Carrito de la compra</h1>
     <c:choose>
-        <c:when test="${user.type == 'REGISTERED'}">
-            <a href="registered/checkout.jsp">Ir a la caja</a>
+        <c:when test="${cart.isEmpty() == true}">
+            <h2>Tu carrito de la compra está vacio</h2>
         </c:when>
-        <c:otherwise>"
-            <p>Debe <a href="access/login.jsp">iniciar sesión</a> para poder continuar</p>
+        <c:otherwise>
+            <table>
+                <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>IVA</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="cartItem" items="${cart}">
+                    <tr>
+                        <td>
+                            <form action="viewItem" method="get">
+                                <input type="hidden" name="itemId" value="${item.id}">
+                                <input class="view-from-cart" type="submit" value="${cartItem.name}">
+                            </form>
 
+
+                        </td>
+                        <td>${cartItem.price}</td>
+                        <td>${cartItem.amount}</td>
+                        <td>${cartItem.taxes}</td>
+                        <td>${cartItem.taxes*cartItem.price*cartItem.amount}</td>
+                        <td>
+                            <form action="removeFromCart" method="post">
+                                <input type="submit" value="Eliminar producto">
+                                <input type="hidden" name="itemId" value="${cartItem.name}">
+                            </form>
+                        </td>
+                    </tr>
+                </c:forEach>
+
+                </tbody>
+            </table>
+            <div class="cart-summary">
+                <p>Subtotal: ${cart.total} &euro;</p>
+                <p><strong>Total (IVA Incluido): ${cart.total} &euro;</strong></p>
+                <a href="catalog.jsp">Seguir comprando</a>
+                <c:choose>
+                    <c:when test="${user.type == 'REGISTERED'}">
+                        <a class="payday" href="registered/checkout.jsp">Pagar</a>
+                    </c:when>
+                    <c:otherwise>
+                        <p>Debe <a href="access/login.jsp">iniciar sesión</a> para poder comprar</p>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </c:otherwise>
     </c:choose>
 </div>
-
 
 </body>
 </html>

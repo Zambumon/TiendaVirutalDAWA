@@ -10,32 +10,36 @@
 <body>
 <%@include file="/utils/navbar.jsp" %>
 <h1>Música para DAA</h1>
-<form action="searchItems" method="post">
-    <input type="text" placeholder="Introduzca parámetros de búsqueda">
-    <input type="checkbox" name="searchParameter" value="title"> Título
-    <input type="checkbox" name="searchParameter" value="author"> Autor
-    <input type="checkbox" name="searchParameter" value="country"> País
-    <select name="order">
-        <option value="ascendant">Ascendente</option>
-        <option value="descendant">Descendente</option>
-    </select>
-    <input type="submit" value="Buscar">
-</form>
+<div class="search-bar">
+    <form action="searchItems" method="get">
+        <input class="search-box" type="text" name="item" placeholder="Introduzca parámetros de búsqueda" required>
+        <input class="search-button" type="submit" value="Buscar">
+        <div class="searchParameters">
+            <input type="checkbox" name="searchParameter" value="title"> Título
+            <input type="checkbox" name="searchParameter" value="author"> Autor
+            <input type="checkbox" name="searchParameter" value="country"> País
+            <select name="order">
+                <option value="ascendant">Ascendente</option>
+                <option value="descendant">Descendente</option>
+            </select>
+        </div>
+    </form>
+</div>
 
 <div class="catalog">
     <c:forEach var="item" items="${searchResult}">
-        <div class="catalogItem">
+        <div class="catalog-item">
             <h3><c:out value="${item.name}"/></h3>
-            <p><c:out value="${item.price}"/></p>
-            <p><c:out value="${item.stock}"/></p>
-            <form action="viewItem" method="post">
+            <p><c:out value="${item.price}"/> &euro;</p>
+            <p><c:out value="${item.stock}"/> unidades en stock</p>
+            <form action="viewItem" method="get">
                 <c:choose>
                     <c:when test="${item.available}">
                         <input type="hidden" name="itemId" value="${item.id}">
-                        <input type="submit" value="Ver producto">
+                        <input class="catalog-item-submit" type="submit" value="Ver producto">
                     </c:when>
                     <c:otherwise>
-                        <input type="submit" value="Producto no disponible" disabled="disabled">
+                        <input class="catalog-item-submit" type="submit" value="Producto no disponible" disabled="disabled">
                     </c:otherwise>
                 </c:choose>
 
@@ -43,8 +47,5 @@
         </div>
     </c:forEach>
 </div>
-
-
-
 </body>
 </html>
