@@ -209,3 +209,65 @@ table{
 .register-button:hover{
     background-color: #fcc751;
 }
+
+.profile-wrapper{
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.profile-wrapper form{
+    text-align: left;
+    margin: 10px;
+    padding: 15px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+}
+
+.profile-wrapper form fieldset{
+    padding: 15px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+    margin: 20px 0 20px 0;
+}
+
+.profile-wrapper form fieldset legend{
+    font-weight: bolder;
+
+}
+
+.profile-wrapper form input{
+    display: block;
+    margin: 10px 0 10px 0;
+    width: 300px;
+    font-size: 1em;
+    padding: 5px;
+}
+
+.profile-wrapper form select{
+    width: 300px;
+    font-size: 1em;
+    padding: 5px;
+    margin: 10px 0 10px 0;
+}
+
+.centered-form-input{
+    width: 300px;
+    margin: auto;
+}
+
+.ok-bye{
+    background-color: #f13934;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    padding: 10px;
+    height: 40px;
+    font-size: 1.2em;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.ok-bye:hover{
+    background-color: #f0635f;
+}
