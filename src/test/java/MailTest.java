@@ -8,7 +8,7 @@ import javax.mail.MessagingException;
  */
 public class MailTest {
 
-    private static String MAIL = "<INTRODUCE AQUÍ EL MAIL DE LA PRUEBA>";
+    private static String MAIL = "tiendavirtualv4@gmail.com";
 
     @Test
     public void doTest(){
