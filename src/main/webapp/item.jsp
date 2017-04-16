@@ -22,7 +22,8 @@
         <p>Stock: <strong>${item.stock} unidades disponibles</strong></p>
         <c:if test="${user.registered && user.type == 'ADMIN'}">
             <h3>Editar stock del producto</h3>
-            <form action="EditStock" method="post">
+            <form action="shop" method="post">
+                <input type="hidden" name="route" value="editstock">
                 <input type="hidden" name="itemId" id="itemId" value="${item.id}">
                 <input type="number" min="0" name="stock" id="stock">
                 <input type="submit" value="Confirmar">
