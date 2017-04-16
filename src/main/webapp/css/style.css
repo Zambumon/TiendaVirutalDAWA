@@ -271,3 +271,103 @@ table{
 .ok-bye:hover{
     background-color: #f0635f;
 }
+
+.item-wrapper{
+    width: 900px;
+    margin: auto;
+    text-align: left;
+}
+
+.comment-section{
+    margin: 50px 0 10px 0;
+    padding: 20px;
+}
+
+.comment{
+    width: 840px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    margin-bottom:40px;
+    padding: 10px;
+}
+
+.comment-author{
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+.comment-text{
+    padding-left: 30px;
+}
+
+.comment-points{
+    color: #555;
+}
+
+.comment-submission-fieldset{
+    text-align: left;
+    margin: 10px;
+    padding: 15px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+}
+
+.comment-submission-fieldset textarea{
+    width: 100%;
+    height: 100px;
+}
+
+.comment-submission-fieldset legend{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.send-button{
+    background-color: #c3c3c3;
+    color: #fafafa;
+    border-radius: 5px;
+    border: 0;
+    height: 40px;
+    font-size: 1.2em;
+    width: 150px;
+    margin: auto;
+    float: right;
+}
+
+.send-button:hover{
+    background-color: #d3d3d3;
+}
+
+.petrusboniatus{
+    margin-top: 40px;
+}
+
+.general-info{
+    background-color: #fafafa;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.item-name-thingy{
+    margin-top: 30px;
+    padding-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.item-properties{
+    background-color: #fafafa;
+    margin: 20px;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.item-properties p{
+    padding-left: 20px;
+}
+
+.general-info p{
+    padding-left: 20px;
+}
