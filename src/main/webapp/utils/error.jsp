@@ -8,12 +8,15 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
-<h1>Se ha producido un error</h1>
-<p>
-    Error <c:out value="${errorCode}"/>:
-    <c:out value="${errorMsg}"/>
-</p>
-<p><a href="index.jsp">Volver</a> a la página principal</p>
+<div class="confirmation">
+    <h1>Se ha producido un error</h1>
+    <p>
+        Error <c:out value="${errorCode}"/>:
+        <c:out value="${errorMsg}"/>
+    </p>
+    <p><a href="index.jsp">Volver</a> a la página principal</p>
+
+</div>
 
 
 </body>
