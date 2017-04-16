@@ -37,6 +37,10 @@ dependencies {
 
     providedCompile 'javax.servlet:servlet-api:2.5',
             'javax.servlet:jsp-api:2.0'
+
+    /*Needed to send e-mails*/
+    compile group: 'jaf', name: 'activation', version: '1.0.2'
+    compile group: 'javax.mail', name: 'mail', version: '1.4.1'
 }
 
 //tomcat {

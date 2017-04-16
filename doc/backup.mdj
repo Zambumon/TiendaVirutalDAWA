@@ -25811,7 +25811,7 @@
 													"height": 13,
 													"autoResize": false,
 													"underline": false,
-													"text": "MailSender",
+													"text": "MailTest",
 													"horizontalAlignment": 2,
 													"verticalAlignment": 5,
 													"wordWrap": false
@@ -30257,7 +30257,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFbJODDxqkjDEw="
 							},
-							"name": "MailSender",
+							"name": "MailTest",
 							"stereotype": "singleton",
 							"visibility": "public",
 							"isAbstract": false,
