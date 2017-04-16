@@ -65,7 +65,7 @@
                     <c:when test="${user.registered}">
                         <form action="shop">
                             <input type="hidden" name="route" value="checkout">
-                            <input type="submit" class="payday" value="Pagar">Pagar
+                            <input type="submit" class="payday" value="Pagar">
                         </form>
                     </c:when>
                     <c:otherwise>
