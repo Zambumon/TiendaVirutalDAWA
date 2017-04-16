@@ -22,7 +22,7 @@ public class EditAccount extends Action {
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
         User user = getUser(req);
         if(!(user instanceof Registered)){
-            dispatcher.showView("access/login.jsp", req, res);
+            dispatcher.showView("login.jsp", req, res);
             return;
         }
 

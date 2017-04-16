@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/utils/head.jsp" %>
+    <%@include file="head.jsp" %>
 </head>
 <body>
 <%--@elvariable id="cart" type="dawa.model.VOs.Cart"--%>

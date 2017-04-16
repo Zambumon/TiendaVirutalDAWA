@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/utils/head.jsp" %>
+    <%@include file="head.jsp" %>
 </head>
 <body>
-<%@include file="/utils/navbar.jsp" %>
+<%@include file="navbar.jsp" %>
 <%--@elvariable id="item" type="dawa.model.VOs.Item"--%>
 <%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
 
@@ -73,7 +73,7 @@
         </c:forEach>
         <c:choose>
             <c:when test="${!user.registered}">
-                <p>Debe <a href="access/login.jsp">iniciar sesión</a> para poder comentar</p>
+                <p>Debe <a href="login.jsp">iniciar sesión</a> para poder comentar</p>
             </c:when>
             <c:otherwise>
                 <form class="comment-submission" action="addComment" method="post">

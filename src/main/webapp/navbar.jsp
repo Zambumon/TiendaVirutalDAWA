@@ -13,8 +13,8 @@
                         <input class="navbar-link" type="submit" value="Carrito">
                     </form>
                 </li>
-                <li><a class="navbar-link" href="access/login.jsp">Iniciar sesión</a></li>
-                <li><a class="navbar-link" href="access/signup.jsp">Registrarse</a></li>
+                <li><a class="navbar-link" href="login.jsp">Iniciar sesión</a></li>
+                <li><a class="navbar-link" href="signup.jsp">Registrarse</a></li>
             </c:when>
             <c:otherwise>
                 <c:choose>

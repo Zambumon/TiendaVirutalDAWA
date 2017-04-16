@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/utils/head.jsp" %>
+    <%@include file="head.jsp" %>
 </head>
 <body>
-<%@include file="/utils/navbar.jsp" %>
+<%@include file="navbar.jsp" %>
 <%--@elvariable id="searchResult" type="java.util.List"--%>
 
 <h1>Música para DAWA</h1>
@@ -19,9 +19,9 @@
         <input class="search-button" type="submit" value="Buscar">
         <div class="searchParameters">
             <input type="text" name="searchParameter-author" placeholder="Autor">
-            <input type="text" name="searchParameter-country"placeholder="País">
+            <input type="text" name="searchParameter-country" placeholder="País">
             <input type="number" name="searchParameter-year" min="1970" placeholder="Año">
-            <input type="number" name="searchParameter-max-price" min="1" placeholder="Precio máximo">
+            <br>Precio máximo <input type="number" name="searchParameter-max-price" value="99999" min="1" placeholder="Precio máximo"> &euro;
         </div>
     </form>
 </div>

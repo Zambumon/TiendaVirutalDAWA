@@ -32,7 +32,7 @@ public class LogIn extends Action {
             if (user == null) {
                 req.setAttribute("errorCode", 0);
                 req.setAttribute("errorMsg", "Par usuario-contraseña incorrecto");
-                dispatcher.showView("access/login.jsp", req, res);
+                dispatcher.showView("error.jsp", req, res);
                 return;
             }
             user.setCart(oldUser.getCart());
@@ -40,7 +40,7 @@ public class LogIn extends Action {
 
             dispatcher.showCatalog(req, res);
         } else {
-            dispatcher.showView("access/login.jsp", req, res);
+            dispatcher.showView("login.jsp", req, res);
         }
     }
 }

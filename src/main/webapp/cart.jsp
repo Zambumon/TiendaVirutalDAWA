@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/utils/head.jsp" %>
+    <%@include file="head.jsp" %>
 </head>
 <body>
-<%@include file="/utils/navbar.jsp" %>
+<%@include file="navbar.jsp" %>
 <%--@elvariable id="cart" type="dawa.model.VOs.cart"--%>
 <%--@elvariable id="user" type="dawa.model.VOs.User"--%>
 
@@ -69,7 +69,7 @@
                         </form>
                     </c:when>
                     <c:otherwise>
-                        <p>Debe <a href="access/login.jsp">iniciar sesión</a> para poder comprar</p>
+                        <p>Debe <a href="login.jsp">iniciar sesión</a> para poder comprar</p>
                     </c:otherwise>
                 </c:choose>
             </div>

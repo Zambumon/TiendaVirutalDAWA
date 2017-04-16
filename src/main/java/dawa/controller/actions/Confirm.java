@@ -24,6 +24,6 @@ public class Confirm extends Action {
         Order order = new Order();
 
         req.setAttribute("user", user);
-        dispatcher.showView("registered/confirmation.jsp", req, res);
+        dispatcher.showView("confirmation.jsp", req, res);
     }
 }

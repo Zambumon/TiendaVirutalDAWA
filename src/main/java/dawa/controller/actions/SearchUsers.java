@@ -30,7 +30,7 @@ public class SearchUsers extends Action {
             UserList list = controller.getDaoUsers().searchUsers(params);
 
             req.setAttribute("listOfUsers", list.getUsers());
-            dispatcher.showView("admin/listusers.jsp", req, res);
+            dispatcher.showView("listusers.jsp", req, res);
         } else {
             dispatcher.showCatalog(req, res);
         }

@@ -40,7 +40,7 @@ public class SignUp extends Action {
             if (user == null) {
                 req.setAttribute("errorCode", 0);
                 req.setAttribute("errorMsg", "No se pudo registrar el usuario");
-                dispatcher.showView("access/login.jsp", req, res);
+                dispatcher.showView("login.jsp", req, res);
                 return;
             }
             req.setAttribute("user", user);

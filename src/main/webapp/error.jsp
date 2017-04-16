@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <%@include file="/utils/head.jsp" %>
+    <%@include file="head.jsp" %>
 </head>
 <body>
-<%@include file="/utils/navbar.jsp" %>
+<%@include file="navbar.jsp" %>
 <div class="confirmation">
     <h1>Se ha producido un error</h1>
     <p>

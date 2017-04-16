@@ -4,9 +4,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <%@include file="/utils/head.jsp" %>
+    <%@include file="head.jsp" %>
 </head>
 <body>
-<%@include file="/utils/navbar.jsp"%>
+<%@include file="navbar.jsp"%>
 <h1>Sesión cerrada con éxito</h1>
 </body>

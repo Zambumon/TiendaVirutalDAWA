@@ -32,7 +32,7 @@ public class Checkout extends Action {
             req.setAttribute("cart", user.getCart());
             req.setAttribute("address", ((Registered) user).getCurrentAddress());
 
-            dispatcher.showView("registered/checkout.jsp", req, res);
+            dispatcher.showView("checkout.jsp", req, res);
         } else {
             dispatcher.showCatalog(req, res);
         }

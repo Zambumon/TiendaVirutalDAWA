@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <%@include file="/utils/head.jsp" %>
+    <%@include file="head.jsp" %>
 </head>
 <body>
-<%@include file="/utils/navbar.jsp" %>
+<%@include file="navbar.jsp" %>
 <div class="access-container">
     <h1>Iniciar sesión</h1>
-    <form class="register-form" action="../shop" method="post" id="register-form">
+    <form class="register-form" action="shop" method="post" id="register-form">
         <input type="hidden" name="route" value="login">
         <fieldset>
             <legend>Datos generales</legend>
