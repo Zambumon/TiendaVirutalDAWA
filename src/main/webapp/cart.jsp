@@ -8,11 +8,14 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
+<%--@elvariable id="cart" type="dawa.model.VOs.cart"--%>
+<%--@elvariable id="user" type="dawa.model.VOs.User"--%>
+
 <div class="cart">
 
     <h1>Carrito de la compra</h1>
     <c:choose>
-        <c:when test="${cart.isEmpty() == true}">
+        <c:when test="${empty cart.lines}">
             <h2>Tu carrito de la compra está vacio</h2>
         </c:when>
         <c:otherwise>
@@ -28,24 +31,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="cartItem" items="${cart}">
+                <c:forEach var="lineItem" items="${cart.lines}">
                     <tr>
                         <td>
-                            <form action="viewItem" method="get">
-                                <input type="hidden" name="itemId" value="${item.id}">
-                                <input class="view-from-cart" type="submit" value="${cartItem.name}">
+                            <form action="shop" method="get">
+                                <input type="hidden" name="route" value="showitem">
+                                <input type="hidden" name="itemId" value="${lineItem.item.id}">
+                                <input class="view-from-cart" type="submit" value="${lineItem.item.name}">
                             </form>
 
 
                         </td>
-                        <td>${cartItem.price}</td>
-                        <td>${cartItem.amount}</td>
-                        <td>${cartItem.taxes}</td>
-                        <td>${cartItem.taxes*cartItem.price*cartItem.amount}</td>
+                        <td>${lineItem.price}</td>
+                        <td>${lineItem.amount}</td>
+                        <td>${lineItem.taxes}</td>
+                        <td>${lineItem.taxes * lineItem.price * lineItem.amount}</td>
                         <td>
-                            <form action="removeFromCart" method="post">
+                            <form action="shop" method="post">
+                                <input type="hidden" name="route" value="removefromcart">
+                                <input type="hidden" name="itemId" value="${lineItem.item.id}">
                                 <input type="submit" value="Eliminar producto">
-                                <input type="hidden" name="itemId" value="${cartItem.name}">
                             </form>
                         </td>
                     </tr>
@@ -54,11 +59,11 @@
                 </tbody>
             </table>
             <div class="cart-summary">
-                <p>Subtotal: ${cart.total} &euro;</p>
-                <p><strong>Total (IVA Incluido): ${cart.total} &euro;</strong></p>
-                <a href="catalog.jsp">Seguir comprando</a>
+                <p>Subtotal: ${cart.price} &euro;</p>
+                <p><strong>Total (IVA Incluido): ${cart.price} &euro;</strong></p>
+                <a href="index.jsp">Seguir comprando</a>
                 <c:choose>
-                    <c:when test="${user.type == 'REGISTERED'}">
+                    <c:when test="${user.registered}">
                         <a class="payday" href="registered/checkout.jsp">Pagar</a>
                     </c:when>
                     <c:otherwise>

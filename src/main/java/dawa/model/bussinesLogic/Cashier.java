@@ -1,7 +1,6 @@
 package dawa.model.bussinesLogic;
 
 import dawa.model.VOs.Cart;
-import dawa.model.VOs.LineItem;
 import dawa.model.VOs.Order;
 
 /**
@@ -23,8 +22,8 @@ public final class Cashier {
 
         double price = cart.getLines()
                 .stream()
-                .mapToDouble(LineItem::getPrice)
-                .sum() * cart.getTaxes();
+                .mapToDouble((l) -> l.getPrice() * l.getTaxes())
+                .sum();
 
         cart.setPrice(price);
     }

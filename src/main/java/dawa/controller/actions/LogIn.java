@@ -21,6 +21,7 @@ public class LogIn extends Action {
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
         getUser(req);
+
         if (Objects.equals(req.getMethod(), "POST")) {
             String email = req.getParameter("email");
             String pass = req.getParameter("pass");
@@ -32,8 +33,11 @@ public class LogIn extends Action {
                 dispatcher.showView("access/login.jsp", req, res);
                 return;
             }
-            req.setAttribute("user", user);
+            req.getSession().setAttribute("user", user);
+
+            controller.loadIndex(req, res);
+        } else {
+            dispatcher.showView("access/login.jsp", req, res);
         }
-        dispatcher.showView("/", req, res);
     }
 }

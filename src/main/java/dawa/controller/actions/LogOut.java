@@ -3,9 +3,7 @@ package dawa.controller.actions;
 import dawa.controller.Action;
 import dawa.controller.Dispatcher;
 import dawa.controller.ShopController;
-import dawa.model.VOs.LoggedOut;
-import dawa.model.VOs.Registered;
-import dawa.model.VOs.User;
+import dawa.model.VOs.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +25,6 @@ public class LogOut extends Action {
             user = new LoggedOut();
             req.getSession().setAttribute("user", user);
         }
-        dispatcher.showView("/", req, res);
+        controller.loadIndex(req, res);
     }
 }

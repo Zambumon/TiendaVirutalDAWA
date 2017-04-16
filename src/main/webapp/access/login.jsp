@@ -9,14 +9,14 @@
 <body>
 <%@include file="/utils/navbar.jsp" %>
 <h1>Iniciar sesión</h1>
-<form action="" method="post" id="login-form">
+<form action="../shop" method="post" id="login-form">
+    <input type="hidden" name="route" value="login">
     <input type="email" id="email" name="email" value="" placeholder="E-mail" required>
     <input type="password" id="pass" name="pass" value="" placeholder="Contraseña" required>
     <input type="password" id="passcheck" name="passcheck" value="" placeholder="Confirmar constraseña" required>
 
     <input type="submit" value="Acceder">
-
 </form>
-<script src="js/password.js"></script>
+<%--<script src="../js/passwordCheck.js"></script>--%>
 </body>
 </html>

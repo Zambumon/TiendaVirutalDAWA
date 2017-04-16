@@ -20,8 +20,8 @@ public class AddToCart extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-         int itemId = Integer.parseInt(req.getParameter("item"));
-         int amount = Integer.parseInt(req.getParameter("amount"));
+        int itemId = Integer.parseInt(req.getParameter("itemId"));
+        int amount = Integer.parseInt(req.getParameter("amount"));
 
         User user = getUser(req);
         Cart cart = user.getCart();
@@ -41,6 +41,8 @@ public class AddToCart extends Action {
         }
         insert(cart, item, amount);
         Cashier.updateCart(cart);
+        req.setAttribute("cart", cart);
+        dispatcher.showView("cart.jsp", req, res);
     }
 
     private int getItemCount(Cart cart, Item item){

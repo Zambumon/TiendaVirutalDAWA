@@ -10,8 +10,6 @@ public class Cart {
 
     private List<LineItem> lines = new ArrayList<>();
     private double price;
-    private double taxes = 1; /*final price = price*taxes*/
-
 
     public List<LineItem> getLines() {
         return lines;
@@ -27,13 +25,5 @@ public class Cart {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public double getTaxes() {
-        return taxes;
-    }
-
-    public void setTaxes(double taxes) {
-        this.taxes = taxes;
     }
 }

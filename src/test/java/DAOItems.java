@@ -46,7 +46,7 @@ public class DAOItems {
 
         try{
             dao.insertItem(listaItems.get(0));
-            fail("It shoud had fail on insert an existing item");
+            fail("It should had fail on insert an existing item");
         }catch (IllegalArgumentException e){/*Everything is right*/}
 
         listaItems.get(1).getKeywords().add("key3");

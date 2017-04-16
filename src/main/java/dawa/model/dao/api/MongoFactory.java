@@ -18,7 +18,7 @@ public class MongoFactory implements IDAOFactory {
     private AdvancedDatastore datastore;
 
     public MongoFactory() {
-        this("localhost", 27017);
+        this("192.168.1.35", 27017);
     }
 
     public MongoFactory(String host, int port) {

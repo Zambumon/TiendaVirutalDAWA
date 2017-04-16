@@ -8,33 +8,36 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
+<%--@elvariable id="item" type="dawa.model.VOs.Item"--%>
+<%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
 
-<h2>${name}</h2>
+<h2>${item.name}</h2>
 <div class="generalInfo">
-    <p>Precio: <strong>${price} €</strong></p>
-    <p>Descripción: ${description}</p>
-    <p>Stock: ${stock} unidades disponibles</p>
-    <c:forEach items="${properties}" var="entry">
-        <p>    <strong>${properties.key}:</strong> ${properties.value}</p>
+    <p>Precio: <strong>${item.price} €</strong></p>
+    <p>Descripción: ${item.description}</p>
+    <p>Stock: ${item.stock} unidades disponibles</p>
+    <c:forEach items="${item.properties}" var="entry">
+        <p>    <strong>${entry.key}:</strong> ${entry.value}</p>
     </c:forEach>
 </div>
 <c:choose>
-  <c:when test="${user.type == 'ADMIN'}">
+  <c:when test="${user.registered && user.type == 'ADMIN'}">
         <p>Editar stock del producto</p>
       <form action="EditStock" method="post">
-          <input type="hidden" name="itemId" id="itemId" value="${id}">
+          <input type="hidden" name="itemId" id="itemId" value="${item.id}">
           <input type="number" min="0" name="stock" id="stock">
           <input type="submit" value="Confirmar">
       </form>
     </c:when>
     <c:otherwise>
         <c:choose>
-            <c:when test="${avaliable == true}">
+            <c:when test="${item.available}">
                 <div class="addToCart">
                     <p>Añadir al carrito</p>
-                    <form action="addtocart" method="post">
-                        <input type="hidden" name="itemId" value="${id}">
-                        <input type="number" value="" min="1">
+                    <form action="shop" method="post">
+                        <input type="hidden" name="route" value="addtocart">
+                        <input type="hidden" name="itemId" value="${item.id}">
+                        <input type="number" name="amount" value="1" min="1">
                         <input type="submit" value="Confirmar">
                     </form>
                 </div>
@@ -49,8 +52,6 @@
 
 
 
-
-
 <div id="commentSection">
     <h2>Comentarios</h2>
     <c:forEach var="review" items="${requestScope.itemReviews}">
@@ -62,7 +63,7 @@
         </div>
     </c:forEach>
     <c:choose>
-        <c:when test="${user.type == 'UNREGISTERED'}">
+        <c:when test="${!user.registered}">
         <p>Debe <a href="access/login.jsp">inicar sesión</a> para poder comentar</p>
     </c:when>
     <c:otherwise>

@@ -23,6 +23,10 @@ public class ItemSearchParameter {
 
     public ItemSearchParameter(){}
 
+    public ItemSearchParameter(int id){
+        this.id = id;
+    }
+
     public ItemSearchParameter(int id, String name, double maxPrice, double minPrice, boolean available, String orderBy,
                                boolean descendant) {
         this.id = id;

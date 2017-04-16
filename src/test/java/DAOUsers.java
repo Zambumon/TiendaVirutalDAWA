@@ -74,7 +74,9 @@ public class DAOUsers {
         try {
             daoUsers.insertUser(r);
             fail("The user already exits and it hasn't had an error");
-        }catch (IllegalArgumentException e){}
+        }catch (IllegalArgumentException e){
+            //ignore
+        }
 
         //Delete all the users (if fails may still will remain users in the discosBD database)
 
