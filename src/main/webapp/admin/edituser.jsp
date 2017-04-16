@@ -8,18 +8,20 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
+<%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
+
 <div>
-    <h1>Cuenta de ${user.getEmail()}</h1>
+    <h1>Cuenta de ${user.name}</h1>
 </div>
 <div>
     <h2>Datos personales</h2>
-    <p>ID: ${otherUser.getId()}</p>
-    <p>Email: ${otherUser.getEmail()}</p>
-    <p>Tipo de cuenta: ${otherUser.getType()}</p>
+    <p>Nombre: ${user.name}</p>
+    <p>Email: ${user.email}</p>
+    <p>Tipo de cuenta: ${user.type}</p>
     <div>
         <p>Editar rol de usuario</p>
         <form action="changeRole" method="post">
-            <input type="hidden" name="userId" value="${otherUser.getId()}">
+            <input type="hidden" name="userId" value="${user.email)}">
             <select name="role" id="role">
                 <option value="basic">Básico</option>
                 <option value="vip">VIP</option>
@@ -36,8 +38,9 @@
         </form>
     </div>
     <div>
-        <form action="deleteAccount" method="post">
-            <input type="hidden" name="userId" value="${otherUser}">
+        <form action="shop" method="post">
+            <input type="hidden" name="route" value="deleteuser">
+            <input type="hidden" name="userId" value="${user.email}">
             <input type="submit" value="Eliminar cuenta">
         </form>
     </div>

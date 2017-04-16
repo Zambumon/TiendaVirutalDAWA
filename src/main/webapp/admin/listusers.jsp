@@ -8,23 +8,28 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
+<%--@elvariable id="listOfUsers" type="java.util.List"--%>
+
 <h1>Usuarios del sistema</h1>
 <table>
     <tbody>
+
     <c:forEach var="otherUser" items="${listOfUsers}">
         <tr>
-            <td>${otherUser.getEmail()}</td>
+            <td>${otherUser.email}</td>
             <td>
-                <form action="editUser" method="post">
-                    <input type="hidden" name="otherUserId" value="${otherUser.getId()}">
+                <form action="shop" method="post">
+                    <input type="hidden" name="route" value="showuser">
+                    <input type="hidden" name="userId" value="${otherUser.email}">
                     <input type="submit" value="Editar">
 
                 </form>
             </td>
             <td>
-                <form action="deleteUser" method="post">
+                <form action="shop" method="post">
+                    <input type="hidden" name="route" value="deleteuser">
+                    <input type="hidden" name="userId" value="${otherUser.email}">
                     <input type="submit" value="Eliminar">
-                    <input type="hidden" name="otherUserId" value="${otherUser.getId()}">
                 </form>
             </td>
         </tr>
@@ -32,21 +37,6 @@
 
     </tbody>
 </table>
-<div>
-    <p>Subtotal: ${subtotal} €</p>
-    <p>Total (IVA Incluido): ${total} €</p>
-    <a href="index.jsp">Añadir más productos al carrito</a>
-    <c:choose>
-        <c:when test="${user.type == 'REGISTERED'}">
-            <a href="registered/checkout.jsp">Ir a la caja</a>
-        </c:when>
-        <c:otherwise>"
-            <p>Debe <a href="access/login.jsp">iniciar sesión</a> para poder continuar</p>
-
-        </c:otherwise>
-    </c:choose>
-</div>
-
 
 </body>
 </html>

@@ -49,6 +49,8 @@ public class ShopController extends HttpServlet {
         registerAction(new ShowItem(this, dispatcher, "showitem"));
         registerAction(new RemoveFromCart(this, dispatcher, "removefromcart"));
         registerAction(new ShowCart(this, dispatcher, "showcart"));
+        registerAction(new SearchUsers(this, dispatcher, "searchusers"));
+        registerAction(new RemoveAccount(this, dispatcher, "deleteuser"));
     }
 
     private void registerAction(Action a) {
@@ -56,12 +58,18 @@ public class ShopController extends HttpServlet {
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) {
-        String path = request.getParameter("route");
+
+        String path;
+        if (request.getAttribute("route") != null) {
+            path = (String) request.getAttribute("route");
+        } else {
+            path = request.getParameter("route");
+        }
         Action a = actions.get(path);
         if (a == null) {
             a = defaultAction;
         }
-        System.out.println("route = "+path+"; using action: " + a.getClass().getCanonicalName());
+        System.out.println("route = " + path + "; using action: " + a.getClass().getSimpleName());
         a.doAction(request, response);
     }
 
@@ -89,7 +97,7 @@ public class ShopController extends HttpServlet {
         return daoOrders;
     }
 
-    public void loadIndex(HttpServletRequest req, HttpServletResponse res){
+    public void loadIndex(HttpServletRequest req, HttpServletResponse res) {
         defaultAction.doAction(req, res);
     }
 }
