@@ -15,16 +15,13 @@
 <div class="search-bar">
     <form action="shop" method="get">
         <input type="hidden" name="route" value="searchitems">
-        <input class="search-box" type="text" name="search" placeholder="Introduzca parámetros de búsqueda" required>
+        <input class="search-box" type="text" name="search" placeholder="Introduzca título del producto" required>
         <input class="search-button" type="submit" value="Buscar">
         <div class="searchParameters">
-            <input type="checkbox" name="searchParameter" value="name" checked> Buscar por nombre
-            <input type="checkbox" name="searchParameter" value="keywords"> Buscar por categoria
-            <input type="checkbox" name="searchParameter" value="description"> Buscar en descripciones
-            <select name="order">
-                <option value="ascendant">Ascendente</option>
-                <option value="descendant">Descendente</option>
-            </select>
+            <input type="text" name="searchParameter-author" placeholder="Autor">
+            <input type="text" name="searchParameter-country"placeholder="País">
+            <input type="number" name="searchParameter-year" min="1970" placeholder="Año">
+            <input type="number" name="searchParameter-max-price" min="1" placeholder="Precio máximo">
         </div>
     </form>
 </div>

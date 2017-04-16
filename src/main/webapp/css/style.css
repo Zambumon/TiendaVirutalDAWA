@@ -449,3 +449,9 @@ table{
 .general-info textarea{
     font-size: 1em;
 }
+
+.navbar input{
+    border: none;
+    background: transparent;
+    font-size: 1em;
+}
