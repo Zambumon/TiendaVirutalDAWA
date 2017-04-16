@@ -8,15 +8,22 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
-<h1>Iniciar sesión</h1>
-<form action="../shop" method="post" id="login-form">
-    <input type="hidden" name="route" value="login">
-    <input type="email" id="email" name="email" value="" placeholder="E-mail" required>
-    <input type="password" id="pass" name="pass" value="" placeholder="Contraseña" required>
-    <input type="password" id="passcheck" name="passcheck" value="" placeholder="Confirmar constraseña" required>
-
-    <input type="submit" value="Acceder">
-</form>
+<div class="access-container">
+    <h1>Iniciar sesión</h1>
+    <form class="register-form" action="../shop" method="post" id="register-form">
+        <input type="hidden" name="route" value="login">
+        <fieldset>
+            <legend>Datos generales</legend>
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" value="" required>
+            <label for="pass">Contraseña</label>
+            <input type="password" id="pass" name="pass" value=""required>
+        </fieldset>
+        <div>
+            <input class="register-button" type="submit" value="Acceder">
+        </div>
+    </form>
+</div>
 <%--<script src="../js/passwordCheck.js"></script>--%>
 </body>
 </html>

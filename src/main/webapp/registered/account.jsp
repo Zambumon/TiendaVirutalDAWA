@@ -25,27 +25,24 @@
         </form>
     </div>
     <div>
+        <p>Editar rol de usuario</p>
+        <form action="changeRole" method="post">
+            <input type="hidden" name="userId" value="${otherUser.getId()}">
+            <select name="role" id="role">
+                <option value="basic">Básico</option>
+                <option value="vip">VIP</option>
+                <option value="admin">Administrador</option>
+            </select>
+        </form>
+    </div>
+    <div>
         <p>Direcciones de envio</p>
-            <c:if test="${addressList.isEmpty() == false}">
-                    <c:forEach var="address" items="${addressList}">
                         <div class="address">
                             <p>${address.getFirstLine()}</p>
                             <p>${address.getSecondLine()}</p>
                             <p>${address.getPostCode()}</p>
                             <p>${address.getCountry()}</p>
                         </div>
-                    </c:forEach>
-            </c:if>
-        <div>
-            <form action="addShippingAddress">
-                <input type="hidden" name="userId" value="${user.getId()}">
-                <input type="text" name="addressFirstLine" value="" required>
-                <input type="text" name="addressSecondLine" value="" required>
-                <input type="text" name="addressPostcode" value="" required>
-                <input type="text" name="country" value="" required>
-                <input type="submit" value="Añadir dirección">
-            </form>
-        </div>
     </div>
     <div>
         <form action="deleteAccount" method="post">

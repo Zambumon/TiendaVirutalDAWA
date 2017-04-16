@@ -59,7 +59,6 @@
                 </tbody>
             </table>
             <div class="cart-summary">
-                <p>Subtotal: ${cart.price} &euro;</p>
                 <p><strong>Total (IVA Incluido): ${cart.price} &euro;</strong></p>
                 <a href="index.jsp">Seguir comprando</a>
                 <c:choose>
