@@ -28,12 +28,6 @@ body{
     margin: auto;
 }
 
-.navbar input{
-    border: none;
-    background: transparent;
-    font-size: 1em;
-}
-
 .navbar-link{
     color:#f1f1f1;
     display: block;
@@ -164,5 +158,54 @@ table{
 }
 
 .payday:hover{
+    background-color: #fcc751;
+}
+
+.access-container{
+    width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.register-form{
+    background-color: #fafafa;
+    padding: 10px;
+    margin: 10px;
+    border: solid 1px #aaa;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.register-form fieldset{
+    margin: 20px 10px 20px 10px;
+    border-radius: 5px;
+    border: solid 1px #aaa;
+}
+
+.register-form fieldset legend{
+    font-weight: bolder;
+}
+
+.register-form input{
+    display: block;
+    width: 400px;
+    /*Ya sé que el padding va a dar problemas, me da igual*/
+    padding: 5px;
+    font-size: 1em;
+}
+
+.register-button{
+    background-color: #f9b829;
+    color: black;
+    border-radius: 5px;
+    border: 0;
+    padding: 10px;
+    height: 40px;
+    font-size: 1.2em;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.register-button:hover{
     background-color: #fcc751;
 }
