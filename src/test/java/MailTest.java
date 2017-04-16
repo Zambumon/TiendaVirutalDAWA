@@ -8,13 +8,11 @@ import javax.mail.MessagingException;
  */
 public class MailTest {
 
-    private static String MAIL = "tiendavirtualv4@gmail.com";
+    private static final String MAIL = "tiendavirtualv4@gmail.com";
 
     @Test
     public void doTest(){
-
         MailSender m = MailSender.getInstance();
-
 
         try {
             m.sendMail(MAIL, "Hola", "buenosDias");

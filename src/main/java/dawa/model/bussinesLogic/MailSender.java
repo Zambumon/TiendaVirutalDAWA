@@ -1,4 +1,5 @@
 package dawa.model.bussinesLogic;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
@@ -9,29 +10,27 @@ import java.util.Properties;
  */
 public class MailSender {
 
-
-
-    private static String SENDER_DIRECTION = "tiendavirtualv4@gmail.com";
-    private static String SERVER_PASS = "rootroot";
-    private static String SERVER_HOST = "smtp.gmail.com";
-
+    private static final String SENDER_DIRECTION = "tiendavirtualv4@gmail.com";
+    private static final String SERVER_PASS = "rootroot";
+    private static final String SERVER_HOST = "smtp.gmail.com";
 
     private static MailSender instance = null;
 
-    protected MailSender(){}
+    protected MailSender() {}
 
-    public static MailSender getInstance(){
-        if(instance == null)
+    public static MailSender getInstance() {
+        if (instance == null) {
             instance = new MailSender();
+        }
         return instance;
     }
 
-    public void sendMail(String receptor,String subject, String messageContent) throws MessagingException{
+    public void sendMail(String receptor, String subject, String messageContent) throws MessagingException {
 
         Properties props = System.getProperties();
 
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", SERVER_HOST );
+        props.put("mail.smtp.host", SERVER_HOST);
         props.put("mail.smtp.user", SENDER_DIRECTION);
         props.put("mail.smtp.password", SERVER_PASS);
         props.put("mail.smtp.port", "587");
@@ -51,15 +50,8 @@ public class MailSender {
             transport.connect(SERVER_HOST, SENDER_DIRECTION, SERVER_PASS);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-        }
-        catch (AddressException ae) {
+        } catch (AddressException ae) {
             ae.printStackTrace();
         }
-
-
-
     }
-
-
-
 }
