@@ -31,9 +31,9 @@
             </fieldset>
             <fieldset>
                 <legend>Datos particulares del CD</legend>
-                <input type="text" name="cd-title" placeholder="Nombre del CD" required>
                 <input type="text" name="cd-author" placeholder="Artista" required>
                 <input type="text" name="cd-country" placeholder="País" required>
+                <input type="number" name="cd-year" min="1900" placeholder="Año" required>
             </fieldset>
 
             <div class="create-item-submit-wrapper">
