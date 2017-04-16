@@ -45,6 +45,6 @@ public class SignUp extends Action {
             }
             req.setAttribute("user", user);
         }
-        dispatcher.showView("/", req, res);
+        controller.loadIndex(req, res);
     }
 }

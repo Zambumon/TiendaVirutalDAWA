@@ -1,7 +1,6 @@
 package dawa.model.bussinesLogic;
 
-import dawa.model.VOs.Cart;
-import dawa.model.VOs.Order;
+import dawa.model.VOs.*;
 
 /**
  * Created by pedro on 8/04/17.
@@ -26,5 +25,9 @@ public final class Cashier {
                 .sum();
 
         cart.setPrice(price);
+    }
+
+    public static double getDiscount(Registered user){
+        return user.getType() == UserType.VIP ? 0.2 : 0.0;
     }
 }

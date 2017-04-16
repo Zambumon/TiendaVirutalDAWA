@@ -8,11 +8,14 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
+<%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
+<%--@elvariable id="address" type="dawa.model.VOs.Address"--%>
+
 <div class="profile-wrapper">
     <h1>Perfil de usuario</h1>
     <form action="shop" method="post">
         <%--TODO --%>
-        <input type="hidden" name="todo" value="todo">
+        <input type="hidden" name="route" value="todo">
         <fieldset>
             <legend>Datos generales</legend>
             <label for="user-email">Correo electrónico</label>
@@ -41,9 +44,9 @@
         </fieldset>
         <fieldset>
             <legend>Dirección de envío</legend>
-            <input type="text" id="addressFirstLine" name="addressFirstLine" value="${address.firstline}" readonly>
-            <input type="text" id="addressSecondLine" name="addressSecondLine" value="${address.secondline}" readonly>
-            <input type="text" id="addressPostcode" name="addressPostcode" value="${address.postcode}" readonly>
+            <input type="text" id="addressFirstLine" name="addressFirstLine" value="${address.firstLine}" readonly>
+            <input type="text" id="addressSecondLine" name="addressSecondLine" value="${address.secondLine}" readonly>
+            <input type="text" id="addressPostcode" name="addressPostcode" value="${address.postCode}" readonly>
             <input type="text" id="country" name="country" value="${address.country}" readonly>
         </fieldset>
         <div class="centered-form-input">
@@ -51,10 +54,9 @@
         </div>
     </form>
 
-
-
     <div>
-        <form action="deleteAccount" method="post">
+        <form action="shop" method="post">
+            <input type="hidden" name="route" value="deleteuser">
             <input type="hidden" name="userId" value="${user}">
             <div class="centered-form-input">
                 <input type="submit" class="ok-bye" value="Eliminar cuenta de usuario">

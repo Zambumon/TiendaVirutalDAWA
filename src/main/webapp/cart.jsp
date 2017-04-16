@@ -63,7 +63,10 @@
                 <a href="index.jsp">Seguir comprando</a>
                 <c:choose>
                     <c:when test="${user.registered}">
-                        <a class="payday" href="registered/checkout.jsp">Pagar</a>
+                        <form action="shop">
+                            <input type="hidden" name="route" value="checkout">
+                            <input type="submit" class="payday" value="Pagar">
+                        </form>
                     </c:when>
                     <c:otherwise>
                         <p>Debe <a href="access/login.jsp">iniciar sesión</a> para poder comprar</p>
