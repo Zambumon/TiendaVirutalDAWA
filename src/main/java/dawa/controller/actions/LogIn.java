@@ -4,6 +4,7 @@ import dawa.controller.Action;
 import dawa.controller.Dispatcher;
 import dawa.controller.ShopController;
 import dawa.model.VOs.Registered;
+import dawa.model.VOs.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +26,7 @@ public class LogIn extends Action {
         if (Objects.equals(req.getMethod(), "POST")) {
             String email = req.getParameter("email");
             String pass = req.getParameter("pass");
+            User oldUser = getUser(req);
             Registered user = controller.getAccountManager().tryLogin(email, pass);
 
             if (user == null) {
@@ -33,6 +35,7 @@ public class LogIn extends Action {
                 dispatcher.showView("access/login.jsp", req, res);
                 return;
             }
+            user.setCart(oldUser.getCart());
             req.getSession().setAttribute("user", user);
 
             controller.loadIndex(req, res);

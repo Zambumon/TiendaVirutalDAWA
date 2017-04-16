@@ -8,6 +8,11 @@
 </head>
 <body>
 <%@include file="/utils/navbar.jsp" %>
+<%--@elvariable id="cart" type="dawa.model.VOs.Cart"--%>
+<%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
+<%--@elvariable id="discount" type="java.lang.String"--%>
+<%--@elvariable id="total" type="java.lang.String"--%>
+
 <h1>Datos del pedido</h1>
 <table>
     <thead>
@@ -19,31 +24,30 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach var="cartItem" items="${cart}">
+    <c:forEach var="lineItem" items="${cart}">
         <tr>
-            <td>${cartItem.name}</td>
-            <td>${cartItem.price}</td>
-            <td>${cartItem.amount}</td>
-            <td>${cartItem.taxes}</td>
-            <td>${cartItem.price*cartItem.taxes*cartItem.amount}</td>
+            <td>${lineItem.name}</td>
+            <td>${lineItem.price}</td>
+            <td>${lineItem.amount}</td>
+            <td>${lineItem.taxes}</td>
+            <td>${lineItem.price * lineItem.taxes * lineItem.amount}</td>
         </tr>
     </c:forEach>
 
     </tbody>
 </table>
 <div>
-    <p>Subtotal: ${subtotal} €</p>
-        <c:if test="${user.type == 'VIP'}">
-            <p>Descuento: ${discount} %</p>
-
-        </c:if>
+    <p>Subtotal: ${cart.price} €</p>
+    <c:if test="${user.type == 'VIP'}">
+        <p>Descuento: ${discount} %</p>
+    </c:if>
     <p>Total (IVA Incluido): ${total} €</p>
 </div>
 
 <div>
     <h2>Dirección de envío</h2>
     <c:choose>
-        <c:when test="${addressList.isEmpty()}">
+        <c:when test="${addressList}">
             <form action="addShippingAddress">
                 <input type="hidden" name="userId" value="${user.getId()}">
                 <input type="text" name="addressFirstLine" value="" required>

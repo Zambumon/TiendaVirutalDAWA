@@ -52,6 +52,7 @@ public class ShopController extends HttpServlet {
         registerAction(new SearchUsers(this, dispatcher, "searchusers"));
         registerAction(new RemoveAccount(this, dispatcher, "deleteuser"));
         registerAction(new EditStock(this, dispatcher, "editstock"));
+        registerAction(new Checkout(this, dispatcher, "checkout"));
     }
 
     private void registerAction(Action a) {
