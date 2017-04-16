@@ -37,27 +37,27 @@ public class ShopController extends HttpServlet {
         daoOrders = factory.getDAOOrders();
         accountManager = new AccountManager(daoUsers);
 
-        Dispatcher dispatcher = new Dispatcher();
+        Dispatcher dispatcher = new Dispatcher(this);
 
-        defaultAction = new ShowCatalog(this, dispatcher, "/");
-        registerAction(defaultAction);
-        registerAction(new LogIn(this, dispatcher, "login"));
-        registerAction(new SignUp(this, dispatcher, "signup"));
-        registerAction(new LogOut(this, dispatcher, "logout"));
-        registerAction(new AddToCart(this, dispatcher, "addtocart"));
-        registerAction(new SearchItems(this, dispatcher, "searchitems"));
-        registerAction(new ShowItem(this, dispatcher, "showitem"));
-        registerAction(new RemoveFromCart(this, dispatcher, "removefromcart"));
-        registerAction(new ShowCart(this, dispatcher, "showcart"));
-        registerAction(new SearchUsers(this, dispatcher, "searchusers"));
-        registerAction(new RemoveAccount(this, dispatcher, "deleteuser"));
-        registerAction(new EditStock(this, dispatcher, "editstock"));
-        registerAction(new Checkout(this, dispatcher, "checkout"));
-        registerAction(new Confirm(this, dispatcher, "confirm"));
+        defaultAction = new ShowCatalog(this, dispatcher);
+        registerAction("/", defaultAction);
+        registerAction("login", new LogIn(this, dispatcher));
+        registerAction("signup", new SignUp(this, dispatcher));
+        registerAction("logout", new LogOut(this, dispatcher));
+        registerAction("addtocart", new AddToCart(this, dispatcher));
+        registerAction("searchitems", new SearchItems(this, dispatcher));
+        registerAction("showitem", new ShowItem(this, dispatcher));
+        registerAction("removefromcart", new RemoveFromCart(this, dispatcher));
+        registerAction("showcart", new ShowCart(this, dispatcher));
+        registerAction("searchusers", new SearchUsers(this, dispatcher));
+        registerAction("deleteuser", new RemoveAccount(this, dispatcher));
+        registerAction("editstock", new EditStock(this, dispatcher));
+        registerAction("checkout", new Checkout(this, dispatcher));
+        registerAction("confirm", new Confirm(this, dispatcher));
     }
 
-    private void registerAction(Action a) {
-        actions.put(a.getPath(), a);
+    private void registerAction(String path, Action a) {
+        actions.put(path, a);
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) {
@@ -68,12 +68,12 @@ public class ShopController extends HttpServlet {
         } else {
             path = request.getParameter("route");
         }
-        Action a = actions.get(path);
-        if (a == null) {
-            a = defaultAction;
+        Action action = actions.get(path);
+        if (action == null) {
+            defaultAction.doAction(request, response);
+        } else {
+            action.doAction(request, response);
         }
-        System.out.println("route = " + path + "; using action: " + a.getClass().getSimpleName());
-        a.doAction(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -98,9 +98,5 @@ public class ShopController extends HttpServlet {
 
     public IDAOOrders getDaoOrders() {
         return daoOrders;
-    }
-
-    public void loadIndex(HttpServletRequest req, HttpServletResponse res) {
-        defaultAction.doAction(req, res);
     }
 }

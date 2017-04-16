@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SearchUsers extends Action {
 
-    public SearchUsers(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public SearchUsers(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class SearchUsers extends Action {
             req.setAttribute("listOfUsers", list.getUsers());
             dispatcher.showView("admin/listusers.jsp", req, res);
         } else {
-            controller.loadIndex(req, res);
+            dispatcher.showCatalog(req, res);
         }
     }
 }

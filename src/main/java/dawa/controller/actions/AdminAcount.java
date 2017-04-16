@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AdminAcount extends Action {
 
-    public AdminAcount(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public AdminAcount(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ShowItem extends Action {
 
-    public ShowItem(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public ShowItem(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override

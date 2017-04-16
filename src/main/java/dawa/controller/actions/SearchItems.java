@@ -17,8 +17,8 @@ import java.util.Objects;
  */
 public class SearchItems extends Action {
 
-    public SearchItems(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public SearchItems(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override

@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EditAccount extends Action {
 
-    public EditAccount(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public EditAccount(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override

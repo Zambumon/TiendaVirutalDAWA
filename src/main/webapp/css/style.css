@@ -28,6 +28,12 @@ body{
     margin: auto;
 }
 
+.navbar input{
+    border: none;
+    background: transparent;
+    font-size: 1em;
+}
+
 .navbar-link{
     color:#f1f1f1;
     display: block;

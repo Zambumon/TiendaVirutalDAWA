@@ -13,16 +13,10 @@ public abstract class Action {
 
     protected ShopController controller;
     protected Dispatcher dispatcher;
-    private String path;
 
-    public Action(ShopController controller, Dispatcher dispatcher, String path) {
+    public Action(ShopController controller, Dispatcher dispatcher) {
         this.controller = controller;
         this.dispatcher = dispatcher;
-        this.path = path;
-    }
-
-    public String getPath() {
-        return path;
     }
 
     public abstract void doAction(HttpServletRequest req, HttpServletResponse res);

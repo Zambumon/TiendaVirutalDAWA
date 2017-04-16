@@ -32,8 +32,7 @@
     </div>
     <div class="item-properties">
         <c:choose>
-            <!-- Revisar si esto funca -->
-            <c:when test="${item.available && user.type != 'ADMIN'}">
+            <c:when test="${item.available && (!user.registered || user.type != 'ADMIN')}">
                 <div class="addToCart">
                     <h3>Añadir al carrito</h3>
                     <form action="shop" method="post">

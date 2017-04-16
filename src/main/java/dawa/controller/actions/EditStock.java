@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EditStock extends Action {
 
-    public EditStock(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public EditStock(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class EditStock extends Action {
 
             ItemList list = controller.getDaoItems().searchItems(new ItemSearchParameter(itemId));
             if (list.getItems().isEmpty()) {
-                controller.loadIndex(req, res);
+                dispatcher.showCatalog(req, res);
                 return;
             }
             Item item = list.getItems().get(0);
@@ -37,7 +37,7 @@ public class EditStock extends Action {
             req.setAttribute("route", "showitem");
             dispatcher.showView("shop", req, res);
         } else {
-            controller.loadIndex(req, res);
+            dispatcher.showCatalog(req, res);
         }
     }
 }

@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Checkout extends Action {
 
-    public Checkout(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public Checkout(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Checkout extends Action {
 
             dispatcher.showView("registered/checkout.jsp", req, res);
         } else {
-            controller.loadIndex(req, res);
+            dispatcher.showCatalog(req, res);
         }
     }
 }

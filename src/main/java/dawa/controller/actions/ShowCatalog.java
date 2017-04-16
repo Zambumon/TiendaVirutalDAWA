@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ShowCatalog extends Action {
 
-    public ShowCatalog(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public ShowCatalog(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override

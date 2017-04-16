@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Confirm extends Action {
 
-    public Confirm(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public Confirm(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override

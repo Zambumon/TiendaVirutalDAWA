@@ -16,8 +16,8 @@ import java.util.Objects;
  */
 public class SignUp extends Action {
 
-    public SignUp(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public SignUp(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override
@@ -45,6 +45,6 @@ public class SignUp extends Action {
             }
             req.setAttribute("user", user);
         }
-        controller.loadIndex(req, res);
+        dispatcher.showCatalog(req, res);
     }
 }

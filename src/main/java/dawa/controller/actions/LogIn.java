@@ -15,8 +15,8 @@ import java.util.Objects;
  */
 public class LogIn extends Action {
 
-    public LogIn(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public LogIn(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class LogIn extends Action {
             user.setCart(oldUser.getCart());
             req.getSession().setAttribute("user", user);
 
-            controller.loadIndex(req, res);
+            dispatcher.showCatalog(req, res);
         } else {
             dispatcher.showView("access/login.jsp", req, res);
         }

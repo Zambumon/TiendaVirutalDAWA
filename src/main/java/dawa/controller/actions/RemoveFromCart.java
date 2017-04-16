@@ -15,8 +15,8 @@ import java.util.List;
  */
 public class RemoveFromCart extends Action {
 
-    public RemoveFromCart(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public RemoveFromCart(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override

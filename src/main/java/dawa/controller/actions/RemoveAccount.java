@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RemoveAccount extends Action {
 
-    public RemoveAccount(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public RemoveAccount(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override
@@ -36,7 +36,7 @@ public class RemoveAccount extends Action {
             req.setAttribute("route", "searchusers");
             dispatcher.showView("shop", req, res);
         } else {
-            controller.loadIndex(req, res);
+            dispatcher.showCatalog(req, res);
         }
     }
 }

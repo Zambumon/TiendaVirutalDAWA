@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LogOut extends Action {
 
-    public LogOut(ShopController controller, Dispatcher dispatcher, String path) {
-        super(controller, dispatcher, path);
+    public LogOut(ShopController controller, Dispatcher dispatcher) {
+        super(controller, dispatcher);
     }
 
     @Override
@@ -25,6 +25,6 @@ public class LogOut extends Action {
             user = new LoggedOut();
             req.getSession().setAttribute("user", user);
         }
-        controller.loadIndex(req, res);
+        dispatcher.showCatalog(req, res);
     }
 }
