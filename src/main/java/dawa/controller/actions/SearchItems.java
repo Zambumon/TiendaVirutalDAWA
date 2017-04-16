@@ -8,6 +8,9 @@ import dawa.model.VOs.ItemSearchParameter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Objects;
 
 /**
  * Created by cout970 on 2017/04/12.
@@ -22,8 +25,27 @@ public class SearchItems extends Action {
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
         getUser(req);
         ItemSearchParameter params = new ItemSearchParameter();
-        //TODO que significa la interfaz, que hacen los checkbox? como buscas por id? etc...
-//        System.out.println(Arrays.toString(req.getParameterValues("searchParameter")));
+        String orderBy = req.getParameter("order");
+        String[] checkbox = req.getParameterValues("searchParameter");
+        String searchText = req.getParameter("search");
+
+        if (Objects.equals(orderBy, "ascendant")) {
+            params.setDescendant(true);
+        }
+
+        if(checkbox != null) {
+            if (Arrays.binarySearch(checkbox, "name") != -1) {
+                params.setName(searchText);
+            }
+
+            if (Arrays.binarySearch(checkbox, "keywords") != -1) {
+                params.setKeywords(Collections.singletonList(searchText));
+            }
+
+            if (Arrays.binarySearch(checkbox, "description") != -1) {
+                params.setSearchWords(Collections.singletonList(searchText));
+            }
+        }
 
         ItemList result = controller.getDaoItems().searchItems(params);
         req.setAttribute("searchResult", result.getItems());

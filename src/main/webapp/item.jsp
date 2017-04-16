@@ -23,7 +23,8 @@
 <c:choose>
   <c:when test="${user.registered && user.type == 'ADMIN'}">
         <p>Editar stock del producto</p>
-      <form action="EditStock" method="post">
+      <form action="shop" method="post">
+          <input type="hidden" name="route" value="editstock">
           <input type="hidden" name="itemId" id="itemId" value="${item.id}">
           <input type="number" min="0" name="stock" id="stock">
           <input type="submit" value="Confirmar">
