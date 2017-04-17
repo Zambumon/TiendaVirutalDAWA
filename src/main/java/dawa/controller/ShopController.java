@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,6 +66,13 @@ public class ShopController extends HttpServlet {
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) {
+
+        response.setContentType("text/html; charset=UTF-8");
+        try {
+            request.setCharacterEncoding("UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         String path;
         if (request.getAttribute("route") != null) {
