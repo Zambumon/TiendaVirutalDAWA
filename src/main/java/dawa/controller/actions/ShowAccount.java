@@ -5,8 +5,6 @@ import dawa.controller.Dispatcher;
 import dawa.controller.ShopController;
 import dawa.model.VOs.Permission;
 import dawa.model.VOs.Registered;
-import dawa.model.VOs.UserList;
-import dawa.model.VOs.UserSearchParameter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,9 +23,13 @@ public class ShowAccount extends Action {
         Registered user = (Registered) getUser(req);
         String email = req.getParameter("userId");
 
+        if(email == null){
+            dispatcher.showCatalog(req, res);
+            return;
+        }
+
         if (user.getEmail().equals(email) || user.hasPermission(Permission.SEE_USER_ACCOUNTS)) {
-            UserList list = controller.getDaoUsers().searchUsers(new UserSearchParameter(email));
-            Registered registered = list.getUsers().get(0);
+            Registered registered = controller.getDaoUsers().getUser(email);
 
             req.setAttribute("address", registered.getCurrentAddress());
             req.setAttribute("account", registered);

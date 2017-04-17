@@ -23,7 +23,8 @@ public class EditStock extends Action {
         if (user.hasPermission(Permission.EDIT_ITEM)) {
 
             int itemId = Integer.parseInt(req.getParameter("itemId"));
-            int stock = Integer.parseInt(req.getParameter("stock"));
+            String stcokStr = req.getParameter("stock");
+            int stock = stcokStr == null ? 0 : Integer.parseInt(stcokStr);
 
             ItemList list = controller.getDaoItems().searchItems(new ItemSearchParameter(itemId));
             if (list.getItems().isEmpty()) {

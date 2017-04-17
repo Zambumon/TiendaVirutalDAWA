@@ -25,8 +25,7 @@ public class EditAccount extends Action {
         String email = req.getParameter("userId");
 
         if (user.getEmail().equals(email) || user.hasPermission(Permission.EDIT_USER_ACCOUNTS)) {
-            UserList list = controller.getDaoUsers().searchUsers(new UserSearchParameter(email));
-            Registered registered = list.getUsers().get(0);
+            Registered registered = controller.getDaoUsers().getUser(email);
 
             // Username
             registered.setName(req.getParameter("user-name"));

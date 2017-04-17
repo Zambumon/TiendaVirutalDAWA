@@ -32,11 +32,15 @@ public class AddItem extends Action {
 
         item.setName(name);
         item.setPrice(price);
+        item.setTaxes(1.21);
         item.setStock(stock);
         item.getProperties().put("description", description);
         item.getProperties().put("author", author);
         item.getProperties().put("country", country);
         item.getProperties().put("year", year);
+        item.getKeywords().add(author);
+        item.getKeywords().add(country);
+        item.getKeywords().add(year);
 
         controller.getDaoItems().insertItem(item);
 

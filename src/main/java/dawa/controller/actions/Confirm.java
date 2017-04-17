@@ -11,6 +11,7 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 /**
  * Created by cout970 on 2017/04/12.
@@ -58,10 +59,22 @@ public class Confirm extends Action {
                 int newStock = Math.max(item.getStock() - line.getAmount(), 0);
 
                 item.setStock(newStock);
-                if(newStock == 0){
+                if (newStock == 0) {
                     item.setAvailable(false);
                 }
                 controller.getDaoItems().updateItem(item);
+            }
+
+            if(user.getType() == UserType.NORMAL) {
+                List<Order> orders = controller.getDaoOrders().getUserOrders(user);
+                double sum = 0;
+                for (Order o : orders) {
+                    sum += o.getTotalPrice();
+                }
+                if (sum > 100.0) {
+                    user.setType(UserType.VIP);
+                    controller.getDaoUsers().updateUser(user);
+                }
             }
         }
 

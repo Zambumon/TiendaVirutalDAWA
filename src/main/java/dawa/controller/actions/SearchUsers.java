@@ -25,7 +25,7 @@ public class SearchUsers extends Action {
         User user = getUser(req);
         if (user.hasPermission(Permission.SEE_USER_ACCOUNTS)) {
             UserSearchParameter params = new UserSearchParameter();
-            params.setMaxSize(20);
+            params.setMaxSize(50);
 
             UserList list = controller.getDaoUsers().searchUsers(params);
 

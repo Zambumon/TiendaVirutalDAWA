@@ -45,6 +45,7 @@
                 <li>
                     <form action="shop">
                         <input type="hidden" name="route" value="showaccount">
+                        <input type="hidden" name="userId" value="${user.email}">
                         <input class="navbar-link" type="submit" value="Mi cuenta">
                     </form>
                 </li>

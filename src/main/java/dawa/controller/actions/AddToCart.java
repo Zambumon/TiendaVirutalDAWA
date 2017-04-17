@@ -29,7 +29,7 @@ public class AddToCart extends Action {
 
         if(item == null){
             req.setAttribute("errorCode", 0);
-            req.setAttribute("errorMsg", "ID del item invalida");
+            req.setAttribute("errorMsg", "ID del item invalido");
             dispatcher.showView("cart.jsp", req, res);
             return;
         }
@@ -64,7 +64,7 @@ public class AddToCart extends Action {
             }
         }
         if(!found){
-            LineItem newItem = new LineItem(item, amount);
+            LineItem newItem = new LineItem(item, amount, item.getPrice(), item.getTaxes());
             cart.getLines().add(newItem);
         }
     }
