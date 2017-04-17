@@ -19,7 +19,7 @@
             <p>Nombre del producto</p>
             <input type="text" name="name" id="name" placeholder="Nombre del producto" required>
             <p>Precio</p>
-            <input type="number" min="0" value="99" name="price" id="price" required> &euro;
+            <input type="number" min="0.01" value="99" name="price" id="price" step="0.01" required> &euro;
             <p>Unidades disponibles</p>
             <input type="number" min="1" name="stock" id="stock" value="1" required>
             <h2>Propiedades</h2>
