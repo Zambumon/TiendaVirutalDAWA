@@ -1,5 +1,4 @@
 ### TODO
-- Update VIPs
 - Add error.jsp
 - Add reviews
 - Test permisions in controller
@@ -13,3 +12,4 @@
 - Edit user account
 - Edit other users accounts
 - Insert CD
+- Update VIPs
