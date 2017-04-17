@@ -8,26 +8,24 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
-<%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
 
 <div class="item-wrapper">
     <h2 class="item-name-thingy">Añadir un nuevo item</h2>
-    <!-- TODO le cout-->
-    <form action="shop" method="get">
-        <input type="hidden" name="action" value="todo">
+    <form action="shop" method="post">
+        <input type="hidden" name="route" value="additem">
 
         <div class="general-info">
             <h2>Información general</h2>
             <p>Nombre del producto</p>
             <input type="text" name="name" id="name" placeholder="Nombre del producto" required>
             <p>Precio</p>
-            <input type="number" min="0.1" value="1" name="price" id="price" required> &euro;
+            <input type="number" min="0" value="99" name="price" id="price" required> &euro;
             <p>Unidades disponibles</p>
             <input type="number" min="1" name="stock" id="stock" value="1" required>
             <h2>Propiedades</h2>
             <fieldset>
                 <legend>Descripción</legend>
-                <textarea class="item-creator-description" name="description" rows="8" cols="80"></textarea required>
+                <textarea class="item-creator-description" name="description" rows="8" cols="80" required></textarea>
             </fieldset>
             <fieldset>
                 <legend>Datos particulares del CD</legend>
@@ -41,7 +39,6 @@
             </div>
 
         </div>
-
 
     </form>
 </div>

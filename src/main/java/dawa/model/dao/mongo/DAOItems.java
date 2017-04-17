@@ -62,6 +62,10 @@ public class DAOItems extends MongoDAO implements IDAOItems {
     @Override
     public void insertItem(Item item) {
 
+        if(item.getId() == -1) {
+            Query query = datastore.createQuery(Item.class);
+            item.setId((int) query.count());
+        }
         try {
             datastore.insert(item);
         } catch (com.mongodb.DuplicateKeyException e) {

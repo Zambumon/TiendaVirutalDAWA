@@ -10,6 +10,7 @@
 <%@include file="navbar.jsp" %>
 <%--@elvariable id="item" type="dawa.model.VOs.Item"--%>
 <%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
+<%--@elvariable id="permisions" type="java.util.Map"--%>
 
 <div class="item-wrapper">
     <h2 class="item-name-thingy">${item.name}</h2>
@@ -30,9 +31,9 @@
             </form>
         </c:if>
     </div>
-    <div class="item-properties">
-        <c:choose>
-            <c:when test="${item.available && (!user.registered || user.type != 'ADMIN')}">
+    <c:choose>
+        <c:when test="${item.available && (!user.registered || user.type != 'ADMIN')}">
+            <div class="item-properties">
                 <div class="addToCart">
                     <h3>Añadir al carrito</h3>
                     <form action="shop" method="post">
@@ -42,24 +43,25 @@
                         <input type="submit" value="Añadir">
                     </form>
                 </div>
-            </c:when>
-            <c:otherwise>
-                <p>Producto no disponible</p>
-            </c:otherwise>
-        </c:choose>
-    </div>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <c:if test="${!item.available}">
+                <div class="item-properties">
+                    <p>Producto no disponible</p>
+                </div>
+            </c:if>
+        </c:otherwise>
+    </c:choose>
     <div class="item-properties">
         <h2>Propiedades</h2>
-        <p>${item.description}</p>
+        <p>${item.properties['description']}</p>
         <ul class="properties-list">
-            <c:forEach items="${item.properties}" var="entry">
-                <li>    <strong>${entry.key}:</strong> ${entry.value}</li>
-            </c:forEach>
+            <li><strong>Autor:</strong> ${item.properties['author']}</li>
+            <li><strong>Pais:</strong> ${item.properties['country']}</li>
+            <li><strong>Año:</strong> ${item.properties['year']}</li>
         </ul>
     </div>
-
-
-
 
 
     <div class="comment-section">

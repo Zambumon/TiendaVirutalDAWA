@@ -18,7 +18,7 @@ import java.util.Map;
 public class Item {
 
     @Id
-    private int id;
+    private int id = -1;
     private String name;
     private double price;
     private double taxes;
@@ -26,7 +26,7 @@ public class Item {
     private int stock;
     @Embedded
     private List<Review> review;
-    private boolean available;
+    private boolean available = true;
     @Embedded
     private List<String> keywords;
     @Embedded

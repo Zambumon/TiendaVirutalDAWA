@@ -21,8 +21,7 @@
             <c:otherwise>
                 <c:if test="${user.hasPermission(permisions['ADD_ITEM'])}">
                     <li>
-                        <form action="shop">
-                            <input type="hidden" name="route" value="additem">
+                        <form action="addCD.jsp">
                             <input class="navbar-link" type="submit" value="Añadir un nuevo CD">
                         </form>
                     </li>

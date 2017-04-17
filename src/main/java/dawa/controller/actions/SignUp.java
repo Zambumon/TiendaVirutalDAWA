@@ -34,7 +34,7 @@ public class SignUp extends Action {
             String country = req.getParameter("country");
 
             Address addr = new Address(firstLine, secondLine, postCode, country);
-            Registered user = new Registered(name, email, UserType.ADMIN, addr);
+            Registered user = new Registered(name, email, UserType.NORMAL, addr);
 
             user = controller.getAccountManager().trySignUp(user, pass);
             if (user == null) {

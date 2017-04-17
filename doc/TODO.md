@@ -1,6 +1,7 @@
 ### TODO
-- Insert CD
+- Update VIPs
 - Add error.jsp
+- Add reviews
 - Test permisions in controller
 - Test deploy
 ### DONE
@@ -11,3 +12,4 @@
 - Remove user account
 - Edit user account
 - Edit other users accounts
+- Insert CD
