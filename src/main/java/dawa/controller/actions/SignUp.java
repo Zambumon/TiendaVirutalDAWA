@@ -43,7 +43,7 @@ public class SignUp extends Action {
                 dispatcher.showView("login.jsp", req, res);
                 return;
             }
-            req.setAttribute("user", user);
+            req.getSession().setAttribute("user", user);
         }
         dispatcher.showCatalog(req, res);
     }

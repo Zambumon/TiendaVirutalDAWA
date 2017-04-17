@@ -7,21 +7,11 @@ import dawa.model.VOs.*;
  */
 public final class Cashier {
 
-    public static void updatePrice(Order order) {
-
-        double totalPrice = order.getOrderLines()
-                .stream()
-                .mapToDouble(i -> i.getPrice() * i.getTaxes())
-                .sum() * order.getDiscountPercent();
-
-        order.setTotalPrice(totalPrice);
-    }
-
     public static void updateCart(Cart cart) {
 
         double price = cart.getLines()
                 .stream()
-                .mapToDouble((l) -> l.getPrice() * l.getTaxes())
+                .mapToDouble((l) -> l.getPrice() * l.getTaxes() * l.getAmount())
                 .sum();
 
         cart.setPrice(price);

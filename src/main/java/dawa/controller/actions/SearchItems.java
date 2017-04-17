@@ -8,9 +8,6 @@ import dawa.model.VOs.ItemSearchParameter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Objects;
 
 /**
  * Created by cout970 on 2017/04/12.
@@ -25,26 +22,27 @@ public class SearchItems extends Action {
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
         getUser(req);
         ItemSearchParameter params = new ItemSearchParameter();
-        String orderBy = req.getParameter("order");
-        String[] checkbox = req.getParameterValues("searchParameter");
-        String searchText = req.getParameter("search");
+        String title = req.getParameter("searchParameter-title");
+        String author = req.getParameter("searchParameter-author");
+        String country = req.getParameter("searchParameter-country");
+        String year = req.getParameter("searchParameter-year");
+        String maxPriceStr = req.getParameter("searchParameter-max-price");
 
-        if (Objects.equals(orderBy, "ascendant")) {
-            params.setDescendant(true);
+        if (!title.isEmpty()) {
+            params.setName(title);
         }
-
-        if(checkbox != null) {
-            if (Arrays.binarySearch(checkbox, "name") != -1) {
-                params.setName(searchText);
-            }
-
-            if (Arrays.binarySearch(checkbox, "keywords") != -1) {
-                params.setKeywords(Collections.singletonList(searchText));
-            }
-
-            if (Arrays.binarySearch(checkbox, "description") != -1) {
-                params.setSearchWords(Collections.singletonList(searchText));
-            }
+        if (!author.isEmpty()) {
+            params.getKeywords().add(author);
+        }
+        if (!country.isEmpty()) {
+            params.getKeywords().add(country);
+        }
+        if (!year.isEmpty()) {
+            params.getKeywords().add(year);
+        }
+        if (!maxPriceStr.isEmpty()) {
+            double maxPrice = Double.parseDouble(maxPriceStr);
+            params.setMaxPrice(maxPrice);
         }
 
         ItemList result = controller.getDaoItems().searchItems(params);

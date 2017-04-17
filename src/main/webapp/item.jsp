@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
         <c:if test="${user.registered && user.type == 'ADMIN'}">
             <p>ID: <strong>${item.id}</strong></p>
         </c:if>
-        <p>Precio: <strong>${item.price} &euro;</strong></p>
+        <p>Precio: <strong><fmt:formatNumber value="${item.price}" type="currency"/></strong></p>
         <p>Stock: <strong>${item.stock} unidades disponibles</strong></p>
         <c:if test="${user.registered && user.type == 'ADMIN'}">
             <h3>Editar stock del producto</h3>

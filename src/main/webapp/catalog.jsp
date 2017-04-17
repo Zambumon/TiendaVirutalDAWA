@@ -1,6 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -15,13 +16,13 @@
 <div class="search-bar">
     <form action="shop" method="get">
         <input type="hidden" name="route" value="searchitems">
-        <input class="search-box" type="text" name="search" placeholder="Introduzca título del producto" required>
+        <input class="search-box" type="text" name="searchParameter-title" placeholder="Introduzca título del producto">
         <input class="search-button" type="submit" value="Buscar">
         <div class="searchParameters">
             <input type="text" name="searchParameter-author" placeholder="Autor">
             <input type="text" name="searchParameter-country" placeholder="País">
             <input type="number" name="searchParameter-year" min="1970" placeholder="Año">
-            <br>Precio máximo <input type="number" name="searchParameter-max-price" value="99999" min="1" placeholder="Precio máximo"> &euro;
+            <br>Precio máximo <input type="number" name="searchParameter-max-price" min="1" placeholder="Precio máximo"> &euro;
         </div>
     </form>
 </div>
@@ -30,7 +31,7 @@
     <c:forEach var="item" items="${searchResult}">
         <div class="catalog-item">
             <h3><c:out value="${item.name}"/></h3>
-            <p><c:out value="${item.price}"/> &euro;</p>
+            <p><fmt:formatNumber value="${item.price}" type="currency"/></p>
             <p><c:out value="${item.stock}"/> unidades en stock</p>
             <form action="shop" method="get">
                 <input type="hidden" name="route" value="showitem">

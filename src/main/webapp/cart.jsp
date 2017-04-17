@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -44,8 +45,8 @@
                         </td>
                         <td>${lineItem.price}</td>
                         <td>${lineItem.amount}</td>
-                        <td>${lineItem.taxes}</td>
-                        <td>${lineItem.taxes * lineItem.price * lineItem.amount}</td>
+                        <td><fmt:formatNumber value="${lineItem.taxes}" type="currency"/></td>
+                        <td><fmt:formatNumber value="${lineItem.taxes * lineItem.price * lineItem.amount}" type="currency"/></td>
                         <td>
                             <form action="shop" method="post">
                                 <input type="hidden" name="route" value="removefromcart">
@@ -59,7 +60,7 @@
                 </tbody>
             </table>
             <div class="cart-summary">
-                <p><strong>Total (IVA Incluido): ${cart.price} &euro;</strong></p>
+                <p><strong>Total (IVA Incluido): <fmt:formatNumber value="${cart.price}" type="currency"/></strong></p>
                 <a href="index.jsp">Seguir comprando</a>
                 <c:choose>
                     <c:when test="${user.registered}">

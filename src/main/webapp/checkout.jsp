@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -31,20 +32,20 @@
         <c:forEach var="lineItem" items="${cart.lines}">
             <tr>
                 <td>${lineItem.item.name}</td>
-                <td>${lineItem.price} &euro;</td>
+                <td><fmt:formatNumber value="${lineItem.price}" type="currency"/></td>
                 <td>${lineItem.amount}</td>
-                <td>${lineItem.taxes}</td>
-                <td>${lineItem.price * lineItem.taxes * lineItem.amount} &euro;</td>
+                <td><fmt:formatNumber value="${lineItem.price * lineItem.taxes}" type="currency"/></td>
+                <td><fmt:formatNumber value="${lineItem.price * lineItem.taxes * lineItem.amount}" type="currency"/></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
     <div class="item-properties">
-        <p>Subtotal: ${cart.price} &euro;</p>
+        <p>Subtotal:  <fmt:formatNumber value="${cart.price}" type="currency"/></p>
         <c:if test="${user.type == 'VIP'}">
-            <p>Descuento: ${discount} %</p>
+            <p>Descuento: <fmt:formatNumber value="${discount}" type="percent"/></p>
         </c:if>
-        <p><strong>Total (IVA Incluido):</strong> ${total} &euro;</p>
+        <p><strong>Total (IVA Incluido):</strong> <fmt:formatNumber value="${total}" type="currency"/></p>
     </div>
 
     <div class="item-properties">

@@ -27,8 +27,8 @@ public class Checkout extends Action {
             double discount = Cashier.getDiscount((Registered) user);
             double total = user.getCart().getPrice() * (1 - discount);
 
-            req.setAttribute("discount", String.format("%.2f", discount));
-            req.setAttribute("total", String.format("%.2f", total));
+            req.setAttribute("discount", discount);
+            req.setAttribute("total", total);
             req.setAttribute("cart", user.getCart());
             req.setAttribute("address", ((Registered) user).getCurrentAddress());
 
