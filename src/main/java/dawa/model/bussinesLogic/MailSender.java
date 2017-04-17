@@ -2,6 +2,7 @@ package dawa.model.bussinesLogic;
 
 import javax.mail.*;
 import javax.mail.internet.*;
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 
@@ -13,6 +14,7 @@ public class MailSender {
     private static final String SENDER_DIRECTION = "tiendavirtualv4@gmail.com";
     private static final String SERVER_PASS = "rootroot";
     private static final String SERVER_HOST = "smtp.gmail.com";
+    private static final String SHOP_NAME = "Tokyo CD Store";
 
     private static MailSender instance = null;
 
@@ -40,18 +42,20 @@ public class MailSender {
         MimeMessage message = new MimeMessage(session);
 
         try {
-            message.setFrom(new InternetAddress(SENDER_DIRECTION));
+            message.setFrom(new InternetAddress(SENDER_DIRECTION, SHOP_NAME));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(receptor));
 
 
             message.setSubject(subject);
-            message.setText(messageContent);
+            message.setContent(messageContent, "text/html; charset=utf-8");
             Transport transport = session.getTransport("smtp");
             transport.connect(SERVER_HOST, SENDER_DIRECTION, SERVER_PASS);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
         } catch (AddressException ae) {
             ae.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
     }
 }
