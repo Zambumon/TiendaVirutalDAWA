@@ -11,6 +11,13 @@ public class Cart {
     private List<LineItem> lines = new ArrayList<>();
     private double price;
 
+    public Cart() {}
+
+    public Cart(List<LineItem> lines, double price) {
+        this.lines = lines;
+        this.price = price;
+    }
+
     public List<LineItem> getLines() {
         return lines;
     }
@@ -25,5 +32,13 @@ public class Cart {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Cart copy() {
+        List<LineItem> newLines = new ArrayList<>(lines.size());
+        for (LineItem lineItem : lines) {
+            newLines.add(new LineItem(lineItem.getItem(), lineItem.getAmount(), lineItem.getPrice(), lineItem.getTaxes()));
+        }
+        return new Cart(newLines, price);
     }
 }

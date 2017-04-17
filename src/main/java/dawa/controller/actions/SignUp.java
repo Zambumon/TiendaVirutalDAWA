@@ -28,9 +28,9 @@ public class SignUp extends Action {
             String name = req.getParameter("name");
             String pass = req.getParameter("pass");
             // Address
-            String firstLine = req.getParameter("firstLine");
-            String secondLine = req.getParameter("secondLine");
-            String postCode = req.getParameter("postCode");
+            String firstLine = req.getParameter("addressFirstLine");
+            String secondLine = req.getParameter("addressSecondLine");
+            String postCode = req.getParameter("addressPostcode");
             String country = req.getParameter("country");
 
             Address addr = new Address(firstLine, secondLine, postCode, country);
