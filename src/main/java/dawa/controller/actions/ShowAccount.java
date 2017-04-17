@@ -5,6 +5,7 @@ import dawa.controller.Dispatcher;
 import dawa.controller.ShopController;
 import dawa.model.VOs.Permission;
 import dawa.model.VOs.Registered;
+import dawa.model.VOs.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,11 +21,16 @@ public class ShowAccount extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-        Registered user = (Registered) getUser(req);
+        User auser = getUser(req);
+        if(!(auser instanceof Registered)){
+            dispatcher.showError(0, "Usuario no registrado", req, res);
+            return;
+        }
+        Registered user = (Registered) auser;
         String email = req.getParameter("userId");
 
         if(email == null){
-            dispatcher.showCatalog(req, res);
+            dispatcher.showError(1, "email del usuario invalido", req, res);
             return;
         }
 
@@ -36,7 +42,7 @@ public class ShowAccount extends Action {
             req.setAttribute("user", user);
             dispatcher.showView("account.jsp", req, res);
         } else {
-            dispatcher.showCatalog(req, res);
+            dispatcher.showError(2, "Permisos insuficientes", req, res);
         }
     }
 }

@@ -42,7 +42,7 @@ public class RemoveAccount extends Action {
             req.setAttribute("route", "searchusers");
             dispatcher.showView("shop", req, res);
         } else {
-            dispatcher.showCatalog(req, res);
+            dispatcher.showError(0, "Permisos insuficientes", req, res);
         }
     }
 }

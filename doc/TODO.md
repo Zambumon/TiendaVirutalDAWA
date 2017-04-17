@@ -1,5 +1,4 @@
 ### TODO
-- Add error.jsp
 - Add reviews
 - Test permisions in controller
 - Test deploy
@@ -14,3 +13,4 @@
 - Edit other users accounts
 - Insert CD
 - Update VIPs
+- Add error.jsp

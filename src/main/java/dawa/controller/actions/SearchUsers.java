@@ -32,7 +32,7 @@ public class SearchUsers extends Action {
             req.setAttribute("listOfUsers", list.getUsers());
             dispatcher.showView("listusers.jsp", req, res);
         } else {
-            dispatcher.showCatalog(req, res);
+            dispatcher.showError(0, "Permisos insuficientes", req, res);
         }
     }
 }

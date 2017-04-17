@@ -21,7 +21,12 @@ public class EditAccount extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-        Registered user = (Registered) getUser(req);
+        User auser = getUser(req);
+        if(!(auser instanceof Registered)){
+            dispatcher.showError(0, "Usuario no registrado", req, res);
+            return;
+        }
+        Registered user = (Registered) auser;
         String email = req.getParameter("userId");
 
         if (user.getEmail().equals(email) || user.hasPermission(Permission.EDIT_USER_ACCOUNTS)) {
@@ -56,7 +61,7 @@ public class EditAccount extends Action {
             req.setAttribute("account", registered);
             dispatcher.showView("account.jsp", req, res);
         } else {
-            dispatcher.showCatalog(req, res);
+            dispatcher.showError(1, "Permisos insuficientes", req, res);
         }
     }
 }

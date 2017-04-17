@@ -28,7 +28,7 @@ public class EditStock extends Action {
 
             ItemList list = controller.getDaoItems().searchItems(new ItemSearchParameter(itemId));
             if (list.getItems().isEmpty()) {
-                dispatcher.showCatalog(req, res);
+                dispatcher.showError(1, "Id del item invalido", req, res);
                 return;
             }
             Item item = list.getItems().get(0);
@@ -38,7 +38,7 @@ public class EditStock extends Action {
             req.setAttribute("route", "showitem");
             dispatcher.showView("shop", req, res);
         } else {
-            dispatcher.showCatalog(req, res);
+            dispatcher.showError(0, "Permisos insuficientes", req, res);
         }
     }
 }

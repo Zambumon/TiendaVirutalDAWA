@@ -28,7 +28,7 @@ public class RemoveFromCart extends Action {
         Item item = getItem(itemId);
 
         if(item == null){
-            dispatcher.showView("cart.jsp", req, res);
+            dispatcher.showError(0, "Item Id invalido", req, res);
             return;
         }
 

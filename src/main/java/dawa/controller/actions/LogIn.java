@@ -30,9 +30,7 @@ public class LogIn extends Action {
             Registered user = controller.getAccountManager().tryLogin(email, pass);
 
             if (user == null) {
-                req.setAttribute("errorCode", 0);
-                req.setAttribute("errorMsg", "Par usuario-contraseña incorrecto");
-                dispatcher.showView("error.jsp", req, res);
+                dispatcher.showError(0, "Par usuario-contraseña incorrecto", req, res);
                 return;
             }
             user.setCart(oldUser.getCart());
@@ -40,7 +38,7 @@ public class LogIn extends Action {
 
             dispatcher.showCatalog(req, res);
         } else {
-            dispatcher.showView("login.jsp", req, res);
+            dispatcher.showError(1, "Metodo Get no permitido", req, res);
         }
     }
 }

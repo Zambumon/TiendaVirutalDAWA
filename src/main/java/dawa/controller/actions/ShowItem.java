@@ -25,7 +25,7 @@ public class ShowItem extends Action {
         int itemId = Integer.parseInt(req.getParameter("itemId"));
         ItemList list = controller.getDaoItems().searchItems(new ItemSearchParameter(itemId));
         if(list.getItems().isEmpty()){
-            dispatcher.showView("catalog.jsp", req, res);
+            dispatcher.showError(0, "Id del item invalido", req, res);
             return;
         }
         Item item = list.getItems().get(0);

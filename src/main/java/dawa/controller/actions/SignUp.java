@@ -38,13 +38,13 @@ public class SignUp extends Action {
 
             user = controller.getAccountManager().trySignUp(user, pass);
             if (user == null) {
-                req.setAttribute("errorCode", 0);
-                req.setAttribute("errorMsg", "No se pudo registrar el usuario");
-                dispatcher.showView("login.jsp", req, res);
+                dispatcher.showError(0, "No se pudo registrar el usuario", req, res);
                 return;
             }
             req.getSession().setAttribute("user", user);
+            dispatcher.showCatalog(req, res);
+        } else {
+            dispatcher.showError(1, "Metodo GET no permitido", req, res);
         }
-        dispatcher.showCatalog(req, res);
     }
 }
