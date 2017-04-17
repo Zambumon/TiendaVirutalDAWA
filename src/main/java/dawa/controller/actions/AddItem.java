@@ -21,12 +21,21 @@ public class AddItem extends Action {
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
 
         String name = req.getParameter("name");
-        double price = Double.parseDouble(req.getParameter("price"));
-        int stock = Integer.parseInt(req.getParameter("stock"));
         String description = req.getParameter("description");
         String author = req.getParameter("cd-author");
         String country = req.getParameter("cd-country");
         String year = req.getParameter("cd-year");
+
+        double price;
+        int stock;
+
+        try {
+            stock = Integer.parseInt(req.getParameter("stock"));
+            price = Double.parseDouble(req.getParameter("price"));
+        } catch (NumberFormatException e) {
+            dispatcher.showError(0, "Formato de numero invalido: " + e.getMessage(), req, res);
+            return;
+        }
 
         Item item = new Item();
 

@@ -35,4 +35,10 @@ public class Dispatcher {
         req.setAttribute("searchResult", result.getItems());
         showView("catalog.jsp", req, res);
     }
+
+    public void showError(int code, String msg, HttpServletRequest req, HttpServletResponse res) {
+        req.setAttribute("errorCode", code);
+        req.setAttribute("errorMsg", msg);
+        showView("error.jsp", req, res);
+    }
 }

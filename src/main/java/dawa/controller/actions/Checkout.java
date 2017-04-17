@@ -34,7 +34,7 @@ public class Checkout extends Action {
 
             dispatcher.showView("checkout.jsp", req, res);
         } else {
-            dispatcher.showCatalog(req, res);
+            dispatcher.showError(0, "Usuario no registrado", req, res);
         }
     }
 }

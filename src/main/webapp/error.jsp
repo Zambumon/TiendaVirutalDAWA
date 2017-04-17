@@ -8,6 +8,9 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
+<%--@elvariable id="errorCode" type="java.lang.Integer"--%>
+<%--@elvariable id="errorMsg" type="java.lang.String"--%>
+
 <div class="confirmation">
     <h1>Se ha producido un error</h1>
     <p>
@@ -17,7 +20,6 @@
     <p><a href="index.jsp">Volver</a> a la página principal</p>
 
 </div>
-
 
 </body>
 </html>

@@ -28,15 +28,11 @@ public class AddToCart extends Action {
         Item item = getItem(itemId);
 
         if(item == null){
-            req.setAttribute("errorCode", 0);
-            req.setAttribute("errorMsg", "ID del item invalido");
-            dispatcher.showView("cart.jsp", req, res);
+            dispatcher.showError(0, "ID del item invalido", req, res);
             return;
         }
         if(getItemCount(cart, item) + amount > item.getStock()){
-            req.setAttribute("errorCode", 1);
-            req.setAttribute("errorMsg", "Cantidad de items mayor que la del stock");
-            dispatcher.showView("cart.jsp", req, res);
+            dispatcher.showError(0, "Cantidad de items mayor que la del stock", req, res);
             return;
         }
         insert(cart, item, amount);

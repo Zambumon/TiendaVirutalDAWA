@@ -24,7 +24,12 @@ public class Confirm extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-        Registered user = (Registered) getUser(req);
+        User auser = getUser(req);
+        if(!(auser instanceof Registered)){
+            dispatcher.showError(0, "Usuario no registrado", req, res);
+            return;
+        }
+        Registered user = (Registered) auser;
         Cart cart = user.getCart().copy();
         Order order = new Order();
 

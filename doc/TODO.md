@@ -3,6 +3,7 @@
 - Add reviews
 - Test permisions in controller
 - Test deploy
+
 ### DONE
 - Fix search bar
 - Fix formatting in cart and checkout
