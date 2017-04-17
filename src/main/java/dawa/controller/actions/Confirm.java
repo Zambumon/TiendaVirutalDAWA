@@ -85,7 +85,7 @@ public class Confirm extends Action {
         // Send Email
         try {
             StringBuilder content = new StringBuilder();
-            content.append("<h2>Hola, " + order.getBuyer().getName() + ", tu compra en magneticraft.com se ha " +
+            content.append("<h2>Hola, " + order.getBuyer().getName() + ", tu compra en Música para DAA se ha " +
                     "realizado con éxito.</h2><p>Estos son los items que has comprado</p>" +
                     "<table><tr>" +
                     "<th>Producto</th>" +
@@ -100,13 +100,13 @@ public class Confirm extends Action {
                         "</tr>");
             }
             content.append("</table><br><br><h3>Resumen</h3>" +
-                    "<p>Descuento aplicado: " + order.getDiscountPercent() + "%</p>" +
+                    "<p>Descuento aplicado: " + order.getDiscountPercent()*100 + "%</p>" +
                     "<strong>Total (IVA incluido): </strong>"+
-            order.getTotalPrice()+ "<br><br><h3>Dirección de envío</h3>" +
+            order.getTotalPrice()+ "€<br><br><h3>Dirección de envío</h3>" +
               order.getDestination().getFirstLine() + "<br>" +
                     order.getDestination().getSecondLine() + "<br>" +
                     order.getDestination().getPostCode() + "<br>" +
-                    order.getDestination().getCountry());
+                    order.getDestination().getCountry() + "<br><h4>Gracias por confiar en nosotros.</h4>");
 
 
             MailSender
