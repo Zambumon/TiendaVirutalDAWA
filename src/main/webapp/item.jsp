@@ -15,12 +15,12 @@
     <h2 class="item-name-thingy">${item.name}</h2>
     <div class="general-info">
         <h2>Información general</h2>
-        <c:if test="${user.registered && user.type == 'ADMIN'}">
+        <c:if test="${user.hasPermission(permisions['EDIT_ITEM'])}">
             <p>ID: <strong>${item.id}</strong></p>
         </c:if>
         <p>Precio: <strong><fmt:formatNumber value="${item.price}" type="currency"/></strong></p>
         <p>Stock: <strong>${item.stock} unidades disponibles</strong></p>
-        <c:if test="${user.registered && user.type == 'ADMIN'}">
+        <c:if test="${user.hasPermission(permisions['EDIT_ITEM'])}">
             <h3>Editar stock del producto</h3>
             <form action="shop" method="post">
                 <input type="hidden" name="route" value="editstock">

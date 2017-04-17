@@ -19,7 +19,7 @@
         <div class="general-info">
             <h2>Información general</h2>
             <p>Nombre del producto</p>
-            <input type="text" required="" name="name" id="name" placeholder="Nombre del producto" required>
+            <input type="text" name="name" id="name" placeholder="Nombre del producto" required>
             <p>Precio</p>
             <input type="number" min="0.1" value="1" name="price" id="price" required> &euro;
             <p>Unidades disponibles</p>

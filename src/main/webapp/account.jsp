@@ -25,7 +25,7 @@
             <label for="user-type">Tipo de cuenta de usuario</label>
             <input type="text" id="user-type" value="${user.type}" readonly>
         </fieldset>
-        <c:if test="${user.registered && user.type == 'ADMIN'}">
+        <c:if test="${user.hasPermission(permisions['EDIT_USER_ACCOUNTS'])}">
             <fieldset>
                 <legend>Editar tipo de cuenta</legend>
                 <select name="role" id="role">

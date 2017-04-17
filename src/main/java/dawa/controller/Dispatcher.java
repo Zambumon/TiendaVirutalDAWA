@@ -2,6 +2,7 @@ package dawa.controller;
 
 import dawa.model.VOs.ItemList;
 import dawa.model.VOs.ItemSearchParameter;
+import dawa.model.VOs.Permission;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,6 +23,7 @@ public class Dispatcher {
     public void showView(String name, HttpServletRequest request, HttpServletResponse response){
         RequestDispatcher dispatcher = request.getRequestDispatcher(name);
         try {
+            request.setAttribute("permisions", Permission.asMap());
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             e.printStackTrace();

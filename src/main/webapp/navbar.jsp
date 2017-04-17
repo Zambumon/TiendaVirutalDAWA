@@ -1,10 +1,12 @@
 <%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
+<%--@elvariable id="permisions" type="java.util.Map"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <div class="navbar">
     <ul>
         <li><a class="navbar-link" href="index.jsp">Catálogo</a></li>
-
         <c:choose>
             <c:when test="${!user.registered}">
                 <li>
@@ -17,30 +19,30 @@
                 <li><a class="navbar-link" href="signup.jsp">Registrarse</a></li>
             </c:when>
             <c:otherwise>
-                <c:choose>
-                    <c:when test="${user.type == 'ADMIN'}">
-                        <li>
-                            <form action="shop">
-                                <input type="hidden" name="route" value="additem">
-                                <input class="navbar-link" type="submit" value="Añadir un nuevo CD">
-                            </form>
-                        </li>
-                        <li>
-                            <form action="shop">
-                                <input type="hidden" name="route" value="searchusers">
-                                <input class="navbar-link" type="submit" value="Administrar usuarios">
-                            </form>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li>
-                            <form action="shop">
-                                <input type="hidden" name="route" value="showcart">
-                                <input class="navbar-link" type="submit" value="Carrito">
-                            </form>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
+                <c:if test="${user.hasPermission(permisions['ADD_ITEM'])}">
+                    <li>
+                        <form action="shop">
+                            <input type="hidden" name="route" value="additem">
+                            <input class="navbar-link" type="submit" value="Añadir un nuevo CD">
+                        </form>
+                    </li>
+                </c:if>
+                <c:if test="${user.hasPermission(permisions['SEE_USER_ACCOUNTS'])}">
+                    <li>
+                        <form action="shop">
+                            <input type="hidden" name="route" value="searchusers">
+                            <input class="navbar-link" type="submit" value="Administrar usuarios">
+                        </form>
+                    </li>
+                </c:if>
+                <c:if test="${user.type != 'ADMIN'}">
+                    <li>
+                        <form action="shop">
+                            <input type="hidden" name="route" value="showcart">
+                            <input class="navbar-link" type="submit" value="Carrito">
+                        </form>
+                    </li>
+                </c:if>
                 <li>
                     <form action="shop">
                         <input type="hidden" name="route" value="showaccount">
