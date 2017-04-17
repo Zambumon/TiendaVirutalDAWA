@@ -59,12 +59,17 @@ body{
 }
 
 .search-box{
-    width: 400px;
+    width: 450px;
     padding: 10px;
     font-size: 1em;
     border-radius: 5px 0 0 5px;
     margin: 0;
     border: 0;
+}
+.country-selector{
+    padding: 10px;
+    margin: 10px;
+    height: 25px;
 }
 .searchParameters{
     display: block;
@@ -454,4 +459,8 @@ table{
     border: none;
     background: transparent;
     font-size: 1em;
+}
+
+.padded-search-element{
+    padding: 5px;
 }

@@ -58,7 +58,7 @@
         <p>${item.properties['description']}</p>
         <ul class="properties-list">
             <li><strong>Autor:</strong> ${item.properties['author']}</li>
-            <li><strong>Pais:</strong> ${item.properties['country']}</li>
+            <li><strong>País:</strong> ${item.properties['country']}</li>
             <li><strong>Año:</strong> ${item.properties['year']}</li>
         </ul>
     </div>
@@ -83,7 +83,7 @@
                         <legend>Comentar</legend>
                         <textarea name="comment" required></textarea>
                         <div class="petrusboniatus">
-                            <label for="new-points">Tu puntuación:</label>
+                            <label for="points">Tu puntuación:</label>
                             <select name="points" id="points">
                                 <c:forEach begin="1" end="10" var="val">
                                     <option value="${val}"><c:out value="${val}"/></option>
