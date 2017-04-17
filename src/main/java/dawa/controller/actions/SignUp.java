@@ -33,6 +33,18 @@ public class SignUp extends Action {
             String postCode = req.getParameter("addressPostcode");
             String country = req.getParameter("country");
 
+            if (email == null || email.isEmpty() ||
+                    name == null || name.isEmpty() ||
+                    pass == null || pass.isEmpty() ||
+                    firstLine == null || firstLine.isEmpty() ||
+                    secondLine == null || secondLine.isEmpty() ||
+                    postCode == null || postCode.isEmpty() ||
+                    country == null || country.isEmpty()) {
+
+                dispatcher.showError(0, "Datos de registro incompletos", req, res);
+                return;
+            }
+
             Address addr = new Address(firstLine, secondLine, postCode, country);
             Registered user = new Registered(name, email, UserType.NORMAL, addr);
 

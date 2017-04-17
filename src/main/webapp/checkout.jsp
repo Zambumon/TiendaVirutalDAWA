@@ -41,11 +41,11 @@
         </tbody>
     </table>
     <div class="item-properties">
-        <p>Subtotal:  <fmt:formatNumber value="${cart.price}" type="currency"/></p>
+        <p>Subtotal (sin descuento):  <fmt:formatNumber value="${cart.price}" type="currency"/></p>
         <c:if test="${user.type == 'VIP'}">
             <p>Descuento: <fmt:formatNumber value="${discount}" type="percent"/></p>
         </c:if>
-        <p><strong>Total (IVA Incluido):</strong> <fmt:formatNumber value="${total}" type="currency"/></p>
+        <p><strong>Total:</strong> <fmt:formatNumber value="${total}" type="currency"/></p>
     </div>
 
     <div class="item-properties">

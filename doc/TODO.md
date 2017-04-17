@@ -5,7 +5,7 @@
 - Fix search bar
 - Fix formatting in cart and checkout
 - Save orders in DDBB and send emails
-- Fix persisions in view
+- Fix permissions in view
 - Remove user account
 - Edit user account
 - Edit other users accounts

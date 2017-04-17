@@ -42,7 +42,9 @@ public class SearchItems extends Action {
         }
         if (!maxPriceStr.isEmpty()) {
             double maxPrice = Double.parseDouble(maxPriceStr);
-            params.setMaxPrice(maxPrice);
+            if(maxPrice > 1){
+                params.setMaxPrice(maxPrice);
+            }
         }
 
         ItemList result = controller.getDaoItems().searchItems(params);
