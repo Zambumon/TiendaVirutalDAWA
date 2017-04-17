@@ -8,6 +8,7 @@
 </head>
 <body>
 <%@include file="navbar.jsp" %>
+<%--@elvariable id="account" type="dawa.model.VOs.Registered"--%>
 <%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
 <%--@elvariable id="address" type="dawa.model.VOs.Address"--%>
 <%--@elvariable id="permisions" type="java.util.Map"--%>
@@ -20,11 +21,11 @@
         <fieldset>
             <legend>Datos generales</legend>
             <label for="user-email">Correo electrónico</label>
-            <input type="text" id="user-email" name="user-email" value="${user.email}" readonly>
+            <input type="text" id="user-email" name="user-email" value="${account.email}" readonly>
             <label for="user-name">Nombre de usuario</label>
-            <input type="text" id="user-name" name="user-name" value="${user.name}">
+            <input type="text" id="user-name" name="user-name" value="${account.name}">
             <label for="user-type">Tipo de cuenta de usuario</label>
-            <input type="text" id="user-type" value="${user.type}" readonly>
+            <input type="text" id="user-type" value="${account.type}" readonly>
         </fieldset>
         <c:if test="${user.hasPermission(permisions['EDIT_USER_ACCOUNTS'])}">
             <fieldset>
@@ -51,6 +52,7 @@
             <input type="text" id="country" name="country" value="${address.country}" readonly>
         </fieldset>
         <div class="centered-form-input">
+            <input type="hidden" name="userId" value="${account.email}">
             <input type="submit" class="register-button" value="Modificar cuenta">
         </div>
     </form>
@@ -58,7 +60,7 @@
     <div>
         <form action="shop" method="post">
             <input type="hidden" name="route" value="deleteuser">
-            <input type="hidden" name="userId" value="${user.email}">
+            <input type="hidden" name="userId" value="${account.email}">
             <div class="centered-form-input">
                 <input type="submit" class="ok-bye" value="Eliminar cuenta de usuario">
             </div>

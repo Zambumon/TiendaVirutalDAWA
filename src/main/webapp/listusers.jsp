@@ -27,7 +27,7 @@
                 <td>${otherUser.email}</td>
                 <td>
                     <form action="shop" method="post">
-                        <input type="hidden" name="route" value="showuser">
+                        <input type="hidden" name="route" value="showaccount">
                         <input type="hidden" name="userId" value="${otherUser.email}">
                         <input type="submit" class="ok-soz" value="Editar">
 

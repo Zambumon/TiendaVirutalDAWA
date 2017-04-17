@@ -25,7 +25,7 @@ public class SignUp extends Action {
         if (Objects.equals(req.getMethod(), "POST")) {
             // User
             String email = req.getParameter("email");
-            String name = req.getParameter("name");
+            String name = req.getParameter("username");
             String pass = req.getParameter("pass");
             // Address
             String firstLine = req.getParameter("addressFirstLine");
@@ -34,7 +34,7 @@ public class SignUp extends Action {
             String country = req.getParameter("country");
 
             Address addr = new Address(firstLine, secondLine, postCode, country);
-            Registered user = new Registered(name, email, UserType.NORMAL, addr);
+            Registered user = new Registered(name, email, UserType.ADMIN, addr);
 
             user = controller.getAccountManager().trySignUp(user, pass);
             if (user == null) {

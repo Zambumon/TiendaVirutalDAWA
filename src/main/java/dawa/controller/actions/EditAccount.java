@@ -3,9 +3,7 @@ package dawa.controller.actions;
 import dawa.controller.Action;
 import dawa.controller.Dispatcher;
 import dawa.controller.ShopController;
-import dawa.model.VOs.Permission;
-import dawa.model.VOs.Registered;
-import dawa.model.VOs.UserType;
+import dawa.model.VOs.*;
 import dawa.model.bussinesLogic.CryptUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,35 +22,42 @@ public class EditAccount extends Action {
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
         Registered user = (Registered) getUser(req);
+        String email = req.getParameter("userId");
 
-        // Username
-        user.setName(req.getParameter("user-name"));
+        if (user.getEmail().equals(email) || user.hasPermission(Permission.EDIT_USER_ACCOUNTS)) {
+            UserList list = controller.getDaoUsers().searchUsers(new UserSearchParameter(email));
+            Registered registered = list.getUsers().get(0);
 
-        // UserType
-        if (user.hasPermission(Permission.EDIT_USER_ACCOUNTS)) {
-            UserType type = UserType.valueOf(req.getParameter("role"));
-            user.setType(type);
-        }
+            // Username
+            registered.setName(req.getParameter("user-name"));
 
-        // Password
-        String pass = req.getParameter("pass");
-        String passcheck = req.getParameter("passcheck");
-
-        if (pass != null && !pass.isEmpty()) {
-            if (Objects.equals(pass, passcheck)) {
-                String hash = CryptUtils.encrypt(pass);
-                controller.getDaoUsers().insertHash(user.getEmail(), hash);
-            } else {
-                req.setAttribute("address", user.getCurrentAddress());
-                req.setAttribute("user", user);
-                dispatcher.showView("account.jsp", req, res);
-                return;
+            // UserType
+            String role = req.getParameter("role");
+            if (role != null && user.hasPermission(Permission.EDIT_USER_ACCOUNTS)) {
+                UserType type = UserType.valueOf(role);
+                registered.setType(type);
             }
-        }
 
-        // Reload page
-        req.setAttribute("address", user.getCurrentAddress());
-        req.setAttribute("user", user);
-        dispatcher.showView("account.jsp", req, res);
+            // Password
+            String pass = req.getParameter("pass");
+            String passcheck = req.getParameter("passcheck");
+
+            if (pass != null && !pass.isEmpty()) {
+                if (Objects.equals(pass, passcheck)) {
+                    String hash = CryptUtils.encrypt(pass);
+                    controller.getDaoUsers().insertHash(registered.getEmail(), hash);
+                }
+            }
+
+            controller.getDaoUsers().updateUser(registered);
+
+            // Reload page
+            req.setAttribute("address", registered.getCurrentAddress());
+            req.setAttribute("user", user);
+            req.setAttribute("account", registered);
+            dispatcher.showView("account.jsp", req, res);
+        } else {
+            dispatcher.showCatalog(req, res);
+        }
     }
 }

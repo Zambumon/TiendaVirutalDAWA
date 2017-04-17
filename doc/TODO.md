@@ -1,5 +1,4 @@
 ### TODO
-- Edit other users accounts
 - Insert CD
 - Add error.jsp
 - Test permisions in controller
@@ -11,3 +10,4 @@
 - Fix persisions in view
 - Remove user account
 - Edit user account
+- Edit other users accounts

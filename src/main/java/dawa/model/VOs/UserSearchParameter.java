@@ -12,6 +12,10 @@ public class UserSearchParameter {
 
     public UserSearchParameter() {}
 
+    public UserSearchParameter(String email) {
+        this.email = email;
+    }
+
     public UserSearchParameter(String name, String email, int maxSize) {
         this.name = name;
         this.email = email;
