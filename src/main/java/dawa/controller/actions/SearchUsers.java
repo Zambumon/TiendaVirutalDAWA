@@ -23,6 +23,7 @@ public class SearchUsers extends Action {
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
         User user = getUser(req);
+
         if (user.hasPermission(Permission.SEE_USER_ACCOUNTS)) {
             UserSearchParameter params = new UserSearchParameter();
             params.setMaxSize(50);

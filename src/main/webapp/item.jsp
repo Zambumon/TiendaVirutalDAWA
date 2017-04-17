@@ -11,6 +11,7 @@
 <%--@elvariable id="item" type="dawa.model.VOs.Item"--%>
 <%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
 <%--@elvariable id="permisions" type="java.util.Map"--%>
+<%--@elvariable id="canComment" type="java.lang.Boolean"--%>
 
 <div class="item-wrapper">
     <h2 class="item-name-thingy">${item.name}</h2>
@@ -66,19 +67,21 @@
 
     <div class="comment-section">
         <h2>Comentarios</h2>
-        <c:forEach var="review" items="${requestScope.itemReviews}">
+        <c:forEach var="review" items="${item.review}">
             <div class="comment">
-                <p class="comment-author">${review.author} dice:</p>
+                <p class="comment-author">${review.authorName} dice:</p>
                 <p class="comment-text"> ${review.text}</p>
                 <p class="comment-points">Valoración: ${review.points}/10</p>
             </div>
         </c:forEach>
         <c:choose>
-            <c:when test="${!user.registered}">
-                <p>Debe <a href="login.jsp">iniciar sesión</a> para poder comentar</p>
+            <c:when test="${!canComment}">
+                <p>Debe <a href="login.jsp">iniciar sesión</a> y tener el CD comprado para poder comentar</p>
             </c:when>
             <c:otherwise>
-                <form class="comment-submission" action="addComment" method="post">
+                <form class="comment-submission" action="shop" method="post">
+                    <input type="hidden" name="route" value="addreview">
+                    <input type="hidden" name="itemId" value="${item.id}">
                     <fieldset class="comment-submission-fieldset">
                         <legend>Comentar</legend>
                         <textarea name="comment" required></textarea>

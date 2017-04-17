@@ -21,12 +21,12 @@ public class EditAccount extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-        User auser = getUser(req);
-        if(!(auser instanceof Registered)){
+        Registered user = getRegistered(req);
+        if(user == null){
             dispatcher.showError(0, "Usuario no registrado", req, res);
             return;
         }
-        Registered user = (Registered) auser;
+
         String email = req.getParameter("userId");
 
         if (user.getEmail().equals(email) || user.hasPermission(Permission.EDIT_USER_ACCOUNTS)) {

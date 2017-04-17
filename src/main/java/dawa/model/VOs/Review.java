@@ -11,6 +11,9 @@ public class Review {
     private int points;
     private String text;
 
+    public Review() {
+    }
+
     public Review(String authorEmail, String authorName, int points, String text) {
         this.points = points;
         this.text = text;

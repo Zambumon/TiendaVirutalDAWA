@@ -5,7 +5,6 @@ import dawa.controller.Dispatcher;
 import dawa.controller.ShopController;
 import dawa.model.VOs.Permission;
 import dawa.model.VOs.Registered;
-import dawa.model.VOs.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,12 +20,12 @@ public class ShowAccount extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
-        User auser = getUser(req);
-        if(!(auser instanceof Registered)){
+        Registered user = getRegistered(req);
+        if(user == null){
             dispatcher.showError(0, "Usuario no registrado", req, res);
             return;
         }
-        Registered user = (Registered) auser;
+
         String email = req.getParameter("userId");
 
         if(email == null){

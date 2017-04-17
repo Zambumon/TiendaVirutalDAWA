@@ -4,6 +4,8 @@ import dawa.controller.Action;
 import dawa.controller.Dispatcher;
 import dawa.controller.ShopController;
 import dawa.model.VOs.Item;
+import dawa.model.VOs.Permission;
+import dawa.model.VOs.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,12 @@ public class AddItem extends Action {
 
     @Override
     public void doAction(HttpServletRequest req, HttpServletResponse res) {
+
+        User user = getUser(req);
+        if(!user.hasPermission(Permission.ADD_ITEM)){
+            dispatcher.showError(0, "Permisos insuficientes", req, res);
+            return;
+        }
 
         String name = req.getParameter("name");
         String description = req.getParameter("description");
