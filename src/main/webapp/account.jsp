@@ -10,12 +10,13 @@
 <%@include file="navbar.jsp" %>
 <%--@elvariable id="user" type="dawa.model.VOs.Registered"--%>
 <%--@elvariable id="address" type="dawa.model.VOs.Address"--%>
+<%--@elvariable id="permisions" type="java.util.Map"--%>
 
 <div class="profile-wrapper">
     <h1>Perfil de usuario</h1>
     <form action="shop" method="post">
-        <%--TODO --%>
-        <input type="hidden" name="route" value="todo">
+
+        <input type="hidden" name="route" value="editaccount">
         <fieldset>
             <legend>Datos generales</legend>
             <label for="user-email">Correo electrónico</label>
@@ -29,9 +30,9 @@
             <fieldset>
                 <legend>Editar tipo de cuenta</legend>
                 <select name="role" id="role">
-                    <option value="basic">Básico</option>
-                    <option value="vip">VIP</option>
-                    <option value="admin">Administrador</option>
+                    <option value="NORMAL">Básico</option>
+                    <option value="VIP">VIP</option>
+                    <option value="ADMIN">Administrador</option>
                 </select>
             </fieldset>
         </c:if>
@@ -57,15 +58,14 @@
     <div>
         <form action="shop" method="post">
             <input type="hidden" name="route" value="deleteuser">
-            <input type="hidden" name="userId" value="${user}">
+            <input type="hidden" name="userId" value="${user.email}">
             <div class="centered-form-input">
                 <input type="submit" class="ok-bye" value="Eliminar cuenta de usuario">
             </div>
-
         </form>
     </div>
 </div>
 
-<script src="js/password.js"></script>
+<script src="js/passwordCheck.js"></script>
 </body>
 </html>

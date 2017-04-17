@@ -10,9 +10,9 @@ public enum Permission {
     SEE_USER_ACCOUNTS,
     EDIT_USER_ACCOUNTS,
     REMOVE_USERS_ACCOUNTS,
+    REMOVE_OWN_ACCOUNT,
     SEE_VIP_DISCOUNT,
-    ORDER_ITEMS,
-    SEARCH_ORDERS;
+    ORDER_ITEMS;
 
     private static final Map<String, Permission> map;
 

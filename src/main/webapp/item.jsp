@@ -25,7 +25,7 @@
             <form action="shop" method="post">
                 <input type="hidden" name="route" value="editstock">
                 <input type="hidden" name="itemId" id="itemId" value="${item.id}">
-                <input type="number" min="0" name="stock" id="stock">
+                <input type="number" min="0" max="${item.stock}" name="stock" id="stock">
                 <input type="submit" value="Confirmar">
             </form>
         </c:if>

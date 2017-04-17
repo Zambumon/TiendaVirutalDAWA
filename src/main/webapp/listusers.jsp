@@ -14,8 +14,10 @@
     <h1>Usuarios del sistema</h1>
     <table>
         <thead>
-        <th>Nombre</th>
-        <th>E-mail</th>
+        <tr>
+            <th>Nombre</th>
+            <th>E-mail</th>
+        </tr>
         </thead>
         <tbody>
 
