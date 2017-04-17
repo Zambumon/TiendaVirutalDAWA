@@ -50,10 +50,10 @@
 
     <div class="item-properties">
         <h2>Dirección de envío</h2>
-        <p>Linea 1: ${address.firstLine}</p>
-        <p>Linea 2: ${address.secondLine}</p>
-        <p>Código postal: ${address.postCode}</p>
-        <p>Pais: ${address.country}</p>
+        <p>${address.firstLine}</p>
+        <p>${address.secondLine}</p>
+        <p>${address.postCode}</p>
+        <p>${address.country}</p>
 
     </div>
     <form action="shop" method="post">

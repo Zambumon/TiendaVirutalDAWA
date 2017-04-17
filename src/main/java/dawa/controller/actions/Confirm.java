@@ -84,12 +84,37 @@ public class Confirm extends Action {
 
         // Send Email
         try {
+            StringBuilder content = new StringBuilder();
+            content.append("<h2>Hola, " + order.getBuyer().getName() + ", tu compra en Música para DAA se ha " +
+                    "realizado con éxito.</h2><p>Estos son los items que has comprado</p>" +
+                    "<table><tr>" +
+                    "<th>Producto</th>" +
+                    "<th>Cantidad</th>" +
+                    "<th>Precio</th>" +
+                    "</tr>");
+            for (LineItem line : order.getOrderLines()) {
+                content.append("<tr>" +
+                        "<td>"+line.getItem().getName()+"</td>"+
+                        "<td>"+line.getAmount()+"</td>"+
+                        "<td>"+line.getPrice()+"€</td>"+
+                        "</tr>");
+            }
+            content.append("</table><br><br><h3>Resumen</h3>" +
+                    "<p>Descuento aplicado: " + order.getDiscountPercent()*100 + "%</p>" +
+                    "<strong>Total (IVA incluido): </strong>"+
+            order.getTotalPrice()+ "€<br><br><h3>Dirección de envío</h3>" +
+              order.getDestination().getFirstLine() + "<br>" +
+                    order.getDestination().getSecondLine() + "<br>" +
+                    order.getDestination().getPostCode() + "<br>" +
+                    order.getDestination().getCountry() + "<br><h4>Gracias por confiar en nosotros.</h4>");
+
+
             MailSender
                     .getInstance()
                     .sendMail(
                             user.getEmail(),
-                            "Compra realizada con exito",
-                            "Se ha realizado tu compra en web.com con exito."
+                            "¡Tu pedido está en camino!",
+                            content.toString()
                     );
         } catch (MessagingException e) {
             e.printStackTrace();
